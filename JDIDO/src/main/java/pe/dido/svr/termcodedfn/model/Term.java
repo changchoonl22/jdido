@@ -8,15 +8,16 @@ public class Term implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;	
 	
-	private String enAbrv;
-	private String enNm;
-	private String etcMatterDc;
-	private String krAbrv;
-	private String krNm;
-	private String wordApplcScope;
-	private String wordDfn;
 	private Integer wordId;
 	private String wordNm;
+	private String wordDfn;
+	private String krNm;	
+	private String enNm;	
+	private String krAbrv;
+	private String enAbrv;
+	private String wordApplcScope;
+	private String etcMatterDc;
+
 	
 	public String getEnAbrv() {
 		return enAbrv;

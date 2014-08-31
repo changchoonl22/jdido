@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class CodeM implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int cdId;
+	private Integer cdId;
 	private String codeIdntfr;
 	private String cdNm;
 	private String cdEnNm;
@@ -16,10 +16,10 @@ public class CodeM implements Serializable {
 	private String rm;
 	private String nwdAt;
 	
-	public int getCdId() {
+	public Integer getCdId() {
 		return cdId;
 	}
-	public void setCdId(int cdId) {
+	public void setCdId(Integer cdId) {
 		this.cdId = cdId;
 	}
 	public String getCodeIdntfr() {
