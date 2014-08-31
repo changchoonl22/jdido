@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+    </settings>
+    
+    <typeAliases>
+        <typeAlias alias="Person" type="com.mobiconsoft.dashboard.domain.Person"></typeAlias>
+<!--        
+        <typeAlias alias="BizActor" type="pe.dido.svr.bizmodeling.model.BizActor"></typeAlias>
+        <typeAlias alias="BizActorDeptMap" type="pe.dido.svr.bizmodeling.model.BizActorDeptMap"></typeAlias>
+        <typeAlias alias="BizCncpt" type="pe.dido.svr.bizmodeling.model.BizCncpt"></typeAlias>
+        <typeAlias alias="BizCncptProcsMap" type="pe.dido.svr.bizmodeling.model.BizCncptProcsMap"></typeAlias>
+        <typeAlias alias="BizPkg" type="pe.dido.svr.bizmodeling.model.BizPkg"></typeAlias>
+        <typeAlias alias="BizProcs" type="pe.dido.svr.bizmodeling.model.BizProcs"></typeAlias>
+        <typeAlias alias="BizRule" type="pe.dido.svr.bizmodeling.model.BizRule"></typeAlias>  
+        
+        
+        
+        <typeAlias alias= "ClassAttrb" type="pe.dido.svr.clzmodeling.model.ClassAttrb"></typeAlias>
+		<typeAlias alias= "ClassM" type="pe.dido.svr.clzmodeling.model.ClassM"></typeAlias>
+		<typeAlias alias= "ClassOp" type="pe.dido.svr.clzmodeling.model.ClassOp"></typeAlias>               
+
+
+        <typeAlias alias= "CompIfclass" type="pe.dido.svr.compmodeling.model.CompIfclass"></typeAlias>
+		<typeAlias alias= "CompImplClass" type="pe.dido.svr.compmodeling.model.CompImplClass"></typeAlias>
+		<typeAlias alias= "CompInnerClassAttrb" type="pe.dido.svr.compmodeling.model.CompInnerClassAttrb"></typeAlias>
+		<typeAlias alias= "CompInnerClassOp" type="pe.dido.svr.compmodeling.model.CompInnerClassOp"></typeAlias>
+		<typeAlias alias= "CompM" type="pe.dido.svr.compmodeling.model.CompM"></typeAlias>
+		<typeAlias alias= "UdaCluster" type="pe.dido.svr.compmodeling.model.UdaCluster"></typeAlias>	    
+		
+		<typeAlias alias= "LnkIfIem" type="pe.dido.svr.lnkdesign.model.LnkIfIem"></typeAlias>
+		<typeAlias alias= "LnkIfPgm" type="pe.dido.svr.lnkdesign.model.LnkIfPgm"></typeAlias>
+		<typeAlias alias= "LnkIfPgmMeta" type="pe.dido.svr.lnkdesign.model.LnkIfPgmMeta"></typeAlias>
+		<typeAlias alias= "LnkOtrSys" type="pe.dido.svr.lnkdesign.model.LnkOtrSys"></typeAlias>
+		<typeAlias alias= "LnkSysNode" type="pe.dido.svr.lnkdesign.model.LnkSysNode"></typeAlias>	
+		
+		<typeAlias alias= "Dept" type="pe.dido.svr.reqmngt.model.Dept"></typeAlias>
+		<typeAlias alias= "DmndDeptMap" type="pe.dido.svr.reqmngt.model.DmndDeptMap"></typeAlias>
+		<typeAlias alias= "DmndM" type="pe.dido.svr.reqmngt.model.DmndM"></typeAlias>
+		<typeAlias alias= "DmndRelateBasis" type="pe.dido.svr.reqmngt.model.DmndRelateBasis"></typeAlias>
+		<typeAlias alias= "UpperDmndDmndMap" type="pe.dido.svr.reqmngt.model.UpperDmndDmndMap"></typeAlias>
+		<typeAlias alias= "UpperDmnd" type="pe.dido.svr.reqmngt.model.UpperDmnd"></typeAlias>
+	
+		<typeAlias alias= "CodeM" type="pe.dido.svr.termcodedfn.model.CodeM"></typeAlias>
+-->			
+		<typeAlias alias= "CodeD" type="pe.dido.svr.termcodedfn.model.CodeD"></typeAlias>
+<!--		<typeAlias alias= "Term" type="pe.dido.svr.termcodedfn.model.Term"></typeAlias>	
+ 		
+		<typeAlias alias= "TestPln" type="pe.dido.svr.testmngt.model.TestPln"></typeAlias>
+		<typeAlias alias= "TestResult" type="pe.dido.svr.testmngt.model.TestResult"></typeAlias>	
+		
+		<typeAlias alias= "UcActorMap" type="pe.dido.svr.ucsmodeling.model.UcActorMap"></typeAlias>
+		<typeAlias alias= "UcActor" type="pe.dido.svr.ucsmodeling.model.UcActor"></typeAlias>
+		<typeAlias alias= "UcEventFlow" type="pe.dido.svr.ucsmodeling.model.UcEventFlow"></typeAlias>
+		<typeAlias alias= "UcM" type="pe.dido.svr.ucsmodeling.model.UcM"></typeAlias>		
+		
+		<typeAlias alias= "UiAuthorMap" type="pe.dido.svr.uidesign.model.UiAuthorMap"></typeAlias>
+		<typeAlias alias= "UiAuthor" type="pe.dido.svr.uidesign.model.UiAuthor"></typeAlias>
+		<typeAlias alias= "UiMenuPkg" type="pe.dido.svr.uidesign.model.UiMenuPkg"></typeAlias>
+		<typeAlias alias= "UiM" type="pe.dido.svr.uidesign.model.UiM"></typeAlias>		
+-->							    
+    </typeAliases>
+    
+    <mappers>
+        <mapper resource="com/mobiconsoft/dashboard/mybatis/mapper/Person.xml"></mapper>
+        
+               
+<!--         
+        <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizActorMapper.xml"></mapper>
+        <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizActorDeptMapMapper.xml"></mapper>
+        <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizCncptMapper.xml"></mapper>
+        <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizCncptProcsMapMapper.xml"></mapper>
+        <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizPkgMapper.xml"></mapper>
+        <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizProcsMapper.xml"></mapper>
+        <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizRuleMapper.xml"></mapper>  
+        
+        
+		<mapper resource="pe/dido/svr/clzmodeling/mybatis/mapper/ClassAttrbMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/clzmodeling/mybatis/mapper/ClassMMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/clzmodeling/mybatis/mapper/ClassOpMapper.xml"></mapper>     
+		
+	 
+    	<mapper resource="pe/dido/svr/compmodeling/mybatis/mapper/CompIfclassMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/compmodeling/mybatis/mapper/CompImplClassMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/compmodeling/mybatis/mapper/CompInnerClassAttrbMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/compmodeling/mybatis/mapper/CompInnerClassOpMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/compmodeling/mybatis/mapper/CompMMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/compmodeling/mybatis/mapper/UdaClusterMapper.xml"></mapper>		
+
+
+		<mapper resource="pe/dido/svr/lnkdesign/mybatis/mapper/LnkIfIemMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/lnkdesign/mybatis/mapper/LnkIfPgmMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/lnkdesign/mybatis/mapper/LnkIfPgmMetaMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/lnkdesign/mybatis/mapper/LnkOtrSysMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/lnkdesign/mybatis/mapper/LnkSysNodeMapper.xml"></mapper>	
+		
+		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/DeptMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/DmndDeptMapMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/DmndMMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/DmndRelateBasisMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/UpperDmndDmndMapMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/UpperDmndMapper.xml"></mapper>			
+
+		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/CodeMMapper.xml"></mapper>
+-->		
+		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/CodeDMapper.xml"></mapper>
+<!--		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/TermMapper.xml"></mapper>
+ 		
+		<mapper resource="pe/dido/svr/testmngt/mybatis/mapper/TestPlnMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/testmngt/mybatis/mapper/TestResultMapper.xml"></mapper>
+		
+		<mapper resource="pe/dido/svr/ucsmodeling/mybatis/mapper/UcActorMapMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/ucsmodeling/mybatis/mapper/UcActorMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/ucsmodeling/mybatis/mapper/UcEventFlowMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/ucsmodeling/mybatis/mapper/UcMMapper.xml"></mapper>	
+		
+		<mapper resource="pe/dido/svr/uidesign/mybatis/mapper/UiAuthorMapMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/uidesign/mybatis/mapper/UiAuthorMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/uidesign/mybatis/mapper/UiMenuPkgMapper.xml"></mapper>
+		<mapper resource="pe/dido/svr/uidesign/mybatis/mapper/UiMMapper.xml"></mapper>					
+ -->				       
+    </mappers>
+   
+</configuration>
