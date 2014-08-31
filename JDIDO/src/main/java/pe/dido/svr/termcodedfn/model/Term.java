@@ -6,7 +6,8 @@ public class Term implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;	
+	
 	private String enAbrv;
 	private String enNm;
 	private String etcMatterDc;
