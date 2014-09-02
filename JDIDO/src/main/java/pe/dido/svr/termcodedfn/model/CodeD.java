@@ -10,8 +10,9 @@ public class CodeD implements Serializable {
 	private String codeValue;
 	private String codeValueNm;
 	private String dc;
+	private Float abc;
 	
-	
+		
 	
 	public Integer getCodeValueID() {
 		return codeValueID;
