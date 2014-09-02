@@ -4,6 +4,7 @@
 package pe.dido.svr.uidesign.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,82 +20,35 @@ import pe.dido.svr.uidesign.model.UiM;
  * @author cclee
  *
  */
-@Repository
+@Repository("uiMDao")
 public class UiMDaoImpl implements UiMDao {
 	private static final Logger logger = LoggerFactory.getLogger(UiMDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMMapper#deleteUiMById(pe.dido.svr.uidesign.model.UiM)
-	 */
 	@Override
-	public void deleteUiMById(UiM uiM) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMMapper#deleteUiMList(java.util.List)
-	 */
+	public UiM findById(HashMap searchVo) {	
+		return sqlSession.selectOne("UiM.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteUiMList(List<UiM> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMMapper#findUiMById(int)
-	 */
+	public List<UiM> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("UiM.findList");//,searchVo);
+	}	
+		
 	@Override
-	public UiM findUiMById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMMapper#findUiMList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("UiM.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<UiM> findUiMList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMMapper#insertUiMById(pe.dido.svr.uidesign.model.UiM)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("UiM.insert", objList);
+	}	
+		
 	@Override
-	public void insertUiMById(UiM uiM) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMMapper#insertUiMList(java.util.List)
-	 */
-	@Override
-	public void insertUiMList(List<UiM> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMMapper#updateUiMById(pe.dido.svr.uidesign.model.UiM)
-	 */
-	@Override
-	public void updateUiMById(UiM uiM) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMMapper#updateUiMList(java.util.List)
-	 */
-	@Override
-	public void updateUiMList(List<UiM> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	public void delete(List objList) {	
+		sqlSession.delete("UiM.insert", objList);
+	}	
 
 }

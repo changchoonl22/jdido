@@ -1,20 +1,20 @@
 package pe.dido.svr.testmngt.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import pe.dido.svr.testmngt.model.TestResult;
 
 public interface TestResultDao {
 
-	void deleteTestResultById(TestResult testResult);
-	void deleteTestResultList(List<TestResult> deleteList);
-	//TestResultMapper
-	TestResult findTestResultById(int id);
-	ArrayList<TestResult> findTestResultList(int id);
-	void insertTestResultById(TestResult testResult);
-	void insertTestResultList(List<TestResult> insertList);
-	void updateTestResultById(TestResult testResult);
-	void updateTestResultList(List<TestResult> updateList);
+	public TestResult findById(HashMap searchVo);
+
+	public List<TestResult> findList();
+
+	public void insert(List objList);
+
+	public void update(List objList);
+
+	public void delete(List objList);
 
 }

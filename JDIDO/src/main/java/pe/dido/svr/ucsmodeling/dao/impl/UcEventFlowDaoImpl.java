@@ -4,6 +4,7 @@
 package pe.dido.svr.ucsmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,82 +20,38 @@ import pe.dido.svr.ucsmodeling.model.UcEventFlow;
  * @author cclee
  *
  */
-@Repository
+@Repository("ucEventFlowDao")
 public class UcEventFlowDaoImpl implements UcEventFlowDao {
 	private static final Logger logger = LoggerFactory.getLogger(UcEventFlowDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.ucsmodeling.persistence.UcEventFlowMapper#deleteUcEventFlowById(pe.dido.svr.ucsmodeling.model.UcEventFlow)
-	 */
+
+
 	@Override
-	public void deleteUcEventFlowById(UcEventFlow ucEventFlow) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.ucsmodeling.persistence.UcEventFlowMapper#deleteUcEventFlowList(java.util.List)
-	 */
+	public UcEventFlow findById(HashMap searchVo) {	
+		return sqlSession.selectOne("UcEventFlow.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteUcEventFlowList(List<UcEventFlow> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.ucsmodeling.persistence.UcEventFlowMapper#findUcEventFlowById(int)
-	 */
+	public List<UcEventFlow> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("UcEventFlow.findList");//,searchVo);
+	}	
+		
 	@Override
-	public UcEventFlow findUcEventFlowById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.ucsmodeling.persistence.UcEventFlowMapper#findUcEventFlowList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("UcEventFlow.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<UcEventFlow> findUcEventFlowList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.ucsmodeling.persistence.UcEventFlowMapper#insertUcEventFlowById(pe.dido.svr.ucsmodeling.model.UcEventFlow)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("UcEventFlow.insert", objList);
+	}	
+		
 	@Override
-	public void insertUcEventFlowById(UcEventFlow ucEventFlow) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.ucsmodeling.persistence.UcEventFlowMapper#insertUcEventFlowList(java.util.List)
-	 */
-	@Override
-	public void insertUcEventFlowList(List<UcEventFlow> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.ucsmodeling.persistence.UcEventFlowMapper#updateUcEventFlowById(pe.dido.svr.ucsmodeling.model.UcEventFlow)
-	 */
-	@Override
-	public void updateUcEventFlowById(UcEventFlow ucEventFlow) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.ucsmodeling.persistence.UcEventFlowMapper#updateUcEventFlowList(java.util.List)
-	 */
-	@Override
-	public void updateUcEventFlowList(List<UcEventFlow> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	public void delete(List objList) {	
+		sqlSession.delete("UcEventFlow.insert", objList);
+	}	
+	
 
 }

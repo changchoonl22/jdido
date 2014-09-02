@@ -1,6 +1,7 @@
 package pe.dido.svr.ucsmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,60 +11,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import pe.dido.svr.ucsmodeling.dao.UcActorDao;
-import pe.dido.svr.ucsmodeling.model.UcActorMap;
+import pe.dido.svr.ucsmodeling.model.UcActor;
 
-@Repository
-public class UcActorDaoImpl implements UcActorDao {
+@Repository("ucActorDao")
+public class UcActorDaoImpl implements UcActorDao  {
 	private static final Logger logger = LoggerFactory.getLogger(UcActorDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	@Override
-	public void deleteUcActorMapById(UcActorMap ucActorMap) {
-		// TODO Auto-generated method stub
 
-	}
 
 	@Override
-	public void deleteUcActorMapList(List<UcActorMap> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
+	public UcActor findById(HashMap searchVo) {	
+		return sqlSession.selectOne("UcActor.findById", searchVo);
+	}	
+		
 	@Override
-	public UcActorMap findUcActorMapById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	public List<UcActor> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("UcActor.findList");//,searchVo);
+	}	
+		
 	@Override
-	public ArrayList<UcActorMap> findUcActorMapList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	public void insert(List objList) {	
+		sqlSession.insert("UcActor.insert", objList);
+	}	
+		
 	@Override
-	public void insertUcActorMapById(UcActorMap ucActorMap) {
-		// TODO Auto-generated method stub
-
-	}
-
+	public void update(List objList) {	
+		sqlSession.update("UcActor.insert", objList);
+	}	
+		
 	@Override
-	public void insertUcActorMapList(List<UcActorMap> insertList) {
-		// TODO Auto-generated method stub
+	public void delete(List objList) {	
+		sqlSession.delete("UcActor.insert", objList);
+	}	
 
-	}
-
-	@Override
-	public void updateUcActorMapById(UcActorMap ucActorMap) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateUcActorMapList(List<UcActorMap> updateList) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

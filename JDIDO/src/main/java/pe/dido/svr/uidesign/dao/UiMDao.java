@@ -1,20 +1,20 @@
 package pe.dido.svr.uidesign.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import pe.dido.svr.uidesign.model.UiM;
 
 public interface UiMDao {
 
-	void deleteUiMById(UiM uiM);
-	void deleteUiMList(List<UiM> deleteList);
-	//UiMMapper
-	UiM findUiMById(int id);
-	ArrayList<UiM> findUiMList(int id);
-	void insertUiMById(UiM uiM);
-	void insertUiMList(List<UiM> insertList);
-	void updateUiMById(UiM uiM);
-	void updateUiMList(List<UiM> updateList);
+	public UiM findById(HashMap searchVo);
+
+	public List<UiM> findList();
+
+	public void insert(List objList);
+
+	public void update(List objList);
+
+	public void delete(List objList);
 
 }

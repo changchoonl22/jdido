@@ -4,6 +4,7 @@
 package pe.dido.svr.uidesign.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,82 +20,35 @@ import pe.dido.svr.uidesign.model.UiMenuPkg;
  * @author cclee
  *
  */
-@Repository
+@Repository("uiMenuPkgDao")
 public class UiMenuPkgDaoImpl implements UiMenuPkgDao {
 	private static final Logger logger = LoggerFactory.getLogger(UiMenuPkgDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMenuPkgMapper#deleteUiMenuPkgById(pe.dido.svr.uidesign.model.UiMenuPkg)
-	 */
 	@Override
-	public void deleteUiMenuPkgById(UiMenuPkg uiMenuPkg) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMenuPkgMapper#deleteUiMenuPkgList(java.util.List)
-	 */
+	public UiMenuPkg findById(HashMap searchVo) {	
+		return sqlSession.selectOne("UiMenuPkg.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteUiMenuPkgList(List<UiMenuPkg> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMenuPkgMapper#findUiMenuPkgById(int)
-	 */
+	public List<UiMenuPkg> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("UiMenuPkg.findList");//,searchVo);
+	}	
+		
 	@Override
-	public UiMenuPkg findUiMenuPkgById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMenuPkgMapper#findUiMenuPkgList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("UiMenuPkg.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<UiMenuPkg> findUiMenuPkgList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMenuPkgMapper#insertUiMenuPkgById(pe.dido.svr.uidesign.model.UiMenuPkg)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("UiMenuPkg.insert", objList);
+	}	
+		
 	@Override
-	public void insertUiMenuPkgById(UiMenuPkg uiMenuPkg) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMenuPkgMapper#insertUiMenuPkgList(java.util.List)
-	 */
-	@Override
-	public void insertUiMenuPkgList(List<UiMenuPkg> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMenuPkgMapper#updateUiMenuPkgById(pe.dido.svr.uidesign.model.UiMenuPkg)
-	 */
-	@Override
-	public void updateUiMenuPkgById(UiMenuPkg uiMenuPkg) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.uidesign.persistence.UiMenuPkgMapper#updateUiMenuPkgList(java.util.List)
-	 */
-	@Override
-	public void updateUiMenuPkgList(List<UiMenuPkg> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	public void delete(List objList) {	
+		sqlSession.delete("UiMenuPkg.insert", objList);
+	}	
 
 }
