@@ -14,21 +14,21 @@ public interface TermCodeService {
 	//codem
 	public CodeM findCodeMById(HashMap searchVo);
 
-	public List<CodeM> findCodeMList(HashMap searchVo);
+	public List<CodeM> findCodeMList();//HashMap searchVo);
 
 	public void saveCodeMList(HashMap procParam);
 
 	//coded
 	public CodeD findCodeDById(HashMap searchVo);
 
-	public List<CodeD> findCodeDList(HashMap searchVo);
+	public List<CodeD> findCodeDList();//HashMap searchVo);
 
 	public void saveCodeDList(HashMap procParam);
 
 	//term
 	public Term findTermById(HashMap searchVo);
 
-	public List<Term> findTermList(HashMap searchVo);
+	public List<Term> findTermList();//HashMap searchVo);
 
 	public void saveTermList(HashMap procParam);
 

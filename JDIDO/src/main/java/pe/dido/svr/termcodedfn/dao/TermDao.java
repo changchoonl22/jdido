@@ -9,7 +9,7 @@ public interface TermDao {
 
 	public Term findById(HashMap searchVo);
 
-	public List<Term> findList(HashMap searchVo);//HashMap searchVo
+	public List<Term> findList();//HashMap searchVo
 
 	public void saveList(List objList) ;
 

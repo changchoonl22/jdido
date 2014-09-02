@@ -82,9 +82,6 @@ public class CodeM implements Serializable {
 	public void setNwdAt(String nwdAt) {
 		this.nwdAt = nwdAt;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 
 }

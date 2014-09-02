@@ -9,7 +9,7 @@ public interface CodeDDao {
 
 	public CodeD findById(HashMap searchVo);
 
-	public List<CodeD> findList(HashMap searchVo);
+	public List<CodeD> findList();//HashMap searchVo);
 
 	public void saveList(List objList);
 

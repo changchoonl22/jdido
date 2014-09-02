@@ -29,8 +29,8 @@ public class CodeDDaoImpl implements CodeDDao {
 	}
 
 	@Override
-	public List<CodeD> findList(HashMap searchVo) {
-		return sqlSession.selectList("codeD.findList",searchVo);
+	public List<CodeD> findList(){//HashMap searchVo) {
+		return sqlSession.selectList("codeD.findList");//,searchVo);
 	}
 
 	@Override

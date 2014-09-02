@@ -32,9 +32,9 @@ public class TermCodeDfnController {
 	}
 	
 	@RequestMapping(value = TermCodeDfnRestURIConstants.TERM_GETLIST, method = RequestMethod.GET)
-	public @ResponseBody HashMap<String, Object> getTermList(@RequestBody HashMap<String, Object> searchParam) {
+	public @ResponseBody HashMap<String, Object> getTermList(){//@RequestBody HashMap<String, Object> searchParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
-		resultObj.put("termListDS", termCodeService.findTermList(searchParam));
+		resultObj.put("termListDS", termCodeService.findTermList());//searchParam));
 		resultObj.put("message", 1);
 		return resultObj;
 	}
@@ -57,9 +57,9 @@ public class TermCodeDfnController {
 	}
 	
 	@RequestMapping(value = TermCodeDfnRestURIConstants.CODEM_GETLIST, method = RequestMethod.GET)
-	public @ResponseBody HashMap<String, Object> getCodeMList(@RequestBody HashMap<String, Object> searchParam) {
+	public @ResponseBody HashMap<String, Object> getCodeMList(){//@RequestBody HashMap<String, Object> searchParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
-		resultObj.put("codeMListDS", termCodeService.findCodeMList(searchParam));
+		resultObj.put("codeMListDS", termCodeService.findCodeMList());//searchParam));
 		resultObj.put("message", 1);
 		return resultObj;
 	}
@@ -83,9 +83,9 @@ public class TermCodeDfnController {
 	}
 	
 	@RequestMapping(value = TermCodeDfnRestURIConstants.CODED_GETLIST, method = RequestMethod.GET)
-	public @ResponseBody HashMap<String, Object> getCodeDList(@RequestBody HashMap<String, Object> searchParam) {
+	public @ResponseBody HashMap<String, Object> getCodeDList(){//@RequestBody HashMap<String, Object> searchParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
-		resultObj.put("codeDListDS", termCodeService.findCodeDList(searchParam));
+		resultObj.put("codeDListDS", termCodeService.findCodeDList());//searchParam));
 		resultObj.put("message", 1);
 		return resultObj;
 	}

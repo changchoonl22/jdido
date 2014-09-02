@@ -30,8 +30,8 @@ public class TermCodeServiceImpl implements TermCodeService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<CodeM> findCodeMList(HashMap searchVo){
-		return codeMDao.findList(searchVo);
+	public List<CodeM> findCodeMList(){//HashMap searchVo){
+		return codeMDao.findList();//searchVo);
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class TermCodeServiceImpl implements TermCodeService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<CodeD> findCodeDList(HashMap searchVo){
-		return codeDDao.findList(searchVo);
+	public List<CodeD> findCodeDList(){//HashMap searchVo){
+		return codeDDao.findList();//searchVo);
 	}
 
 	@Override
@@ -74,8 +74,8 @@ public class TermCodeServiceImpl implements TermCodeService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Term> findTermList(HashMap searchVo){
-		return termDao.findList(searchVo);
+	public List<Term> findTermList(){//HashMap searchVo){
+		return termDao.findList();//searchVo);
 	}
 
 	@Override

@@ -26,8 +26,8 @@ public class TermDaoImpl implements TermDao {
 	}
 
 	@Override
-	public List<Term> findList(HashMap searchVo) {
-		return sqlSession.selectList("Term.findList",searchVo);
+	public List<Term> findList(){//HashMap searchVo) {
+		return sqlSession.selectList("Term.findList");//,searchVo);
 
 	}
 
