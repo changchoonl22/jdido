@@ -9,14 +9,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mobiconsoft.dashboard.dao.impl.PersonDAOImpl;
-
 import pe.dido.svr.termcodedfn.dao.CodeDDao;
 import pe.dido.svr.termcodedfn.model.CodeD;
 
 @Repository
 public class CodeDDaoImpl implements CodeDDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(CodeDDaoImpl.class);
+
+	// end must be point . 
+	private static final String NS = "pe.dido.svr.";
+
 	
 	@Autowired
 	private SqlSession sqlSession;

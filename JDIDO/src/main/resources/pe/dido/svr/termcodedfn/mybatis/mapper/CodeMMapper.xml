@@ -1,52 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CodeM">
-	<resultMap id="codeMResult" type="pe.dido.svr.termcodedfn.model.CodeM">
-		   <id  	property="codeValueID" 	column="CD_ID"/>
-		   <result 	property="codeID" 		column="CODE_IDNTFR"/> 
-    	   <result 	property="codeValue" 	column="CD_NM"/>
-      	   <result 	property="codeValueNm" 	column="CODE_VALUE_NM"/>
-      	   <result 	property="dc" 			column="DC"/>
+	<resultMap id="CodeMResult" type="CodeM">
+		   <id  	property="cdId" 			column="CD_ID"/>
+		   <result 	property="codeIdntfr" 		column="CODE_IDNTFR"/> 
+    	   <result 	property="cdNm" 			column="CD_NM"/>
+      	   <result 	property="cdEnNm" 			column="CD_EN_NM"/>
+      	   <result 	property="cdEnAbrvNm" 		column="CD_EN_ABRV_NM"/>
+      	   <result 	property="dc" 				column="DC"/>
+      	   <result 	property="dataTy" 			column="DATA_TY"/>
+      	   <result 	property="dataLnth" 		column="DATA_LNTH"/>
+      	   <result 	property="stdCodeAt" 		column="STD_CODE_AT"/>
+      	   <result 	property="rm" 				column="RM"/>
+      	   <result 	property="nwdAt" 			column="NWD_AT"/>      	   
 	</resultMap>
 	
-  <select id="findById" parameterType="java.util.HashMap" resultMap="codeMResult">
+  <select id="findById" parameterType="java.util.HashMap" resultMap="CodeMResult">
     SELECT *
-    FROM CODE_D
-    where CODE_ID 		= #{0, codeID}
-      and CODE_VALUE_ID = #{1, codeValueID}
+      FROM CODE_M
+     where CODE_ID 		= #{0, codeID}
   </select>
-  <select id="findList" resultMap="codeMResult">
+  <select id="findList" parameterType="java.util.HashMap" resultMap="CodeMResult">
     select *
-    from CODE_D
+      from CODE_M
   </select>
-  <insert id="insert" parameterType="codeMResult">
-    insert into CODE_D (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+  <insert id="insert" parameterType="CodeMResult">
+    insert into CODE_M (CODE_IDNTFR 
+      				  	CD_NM, 
+      				  	CD_EN_NM,
+      				  	CD_EN_ABRV_NM,
+      				  	DC,
+      				  	DATA_TY,
+      				  	DATA_LNTH,
+      				  	STD_CODE_AT,
+      				  	RM,
+      				  	NWD_AT
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (#{codeIdntfr,		jdbcType=INTEGER}, 
+    		#{cdNm,				jdbcType=VARCHAR}, 
+      		#{cdEnNm,			jdbcType=VARCHAR}, 
+      		#{cdEnAbrvNm,		jdbcType=VARCHAR},
+      		#{dc,				jdbcType=LONGVARCHAR},
+      		#{dataTy,			jdbcType=VARCHAR},
+      		#{dataLnth,			jdbcType=VARCHAR},
+      		#{stdCodeAt,		jdbcType=VARCHAR},
+      		#{rm,				jdbcType=LONGVARCHAR},
+      		#{nwdAt,			jdbcType=VARCHAR}
       )
+      
   <!--parameterType="java.lang.Integer"-->
   </insert>
-  <update id="update" parameterType="codeMResult">
+  <update id="update" parameterType="CodeMResult">
     update CODE_D
     <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},</if>
+      <if test="codeIdntfr 	!= null"> 	CODE_IDNTFR 	= #{codeIdntfr,		jdbcType=INTEGER}, 		</if>
+      <if test="cdNm 		!= null"> 	CD_NM			= #{cdNm,			jdbcType=VARCHAR}, 		</if>
+      <if test="cdEnNm 		!= null"> 	CD_EN_NM		= #{cdEnNm,			jdbcType=VARCHAR}, 		</if>
+      <if test="cdEnAbrvNm 	!= null"> 	CD_EN_ABRV_NM	= #{cdEnAbrvNm,		jdbcType=VARCHAR},		</if>
+      <if test="dc 			!= null"> 	DC				= #{dc,				jdbcType=LONGVARCHAR}, 	</if>
+      <if test="dataTy 		!= null"> 	DATA_TY			= #{dataTy,			jdbcType=VARCHAR}, 		</if>
+      <if test="dataLnth 	!= null"> 	DATA_LNTH		= #{dataLnth,		jdbcType=VARCHAR}, 		</if>
+      <if test="stdCodeAt 	!= null"> 	STD_CODE_AT		= #{stdCodeAt,		jdbcType=VARCHAR}, 		</if>
+      <if test="rm 			!= null"> 	RM				= #{rm,				jdbcType=LONGVARCHAR}, 	</if>
+      <if test="nwdAt 		!= null"> 	NWD_AT			= #{nwdAt,			jdbcType=VARCHAR}, 		</if>       
     </set>
     where CODE_ID 		= #{codeID,jdbcType=INTEGER}
-      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
     
   </update>
   <delete id="delete" parameterType="java.util.HashMap">
     delete from CODE_D
     where CODE_ID 		= #{0, codeID}
-      and CODE_VALUE_ID = #{1, codeValueID}
   </delete>  
   
  </mapper>

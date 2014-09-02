@@ -14,8 +14,6 @@ import org.apache.log4j.Logger;
 
 import pe.dido.svr.termcodedfn.service.TermCodeService;
 
-
-
 @RestController
 public class TermCodeDfnController {
 
@@ -24,28 +22,79 @@ public class TermCodeDfnController {
 	@Autowired
 	private TermCodeService termCodeService;
 
+	//term
 	@RequestMapping(value = TermCodeDfnRestURIConstants.TERM_GET, method = RequestMethod.GET)
 	public @ResponseBody HashMap<String, Object> getTerm(@RequestBody HashMap<String, Object> searchParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
-		resultObj.put("termDS", termCodeService.findCodeMById(searchParam));
+		resultObj.put("termDS", termCodeService.findTermById(searchParam));
 		resultObj.put("message", "OK");
 		return resultObj;
 	}
-//@RequestBody HashMap<String, Object> searchParam
+	
 	@RequestMapping(value = TermCodeDfnRestURIConstants.TERM_GETLIST, method = RequestMethod.GET)
 	public @ResponseBody HashMap<String, Object> getTermList(@RequestBody HashMap<String, Object> searchParam) {
+		HashMap<String, Object> resultObj = new HashMap<String, Object>();
+		resultObj.put("termListDS", termCodeService.findTermList(searchParam));
+		resultObj.put("message", 1);
+		return resultObj;
+	}
+
+	@RequestMapping(value = TermCodeDfnRestURIConstants.TERM_SAVELIST, method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> saveTermList(@RequestBody HashMap<String, Object> procParam) {
+		HashMap<String, Object> resultObj = new HashMap<String, Object>();
+		termCodeService.saveCodeMList(procParam);
+		resultObj.put("message", 1);
+		return resultObj;
+	}
+	
+	//codeM
+	@RequestMapping(value = TermCodeDfnRestURIConstants.CODEM_GET, method = RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> getCodeM(@RequestBody HashMap<String, Object> searchParam) {
+		HashMap<String, Object> resultObj = new HashMap<String, Object>();
+		resultObj.put("codeMDS", termCodeService.findCodeMById(searchParam));
+		resultObj.put("message", "OK");
+		return resultObj;
+	}
+	
+	@RequestMapping(value = TermCodeDfnRestURIConstants.CODEM_GETLIST, method = RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> getCodeMList(@RequestBody HashMap<String, Object> searchParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
 		resultObj.put("codeMListDS", termCodeService.findCodeMList(searchParam));
 		resultObj.put("message", 1);
 		return resultObj;
 	}
 
-	@RequestMapping(value = TermCodeDfnRestURIConstants.TERM_SAVELIST, method = RequestMethod.POST)
+	@RequestMapping(value = TermCodeDfnRestURIConstants.CODEM_SAVELIST, method = RequestMethod.POST)
 	public @ResponseBody HashMap<String, Object> saveCodeMList(@RequestBody HashMap<String, Object> procParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
 		termCodeService.saveCodeMList(procParam);
 		resultObj.put("message", 1);
 		return resultObj;
+	}	
+	
+	
+	//codeD
+	@RequestMapping(value = TermCodeDfnRestURIConstants.CODED_GET, method = RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> getCodeD(@RequestBody HashMap<String, Object> searchParam) {
+		HashMap<String, Object> resultObj = new HashMap<String, Object>();
+		resultObj.put("codeDDS", termCodeService.findCodeDById(searchParam));
+		resultObj.put("message", "OK");
+		return resultObj;
+	}
+	
+	@RequestMapping(value = TermCodeDfnRestURIConstants.CODED_GETLIST, method = RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> getCodeDList(@RequestBody HashMap<String, Object> searchParam) {
+		HashMap<String, Object> resultObj = new HashMap<String, Object>();
+		resultObj.put("codeDListDS", termCodeService.findCodeDList(searchParam));
+		resultObj.put("message", 1);
+		return resultObj;
 	}
 
+	@RequestMapping(value = TermCodeDfnRestURIConstants.CODED_SAVELIST, method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> saveCodeDList(@RequestBody HashMap<String, Object> procParam) {
+		HashMap<String, Object> resultObj = new HashMap<String, Object>();
+		termCodeService.saveCodeDList(procParam);
+		resultObj.put("message", 1);
+		return resultObj;
+	}	
 }
