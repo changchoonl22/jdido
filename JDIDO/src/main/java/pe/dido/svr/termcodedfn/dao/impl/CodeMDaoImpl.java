@@ -14,7 +14,7 @@ import com.mobiconsoft.dashboard.dao.impl.PersonDAOImpl;
 import pe.dido.svr.termcodedfn.dao.CodeMDao;
 import pe.dido.svr.termcodedfn.model.CodeM;
 
-@Repository
+@Repository("codeMDao")
 public class CodeMDaoImpl implements CodeMDao {
 	private static final Logger logger = LoggerFactory.getLogger(CodeMDaoImpl.class);
 	

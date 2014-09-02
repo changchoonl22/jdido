@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CodeD">	
-	<!-- resultMap id="CodeDResult" type="pe.dido.svr.termcodedfn.model.CodeD">
+	<resultMap id="CodeDResult" type="CodeD">
 		   <id     property="codeValueID" 		column="CODE_VALUE_ID"/>
 		   <id     property="codeID" 			column="CODE_ID"/>
 		   <result property="codeValue" 		column="CODE_VALUE"/> 
     	   <result property="codeValueNm" 		column="CODE_VALUE_NM"/>
       	   <result property="dc" 				column="DC"/>
-	</resultMap-->
+	</resultMap>
 
 
 
-  <select id="findById" parameterType="java.util.HashMap" resultMap="CodeD">
+  <select id="findById" parameterType="java.util.HashMap" resultMap="CodeDResult">
     SELECT *
     FROM CODE_D
     where CODE_ID 		= #{0, codeID}
       and CODE_VALUE_ID = #{1, codeValueID}
   </select>
-  <select id="findList" parameterType="java.util.HashMap" resultMap="CodeD">
+  <select id="findList" parameterType="java.util.HashMap" resultMap="CodeDResult">
     select *
     from CODE_D
   </select>

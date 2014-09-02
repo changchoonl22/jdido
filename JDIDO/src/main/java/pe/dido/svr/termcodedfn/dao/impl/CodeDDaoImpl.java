@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import pe.dido.svr.termcodedfn.dao.CodeDDao;
 import pe.dido.svr.termcodedfn.model.CodeD;
 
-@Repository
+@Repository("codeDDao")
 public class CodeDDaoImpl implements CodeDDao {
 	private static final Logger logger = LoggerFactory.getLogger(CodeDDaoImpl.class);
 

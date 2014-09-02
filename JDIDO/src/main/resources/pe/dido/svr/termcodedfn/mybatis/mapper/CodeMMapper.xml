@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CodeM">
-	<!--resultMap id="CodeMResult" type="pe.dido.svr.termcodedfn.model.CodeM">
+	<resultMap id="CodeMResult" type="CodeM">
 		   <id  	property="cdId" 			column="CD_ID"/>
 		   <result 	property="codeIdntfr" 		column="CODE_IDNTFR"/> 
     	   <result 	property="cdNm" 			column="CD_NM"/>
@@ -13,14 +13,14 @@
       	   <result 	property="stdCodeAt" 		column="STD_CODE_AT"/>
       	   <result 	property="rm" 				column="RM"/>
       	   <result 	property="nwdAt" 			column="NWD_AT"/>      	   
-	</resultMap-->
+	</resultMap>
 	
-  <select id="findById" parameterType="java.util.HashMap" resultMap="CodeM">
+  <select id="findById" parameterType="java.util.HashMap" resultMap="CodeMResult">
     SELECT *
       FROM CODE_M
      where CODE_ID 		= #{0, codeID}
   </select>
-  <select id="findList" parameterType="java.util.HashMap" resultMap="CodeM">
+  <select id="findList" parameterType="java.util.HashMap" resultMap="CodeMResult">
     select *
       from CODE_M
   </select>

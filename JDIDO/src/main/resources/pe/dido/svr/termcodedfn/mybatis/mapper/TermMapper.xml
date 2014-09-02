@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Term">
-	<!-- resultMap id="TermResult" type="pe.dido.svr.termcodedfn.model.Term">
+	<resultMap id="TermResult" type="Term">
 		   <id     property="wordId" 			column="WORD_ID"/>
 		   <result property="wordNm" 			column="WORD_NM"/> 
     	   <result property="krNm" 				column="KR_NM"/>
@@ -11,9 +11,9 @@
       	   <result property="wordApplcScope" 	column="WORD_APPLC_SCOPE"/> 
       	   <result property="etcMatterDc" 		column="ETC_MATTER_DC"/>
       	   <result property="wordDfn" 			column="WORD_DFN"/>
-	</resultMap--> 
+	</resultMap> 
 
-  <select id="findById" parameterType="java.util.HashMap" resultMap="Term">
+  <select id="findById" parameterType="java.util.HashMap" resultMap="TermResult">
     select WORD_ID
     	   WORD_NM, 
     	   KR_NM, 
@@ -26,7 +26,7 @@
     from term
     where WORD_ID = #{wordId,jdbcType=INTEGER}
   </select>
-  <select id="findList" parameterType="java.util.HashMap" resultMap="Term">
+  <select id="findList" parameterType="java.util.HashMap" resultMap="TermResult">
     select WORD_ID
     	   WORD_NM, 
     	   KR_NM, 

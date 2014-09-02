@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pe.dido.svr.termcodedfn.dao.*;
 import pe.dido.svr.termcodedfn.model.*;
 
-@Service
+@Service("termCodeService")
 public class TermCodeServiceImpl implements TermCodeService {
 	@Autowired
 	private CodeMDao codeMDao;

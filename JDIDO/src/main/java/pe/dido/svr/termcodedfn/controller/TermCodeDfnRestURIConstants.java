@@ -3,7 +3,7 @@ package pe.dido.svr.termcodedfn.controller;
 
 
 public class TermCodeDfnRestURIConstants {
-	public static final String CODED_GET = "/coded/get/{id}";
+	public static final String CODED_GET = "/coded/get/";
 	public static final String CODED_GETLIST = "/coded/getList";
 	public static final String CODED_SAVE = "/coded/save";
 	public static final String CODED_SAVELIST = "/coded/saveList";

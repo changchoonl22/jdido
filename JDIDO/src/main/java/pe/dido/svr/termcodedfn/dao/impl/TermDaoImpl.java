@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import pe.dido.svr.termcodedfn.dao.TermDao;
 import pe.dido.svr.termcodedfn.model.Term;
 
-@Repository
+@Repository("termDao")
 public class TermDaoImpl implements TermDao {
 	private static final Logger logger = LoggerFactory.getLogger(TermDaoImpl.class);
 	
