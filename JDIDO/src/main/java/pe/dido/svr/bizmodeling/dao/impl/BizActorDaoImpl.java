@@ -4,6 +4,7 @@
 package pe.dido.svr.bizmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,89 +16,43 @@ import org.springframework.stereotype.Repository;
 import pe.dido.svr.bizmodeling.dao.BizActorDao;
 import pe.dido.svr.bizmodeling.model.BizActor;
 
-import com.mobiconsoft.dashboard.dao.impl.PersonDAOImpl;
 
 /**
  * @author cclee
  *
  */
-@Repository
+@Repository("bizActorDao")
 public class BizActorDaoImpl implements BizActorDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(BizActorDaoImpl.class);
 	
-	@Autowired
-	private SqlSession sqlSession;
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizActorMapper#deleteBizActorById(pe.dido.svr.bizmodeling.model.BizActor)
-	 */
+	@Autowired	
+	private SqlSession sqlSession;	
+	
 	@Override
-	public void deleteBizActorById(BizActor bizActor) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizActorMapper#deleteBizActorList(java.util.List)
-	 */
+	public BizActor findById(HashMap searchVo) {	
+		return sqlSession.selectOne("BizActor.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteBizActorList(List<BizActor> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizActorMapper#findBizActorById(int)
-	 */
+	public List<BizActor> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("BizActor.findList");//,searchVo);
+	}	
+		
 	@Override
-	public BizActor findBizActorById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizActorMapper#findBizActorList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("BizActor.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<BizActor> findBizActorList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizActorMapper#insertBizActorById(pe.dido.svr.bizmodeling.model.BizActor)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("BizActor.insert", objList);
+	}	
+		
 	@Override
-	public void insertBizActorById(BizActor bizActor) {
-		// TODO Auto-generated method stub
+	public void delete(List objList) {	
+		sqlSession.delete("BizActor.insert", objList);
+	}	
+	
 
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizActorMapper#insertBizActorList(java.util.List)
-	 */
-	@Override
-	public void insertBizActorList(List<BizActor> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizActorMapper#updateBizActorById(pe.dido.svr.bizmodeling.model.BizActor)
-	 */
-	@Override
-	public void updateBizActorById(BizActor bizActor) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizActorMapper#updateBizActorList(java.util.List)
-	 */
-	@Override
-	public void updateBizActorList(List<BizActor> updateList) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

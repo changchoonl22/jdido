@@ -4,6 +4,7 @@
 package pe.dido.svr.bizmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,89 +16,43 @@ import org.springframework.stereotype.Repository;
 import pe.dido.svr.bizmodeling.dao.BizCncptDao;
 import pe.dido.svr.bizmodeling.model.BizCncpt;
 
-import com.mobiconsoft.dashboard.dao.impl.PersonDAOImpl;
 
 /**
  * @author cclee
  *
  */
-@Repository
+@Repository("bizCncptDao")
 public class BizCncptDaoImpl implements BizCncptDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(BizCncptDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
 
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizCncptMapper#deleteBizCncptById(pe.dido.svr.bizmodeling.model.BizCncpt)
-	 */
 	@Override
-	public void deleteBizCncptById(BizCncpt bizCncpt) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizCncptMapper#deleteBizCncptList(java.util.List)
-	 */
+	public BizCncpt findById(HashMap searchVo) {	
+		return sqlSession.selectOne("BizCncpt.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteBizCncptList(List<BizCncpt> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizCncptMapper#findBizCncptById(int)
-	 */
+	public List<BizCncpt> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("BizCncpt.findList");//,searchVo);
+	}	
+		
 	@Override
-	public BizCncpt findBizCncptById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizCncptMapper#findBizCncptList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("BizCncpt.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<BizCncpt> findBizCncptList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizCncptMapper#insertBizCncptById(pe.dido.svr.bizmodeling.model.BizCncpt)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("BizCncpt.insert", objList);
+	}	
+		
 	@Override
-	public void insertBizCncptById(BizCncpt bizCncpt) {
-		// TODO Auto-generated method stub
+	public void delete(List objList) {	
+		sqlSession.delete("BizCncpt.insert", objList);
+	}	
 
-	}
 
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizCncptMapper#insertBizCncptList(java.util.List)
-	 */
-	@Override
-	public void insertBizCncptList(List<BizCncpt> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizCncptMapper#updateBizCncptById(pe.dido.svr.bizmodeling.model.BizCncpt)
-	 */
-	@Override
-	public void updateBizCncptById(BizCncpt bizCncpt) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizCncptMapper#updateBizCncptList(java.util.List)
-	 */
-	@Override
-	public void updateBizCncptList(List<BizCncpt> updateList) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

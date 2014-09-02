@@ -4,6 +4,7 @@
 package pe.dido.svr.bizmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,89 +16,41 @@ import org.springframework.stereotype.Repository;
 import pe.dido.svr.bizmodeling.dao.BizPkgDao;
 import pe.dido.svr.bizmodeling.model.BizPkg;
 
-import com.mobiconsoft.dashboard.dao.impl.PersonDAOImpl;
 
 /**
  * @author cclee
  *
  */
-@Repository
+@Repository("bizPkgDao")
 public class BizPkgDaoImpl implements BizPkgDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(BizPkgDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
 
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizPkgMapper#deleteBizPkgById(pe.dido.svr.bizmodeling.model.BizPkg)
-	 */
 	@Override
-	public void deleteBizPkgById(BizPkg bizPkg) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizPkgMapper#deleteBizPkgList(java.util.List)
-	 */
+	public BizPkg findById(HashMap searchVo) {	
+		return sqlSession.selectOne("BizPkg.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteBizPkgList(List<BizPkg> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizPkgMapper#findBizPkgById(int)
-	 */
+	public List<BizPkg> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("BizPkg.findList");//,searchVo);
+	}	
+		
 	@Override
-	public BizPkg findBizPkgById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizPkgMapper#findBizPkgList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("BizPkg.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<BizPkg> findBizPkgList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizPkgMapper#insertBizPkgById(pe.dido.svr.bizmodeling.model.BizPkg)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("BizPkg.insert", objList);
+	}	
+		
 	@Override
-	public void insertBizPkgById(BizPkg bizPkg) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizPkgMapper#insertBizPkgList(java.util.List)
-	 */
-	@Override
-	public void insertBizPkgList(List<BizPkg> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizPkgMapper#updateBizPkgById(pe.dido.svr.bizmodeling.model.BizPkg)
-	 */
-	@Override
-	public void updateBizPkgById(BizPkg bizPkg) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizPkgMapper#updateBizPkgList(java.util.List)
-	 */
-	@Override
-	public void updateBizPkgList(List<BizPkg> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	public void delete(List objList) {	
+		sqlSession.delete("BizPkg.insert", objList);
+	}	
 
 }

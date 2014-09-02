@@ -4,6 +4,7 @@
 package pe.dido.svr.bizmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,89 +16,41 @@ import org.springframework.stereotype.Repository;
 import pe.dido.svr.bizmodeling.dao.BizRuleDao;
 import pe.dido.svr.bizmodeling.model.BizRule;
 
-import com.mobiconsoft.dashboard.dao.impl.PersonDAOImpl;
-
 /**
  * @author cclee
  *
  */
-@Repository
+@Repository("bizRuleDao")
 public class BizRuleDaoImpl implements BizRuleDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(BizRuleDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
 
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizRuleMapper#deleteBizRuleById(pe.dido.svr.bizmodeling.model.BizRule)
-	 */
 	@Override
-	public void deleteBizRuleById(BizRule bizRule) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizRuleMapper#deleteBizRuleList(java.util.List)
-	 */
+	public BizRule findById(HashMap searchVo) {	
+		return sqlSession.selectOne("BizRule.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteBizRuleList(List<BizRule> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizRuleMapper#findBizRuleById(int)
-	 */
+	public List<BizRule> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("BizRule.findList");//,searchVo);
+	}	
+		
 	@Override
-	public BizRule findBizRuleById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizRuleMapper#findBizRuleList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("BizRule.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<BizRule> findBizRuleList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizRuleMapper#insertBizRuleById(pe.dido.svr.bizmodeling.model.BizRule)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("BizRule.insert", objList);
+	}	
+		
 	@Override
-	public void insertBizRuleById(BizRule bizRule) {
-		// TODO Auto-generated method stub
+	public void delete(List objList) {	
+		sqlSession.delete("BizRule.insert", objList);
+	}	
 
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizRuleMapper#insertBizRuleList(java.util.List)
-	 */
-	@Override
-	public void insertBizRuleList(List<BizRule> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizRuleMapper#updateBizRuleById(pe.dido.svr.bizmodeling.model.BizRule)
-	 */
-	@Override
-	public void updateBizRuleById(BizRule bizRule) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.bizmodeling.persistence.BizRuleMapper#updateBizRuleList(java.util.List)
-	 */
-	@Override
-	public void updateBizRuleList(List<BizRule> updateList) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

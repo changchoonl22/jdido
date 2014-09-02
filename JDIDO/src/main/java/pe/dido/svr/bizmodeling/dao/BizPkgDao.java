@@ -1,20 +1,20 @@
 package pe.dido.svr.bizmodeling.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import pe.dido.svr.bizmodeling.model.BizPkg;
 
 public interface BizPkgDao {
 
-	void deleteBizPkgById(BizPkg bizPkg);
-	void deleteBizPkgList(List<BizPkg> deleteList);
-	//BizPkgMapper
-	BizPkg findBizPkgById(int id);
-	ArrayList<BizPkg> findBizPkgList(int id);
-	void insertBizPkgById(BizPkg bizPkg);
-	void insertBizPkgList(List<BizPkg> insertList);
-	void updateBizPkgById(BizPkg bizPkg);
-	void updateBizPkgList(List<BizPkg> updateList);
+	public BizPkg findById(HashMap searchVo);
+
+	public List<BizPkg> findList();
+
+	public void insert(List objList);
+
+	public void update(List objList);
+
+	public void delete(List objList);
 
 }
