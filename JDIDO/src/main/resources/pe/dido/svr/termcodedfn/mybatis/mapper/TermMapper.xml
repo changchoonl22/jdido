@@ -57,7 +57,7 @@
       		#{etcMatterDc,		jdbcType=VARCHAR}, 
       		#{wordDfn,			jdbcType=LONGVARCHAR}
       )
-  <!--parameterType="java.lang.Integer"-->
+  <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="Term">
     update term
