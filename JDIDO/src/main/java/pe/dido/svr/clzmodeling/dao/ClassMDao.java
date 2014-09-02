@@ -1,20 +1,20 @@
 package pe.dido.svr.clzmodeling.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import pe.dido.svr.clzmodeling.model.ClassM;
 
 public interface ClassMDao {
 
-	void deleteClassMById(ClassM classM);
-	void deleteClassMList(List<ClassM> deleteList);
-	//ClassMMapper
-	ClassM findClassMById(int id);
-	ArrayList<ClassM> findClassMList(int id);
-	void insertClassMById(ClassM classM);
-	void insertClassMList(List<ClassM> insertList);
-	void updateClassMById(ClassM classM);
-	void updateClassMList(List<ClassM> updateList);
+	public ClassM findById(HashMap searchVo);
+
+	public List<ClassM> findList();
+
+	public void insert(List objList);
+
+	public void update(List objList);
+
+	public void delete(List objList);
 
 }

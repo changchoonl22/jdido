@@ -4,6 +4,7 @@
 package pe.dido.svr.reqmngt.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,76 +28,29 @@ public class DeptDaoImpl implements DeptDao {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DeptMapper#deleteDeptById(pe.dido.svr.reqmngt.model.Dept)
-	 */
 	@Override
-	public void deleteDeptById(Dept dept) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DeptMapper#deleteDeptList(java.util.List)
-	 */
+	public Dept findById(HashMap searchVo) {	
+		return sqlSession.selectOne("Dept.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteDeptList(List<Dept> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DeptMapper#findDeptById(int)
-	 */
+	public List<Dept> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("Dept.findList");//,searchVo);
+	}	
+		
 	@Override
-	public Dept findDeptById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DeptMapper#findDeptList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("Dept.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<Dept> findDeptList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DeptMapper#insertDeptById(pe.dido.svr.reqmngt.model.Dept)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("Dept.insert", objList);
+	}	
+		
 	@Override
-	public void insertDeptById(Dept dept) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DeptMapper#insertDeptList(java.util.List)
-	 */
-	@Override
-	public void insertDeptList(List<Dept> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DeptMapper#updateDeptById(pe.dido.svr.reqmngt.model.Dept)
-	 */
-	@Override
-	public void updateDeptById(Dept dept) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DeptMapper#updateDeptList(java.util.List)
-	 */
-	@Override
-	public void updateDeptList(List<Dept> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	public void delete(List objList) {	
+		sqlSession.delete("Dept.insert", objList);
+	}	
 
 }

@@ -4,6 +4,7 @@
 package pe.dido.svr.compmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,82 +22,39 @@ import pe.dido.svr.compmodeling.model.CompInnerClassOp;
  * @author cclee
  *
  */
-@Repository
+@Repository("compInnerClassOpDao")
 public class CompInnerClassOpDaoImpl implements CompInnerClassOpDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(CompInnerClassOpDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompInnerClassOpMapper#deleteCompInnerClassOpById(pe.dido.svr.compmodeling.model.CompInnerClassOp)
-	 */
+
+
 	@Override
-	public void deleteCompInnerClassOpById(CompInnerClassOp compInnerClassOp) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompInnerClassOpMapper#deleteCompInnerClassOpList(java.util.List)
-	 */
+	public CompInnerClassOp findById(HashMap searchVo) {	
+		return sqlSession.selectOne("CompInnerClassOp.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteCompInnerClassOpList(List<CompInnerClassOp> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompInnerClassOpMapper#findCompInnerClassOpById(int)
-	 */
+	public List<CompInnerClassOp> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("CompInnerClassOp.findList");//,searchVo);
+	}	
+		
 	@Override
-	public CompInnerClassOp findCompInnerClassOpById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompInnerClassOpMapper#findCompInnerClassOpList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("CompInnerClassOp.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<CompInnerClassOp> findCompInnerClassOpList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompInnerClassOpMapper#insertCompInnerClassOpById(pe.dido.svr.compmodeling.model.CompInnerClassOp)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("CompInnerClassOp.insert", objList);
+	}	
+		
 	@Override
-	public void insertCompInnerClassOpById(CompInnerClassOp compInnerClassOp) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompInnerClassOpMapper#insertCompInnerClassOpList(java.util.List)
-	 */
-	@Override
-	public void insertCompInnerClassOpList(List<CompInnerClassOp> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompInnerClassOpMapper#updateCompInnerClassOpById(pe.dido.svr.compmodeling.model.CompInnerClassOp)
-	 */
-	@Override
-	public void updateCompInnerClassOpById(CompInnerClassOp compInnerClassOp) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompInnerClassOpMapper#updateCompInnerClassOpList(java.util.List)
-	 */
-	@Override
-	public void updateCompInnerClassOpList(List<CompInnerClassOp> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	public void delete(List objList) {	
+		sqlSession.delete("CompInnerClassOp.insert", objList);
+	}	
+	
+	
 
 }

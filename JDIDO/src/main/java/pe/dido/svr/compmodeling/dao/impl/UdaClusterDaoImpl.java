@@ -4,6 +4,7 @@
 package pe.dido.svr.compmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,82 +22,39 @@ import pe.dido.svr.compmodeling.model.UdaCluster;
  * @author cclee
  *
  */
-@Repository
+@Repository("udaClusterDao")
 public class UdaClusterDaoImpl implements UdaClusterDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(UdaClusterDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.UdaClusterMapper#deleteUdaClusterById(pe.dido.svr.compmodeling.model.UdaCluster)
-	 */
+
 	@Override
-	public void deleteUdaClusterById(UdaCluster udaCluster) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.UdaClusterMapper#deleteUdaClusterList(java.util.List)
-	 */
+	public UdaCluster findById(HashMap searchVo) {	
+		return sqlSession.selectOne("UdaCluster.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteUdaClusterList(List<UdaCluster> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.UdaClusterMapper#findUdaClusterById(int)
-	 */
+	public List<UdaCluster> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("UdaCluster.findList");//,searchVo);
+	}	
+		
 	@Override
-	public UdaCluster findUdaClusterById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.UdaClusterMapper#findUdaClusterList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("UdaCluster.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<UdaCluster> findUdaClusterList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.UdaClusterMapper#insertUdaClusterById(pe.dido.svr.compmodeling.model.UdaCluster)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("UdaCluster.insert", objList);
+	}	
+		
 	@Override
-	public void insertUdaClusterById(UdaCluster udaCluster) {
-		// TODO Auto-generated method stub
+	public void delete(List objList) {	
+		sqlSession.delete("UdaCluster.insert", objList);
+	}	
 
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.UdaClusterMapper#insertUdaClusterList(java.util.List)
-	 */
-	@Override
-	public void insertUdaClusterList(List<UdaCluster> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.UdaClusterMapper#updateUdaClusterById(pe.dido.svr.compmodeling.model.UdaCluster)
-	 */
-	@Override
-	public void updateUdaClusterById(UdaCluster udaCluster) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.UdaClusterMapper#updateUdaClusterList(java.util.List)
-	 */
-	@Override
-	public void updateUdaClusterList(List<UdaCluster> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	
+	
 
 }

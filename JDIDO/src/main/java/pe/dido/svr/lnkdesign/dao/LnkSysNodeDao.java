@@ -1,20 +1,20 @@
 package pe.dido.svr.lnkdesign.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import pe.dido.svr.lnkdesign.model.LnkSysNode;
 
 public interface LnkSysNodeDao {
 
-	void deleteLnkSysNodeById(LnkSysNode lnkSysNode);
-	void deleteLnkSysNodeList(List<LnkSysNode> deleteList);
-	//LnkSysNodeMapper
-	LnkSysNode findLnkSysNodeById(int id);
-	ArrayList<LnkSysNode> findLnkSysNodeList(int id);
-	void insertLnkSysNodeById(LnkSysNode lnkSysNode);
-	void insertLnkSysNodeList(List<LnkSysNode> insertList);
-	void updateLnkSysNodeById(LnkSysNode lnkSysNode);
-	void updateLnkSysNodeList(List<LnkSysNode> updateList);
+	public LnkSysNode findById(HashMap searchVo);
+
+	public List<LnkSysNode> findList();
+
+	public void insert(List objList);
+
+	public void update(List objList);
+
+	public void delete(List objList);
 
 }

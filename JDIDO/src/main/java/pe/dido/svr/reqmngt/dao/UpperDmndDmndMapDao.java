@@ -1,21 +1,20 @@
 package pe.dido.svr.reqmngt.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import pe.dido.svr.reqmngt.model.UpperDmnd;
+import pe.dido.svr.reqmngt.model.UpperDmndDmndMap;
 
 public interface UpperDmndDmndMapDao {
 
-	void deleteUpperDmndById(UpperDmnd upperDmnd);
-	void deleteUpperDmndList(List<UpperDmnd> deleteList);
-	//UpperDmndMapper
-	UpperDmnd findUpperDmndById(int id);
-	ArrayList<UpperDmnd> findUpperDmndList(int id);
-	void insertUpperDmndById(UpperDmnd upperDmnd);
-	void insertUpperDmndList(List<UpperDmnd> insertList);
-	void updateUpperDmndById(UpperDmnd upperDmnd);
-	void updateUpperDmndList(List<UpperDmnd> updateList);
+	public UpperDmndDmndMap findById(HashMap searchVo);
 
+	public List<UpperDmndDmndMap> findList();
+
+	public void insert(List objList);
+
+	public void update(List objList);
+
+	public void delete(List objList);
 
 }

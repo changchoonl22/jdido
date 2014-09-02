@@ -4,6 +4,7 @@
 package pe.dido.svr.reqmngt.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -22,81 +23,34 @@ import pe.dido.svr.reqmngt.model.UpperDmnd;
  *
  */
 @Repository
-public class UpperDmndDaoImpl implements UpperDmndDao {
+public class UpperDmndDaoImpl implements UpperDmndDao  {
 	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.UpperDmndMapper#deleteUpperDmndById(pe.dido.svr.reqmngt.model.UpperDmnd)
-	 */
 	@Override
-	public void deleteUpperDmndById(UpperDmnd upperDmnd) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.UpperDmndMapper#deleteUpperDmndList(java.util.List)
-	 */
+	public UpperDmnd findById(HashMap searchVo) {	
+		return sqlSession.selectOne("UpperDmnd.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteUpperDmndList(List<UpperDmnd> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.UpperDmndMapper#findUpperDmndById(int)
-	 */
+	public List<UpperDmnd> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("UpperDmnd.findList");//,searchVo);
+	}	
+		
 	@Override
-	public UpperDmnd findUpperDmndById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.UpperDmndMapper#findUpperDmndList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("UpperDmnd.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<UpperDmnd> findUpperDmndList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.UpperDmndMapper#insertUpperDmndById(pe.dido.svr.reqmngt.model.UpperDmnd)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("UpperDmnd.insert", objList);
+	}	
+		
 	@Override
-	public void insertUpperDmndById(UpperDmnd upperDmnd) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.UpperDmndMapper#insertUpperDmndList(java.util.List)
-	 */
-	@Override
-	public void insertUpperDmndList(List<UpperDmnd> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.UpperDmndMapper#updateUpperDmndById(pe.dido.svr.reqmngt.model.UpperDmnd)
-	 */
-	@Override
-	public void updateUpperDmndById(UpperDmnd upperDmnd) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.UpperDmndMapper#updateUpperDmndList(java.util.List)
-	 */
-	@Override
-	public void updateUpperDmndList(List<UpperDmnd> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	public void delete(List objList) {	
+		sqlSession.delete("UpperDmnd.insert", objList);
+	}	
 
 }

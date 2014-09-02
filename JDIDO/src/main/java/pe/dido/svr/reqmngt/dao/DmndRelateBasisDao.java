@@ -1,20 +1,20 @@
 package pe.dido.svr.reqmngt.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import pe.dido.svr.reqmngt.model.DmndRelateBasis;
 
 public interface DmndRelateBasisDao {
 
-	void deleteDmndRelateBasisById(DmndRelateBasis dmndRelateBasis);
-	void deleteDmndRelateBasisList(List<DmndRelateBasis> deleteList);
-	//DmndRelateBasisMapper
-	DmndRelateBasis findDmndRelateBasisById(int id);
-	ArrayList<DmndRelateBasis> findDmndRelateBasisList(int id);
-	void insertDmndRelateBasisById(DmndRelateBasis dmndRelateBasis);
-	void insertDmndRelateBasisList(List<DmndRelateBasis> insertList);
-	void updateDmndRelateBasisById(DmndRelateBasis dmndRelateBasis);
-	void updateDmndRelateBasisList(List<DmndRelateBasis> updateList);
+	public DmndRelateBasis findById(HashMap searchVo);
+
+	public List<DmndRelateBasis> findList();
+
+	public void insert(List objList);
+
+	public void update(List objList);
+
+	public void delete(List objList);
 
 }

@@ -15,42 +15,43 @@ import org.springframework.stereotype.Repository;
 
 import com.mobiconsoft.dashboard.dao.impl.PersonDAOImpl;
 
-import pe.dido.svr.reqmngt.dao.DmndDeptMapDao;
-import pe.dido.svr.reqmngt.model.DmndDeptMap;
+import pe.dido.svr.reqmngt.dao.UpperDmndDmndMapDao;
+import pe.dido.svr.reqmngt.model.UpperDmnd;
+import pe.dido.svr.reqmngt.model.UpperDmndDmndMap;
 
 /**
  * @author cclee
  *
  */
 @Repository
-public class DmndDeptMapDaoImpl implements DmndDeptMapDao  {
+public class UpperDmndDmndMapDaoImpl implements UpperDmndDmndMapDao  {
 	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
 	@Override
-	public DmndDeptMap findById(HashMap searchVo) {	
-		return sqlSession.selectOne("DmndDeptMap.findById", searchVo);
+	public UpperDmndDmndMap findById(HashMap searchVo) {	
+		return sqlSession.selectOne("UpperDmndDmndMap.findById", searchVo);
 	}	
 		
 	@Override
-	public List<DmndDeptMap> findList(){//HashMap searchVo) {	
-		return sqlSession.selectList("DmndDeptMap.findList");//,searchVo);
+	public List<UpperDmndDmndMap> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("UpperDmndDmndMap.findList");//,searchVo);
 	}	
 		
 	@Override
 	public void insert(List objList) {	
-		sqlSession.insert("DmndDeptMap.insert", objList);
+		sqlSession.insert("UpperDmndDmndMap.insert", objList);
 	}	
 		
 	@Override
 	public void update(List objList) {	
-		sqlSession.update("DmndDeptMap.insert", objList);
+		sqlSession.update("UpperDmndDmndMap.insert", objList);
 	}	
 		
 	@Override
 	public void delete(List objList) {	
-		sqlSession.delete("DmndDeptMap.insert", objList);
+		sqlSession.delete("UpperDmndDmndMap.insert", objList);
 	}	
 
 }

@@ -4,6 +4,7 @@
 package pe.dido.svr.clzmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,80 +24,34 @@ import pe.dido.svr.clzmodeling.model.ClassM;
  */
 @Repository
 public class ClassMDaoImpl implements ClassMDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClassMDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassMMapper#deleteClassMById(pe.dido.svr.clzmodeling.model.ClassM)
-	 */
 	@Override
-	public void deleteClassMById(ClassM classM) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassMMapper#deleteClassMList(java.util.List)
-	 */
+	public ClassM findById(HashMap searchVo) {	
+		return sqlSession.selectOne("ClassM.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteClassMList(List<ClassM> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassMMapper#findClassMById(int)
-	 */
+	public List<ClassM> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("ClassM.findList");//,searchVo);
+	}	
+		
 	@Override
-	public ClassM findClassMById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassMMapper#findClassMList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("ClassM.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<ClassM> findClassMList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassMMapper#insertClassMById(pe.dido.svr.clzmodeling.model.ClassM)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("ClassM.insert", objList);
+	}	
+		
 	@Override
-	public void insertClassMById(ClassM classM) {
-		// TODO Auto-generated method stub
+	public void delete(List objList) {	
+		sqlSession.delete("ClassM.insert", objList);
+	}	
 
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassMMapper#insertClassMList(java.util.List)
-	 */
-	@Override
-	public void insertClassMList(List<ClassM> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassMMapper#updateClassMById(pe.dido.svr.clzmodeling.model.ClassM)
-	 */
-	@Override
-	public void updateClassMById(ClassM classM) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassMMapper#updateClassMList(java.util.List)
-	 */
-	@Override
-	public void updateClassMList(List<ClassM> updateList) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

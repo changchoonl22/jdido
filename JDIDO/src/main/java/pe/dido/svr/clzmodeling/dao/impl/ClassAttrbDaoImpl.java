@@ -4,6 +4,7 @@
 package pe.dido.svr.clzmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,80 +24,35 @@ import pe.dido.svr.clzmodeling.model.ClassAttrb;
  */
 @Repository
 public class ClassAttrbDaoImpl implements ClassAttrbDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClassAttrbDaoImpl.class);	
 	
-	@Autowired
-	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassAttrbMapper#deleteClassAttrbById(pe.dido.svr.clzmodeling.model.ClassAttrb)
-	 */
+	@Autowired	
+	private SqlSession sqlSession;	
+		
 	@Override
-	public void deleteClassAttrbById(ClassAttrb classAttrb) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassAttrbMapper#deleteClassAttrbList(java.util.List)
-	 */
+	public ClassAttrb findById(HashMap searchVo) {	
+		return sqlSession.selectOne("ClassAttrb.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteClassAttrbList(List<ClassAttrb> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassAttrbMapper#findClassAttrbById(int)
-	 */
+	public List<ClassAttrb> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("ClassAttrb.findList");//,searchVo);
+	}	
+		
 	@Override
-	public ClassAttrb findClassAttrbById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassAttrbMapper#findClassAttrbList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("ClassAttrb.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<ClassAttrb> findClassAttrbList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassAttrbMapper#insertClassAttrbById(pe.dido.svr.clzmodeling.model.ClassAttrb)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("ClassAttrb.insert", objList);
+	}	
+		
 	@Override
-	public void insertClassAttrbById(ClassAttrb classAttrb) {
-		// TODO Auto-generated method stub
+	public void delete(List objList) {	
+		sqlSession.delete("ClassAttrb.insert", objList);
+	}	
 
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassAttrbMapper#insertClassAttrbList(java.util.List)
-	 */
-	@Override
-	public void insertClassAttrbList(List<ClassAttrb> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassAttrbMapper#updateClassAttrbById(pe.dido.svr.clzmodeling.model.ClassAttrb)
-	 */
-	@Override
-	public void updateClassAttrbById(ClassAttrb classAttrb) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.clzmodeling.persistence.ClassAttrbMapper#updateClassAttrbList(java.util.List)
-	 */
-	@Override
-	public void updateClassAttrbList(List<ClassAttrb> updateList) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

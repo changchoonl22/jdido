@@ -4,6 +4,7 @@
 package pe.dido.svr.compmodeling.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,82 +22,37 @@ import pe.dido.svr.compmodeling.model.CompImplClass;
  * @author cclee
  *
  */
-@Repository
-public class CompImplClassDaoImpl implements CompImplClassDao {
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+@Repository("compImplClassDao")
+public class CompImplClassDaoImpl implements CompImplClassDao  {
+	private static final Logger logger = LoggerFactory.getLogger(CompImplClassDaoImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompImplClassMapper#deleteCompImplClassById(pe.dido.svr.compmodeling.model.CompImplClass)
-	 */
+
 	@Override
-	public void deleteCompImplClassById(CompImplClass compImplClass) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompImplClassMapper#deleteCompImplClassList(java.util.List)
-	 */
+	public CompImplClass findById(HashMap searchVo) {	
+		return sqlSession.selectOne("CompImplClass.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteCompImplClassList(List<CompImplClass> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompImplClassMapper#findCompImplClassById(int)
-	 */
+	public List<CompImplClass> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("CompImplClass.findList");//,searchVo);
+	}	
+		
 	@Override
-	public CompImplClass findCompImplClassById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompImplClassMapper#findCompImplClassList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("CompImplClass.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<CompImplClass> findCompImplClassList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompImplClassMapper#insertCompImplClassById(pe.dido.svr.compmodeling.model.CompImplClass)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("CompImplClass.insert", objList);
+	}	
+		
 	@Override
-	public void insertCompImplClassById(CompImplClass compImplClass) {
-		// TODO Auto-generated method stub
+	public void delete(List objList) {	
+		sqlSession.delete("CompImplClass.insert", objList);
+	}	
 
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompImplClassMapper#insertCompImplClassList(java.util.List)
-	 */
-	@Override
-	public void insertCompImplClassList(List<CompImplClass> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompImplClassMapper#updateCompImplClassById(pe.dido.svr.compmodeling.model.CompImplClass)
-	 */
-	@Override
-	public void updateCompImplClassById(CompImplClass compImplClass) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.compmodeling.persistence.CompImplClassMapper#updateCompImplClassList(java.util.List)
-	 */
-	@Override
-	public void updateCompImplClassList(List<CompImplClass> updateList) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 }

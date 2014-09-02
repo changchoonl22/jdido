@@ -4,6 +4,7 @@
 package pe.dido.svr.reqmngt.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -22,81 +23,34 @@ import pe.dido.svr.reqmngt.model.DmndM;
  *
  */
 @Repository
-public class DmndMDaoImpl implements DmndMDao {
+public class DmndMDaoImpl implements DmndMDao  {
 	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DmndMMapper#deleteDmndMById(pe.dido.svr.reqmngt.model.DmndM)
-	 */
 	@Override
-	public void deleteDmndMById(DmndM dmndM) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DmndMMapper#deleteDmndMList(java.util.List)
-	 */
+	public DmndM findById(HashMap searchVo) {	
+		return sqlSession.selectOne("DmndM.findById", searchVo);
+	}	
+		
 	@Override
-	public void deleteDmndMList(List<DmndM> deleteList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DmndMMapper#findDmndMById(int)
-	 */
+	public List<DmndM> findList(){//HashMap searchVo) {	
+		return sqlSession.selectList("DmndM.findList");//,searchVo);
+	}	
+		
 	@Override
-	public DmndM findDmndMById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DmndMMapper#findDmndMList(int)
-	 */
+	public void insert(List objList) {	
+		sqlSession.insert("DmndM.insert", objList);
+	}	
+		
 	@Override
-	public ArrayList<DmndM> findDmndMList(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DmndMMapper#insertDmndMById(pe.dido.svr.reqmngt.model.DmndM)
-	 */
+	public void update(List objList) {	
+		sqlSession.update("DmndM.insert", objList);
+	}	
+		
 	@Override
-	public void insertDmndMById(DmndM dmndM) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DmndMMapper#insertDmndMList(java.util.List)
-	 */
-	@Override
-	public void insertDmndMList(List<DmndM> insertList) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DmndMMapper#updateDmndMById(pe.dido.svr.reqmngt.model.DmndM)
-	 */
-	@Override
-	public void updateDmndMById(DmndM dmndM) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see pe.dido.svr.reqmngt.persistence.DmndMMapper#updateDmndMList(java.util.List)
-	 */
-	@Override
-	public void updateDmndMList(List<DmndM> updateList) {
-		// TODO Auto-generated method stub
-
-	}
+	public void delete(List objList) {	
+		sqlSession.delete("DmndM.insert", objList);
+	}	
 
 }
