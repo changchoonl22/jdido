@@ -12,42 +12,48 @@
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="BizPkgResult">
     SELECT *
-    FROM biz_actor_dept_map
-    where BIZ_ACTOR_ID 		= #{0, bizActorId}
-      and BIZ_ACTOR_ID		= #{1, deptId}
+    FROM BIZ_PKG
+    where PCKAGE_ID 		= #{0, pckageId}
   </select>
+  
   <select id="findList" parameterType="java.util.HashMap" resultMap="BizPkgResult">
     SELECT *
-    FROM biz_actor_dept_map
+    FROM BIZ_PKG
   </select>
+  
   <insert id="insert" parameterType="BizPkg">
-    insert into CODE_D (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into BIZ_PKG (
+		PCKAGE_ID,
+		MOTHER_PCKAGE_ID,
+		PCKAGE_NM,
+		PCKAGE_CD,
+		PCKAGE_LVL,
+		PCKAGE_DC
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
-      )
-  <!--parameterType="java.lang.Integer"-->
+    values (
+		#{motherPckageId, 	jdbcType=INTEGER},
+		#{pckageNm, 		jdbcType=VARCHAR},
+		#{pckageCd, 		jdbcType=VARCHAR},
+		#{pckageLvl, 		jdbcType=CHAR},
+		#{pckageDc, 		jdbcType=LONGVARCHAR}
+     )
   </insert>
+  
   <update id="update" parameterType="BizPkg">
-    update CODE_D
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
-    where CODE_ID 		= #{codeID,		jdbcType=INTEGER}
-      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
-    
+    update BIZ_PKG
+	   SET
+			PCKAGE_ID = #{pckageId, jdbcType=INTEGER},
+			MOTHER_PCKAGE_ID = #{motherPckageId, jdbcType=INTEGER},
+			PCKAGE_NM = #{pckageNm, jdbcType=VARCHAR},
+			PCKAGE_CD = #{pckageCd, jdbcType=VARCHAR},
+			PCKAGE_LVL = #{pckageLvl, jdbcType=CHAR},
+			PCKAGE_DC = #{pckageDc, jdbcType=LOGNVARCHAR}	   
+    where 	PCKAGE_ID = #{0, pckageId}
   </update>
+  
   <delete id="delete" parameterType="java.util.HashMap">
-    delete from CODE_D
-     where CODE_ID 		 = #{0, codeID}
-       and CODE_VALUE_ID = #{1, codeValueID}
+    delete from BIZ_PKG
+     where 	PCKAGE_ID = #{0, pckageId}
   </delete>  
   
  </mapper>

@@ -2,48 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BizActorDeptMap">	
 	<resultMap id="BizActorDeptMapResult" type="BizActorDeptMap">
-		<id     property="bizActorId"   column="BIZ_ACTOR_ID"/>
-		<id     property="deptId"   column="DEPT_ID"/>
+		<id     property="bizActorId"   	column="BIZ_ACTOR_ID"/>
+		<id     property="deptId"   		column="DEPT_ID"/>
 	</resultMap>
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="BizActorDeptMapResult">
     SELECT *
     FROM biz_actor_dept_map
     where BIZ_ACTOR_ID 		= #{0, bizActorId}
-      and BIZ_ACTOR_ID		= #{1, deptId}
+      and DEPT_ID 			= #{1, deptId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="BizActorDeptMapResult">
     SELECT *
     FROM biz_actor_dept_map
   </select>
   <insert id="insert" parameterType="BizActorDeptMap">
-    insert into CODE_D (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into biz_actor_dept_map (
+    	BIZ_ACTOR_ID, 
+    	DEPT_ID
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+    	#{bizActorId, 	jdbcType=INTEGER},
+		#{deptId, 		jdbcType=INTEGER}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="BizActorDeptMap">
-    update CODE_D
+    update biz_actor_dept_map
     <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
+		<if test="bizActorId !=null"> bizActorId = #{bizActorId, jdbcType=INTEGER},</if>
+		<if test="deptId !=null"> deptId = #{deptId, jdbcType=INTEGER},</if>
     </set>
-    where CODE_ID 		= #{codeID,		jdbcType=INTEGER}
-      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
+    where BIZ_ACTOR_ID 		= #{#{bizActorId, 	jdbcType=INTEGER}
+      and DEPT_ID 			= #{deptId, 		jdbcType=INTEGER}
     
   </update>
   <delete id="delete" parameterType="java.util.HashMap">
-    delete from CODE_D
-     where CODE_ID 		 = #{0, codeID}
-       and CODE_VALUE_ID = #{1, codeValueID}
+    delete from biz_actor_dept_map
+     where BIZ_ACTOR_ID 		 = #{0, bizActorId}
+       and DEPT_ID				 = #{1, deptId}
   </delete>  
   
  </mapper>

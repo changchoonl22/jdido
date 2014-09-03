@@ -25,16 +25,17 @@
       from CODE_M
   </select>
   <insert id="insert" parameterType="CodeM">
-    insert into CODE_M (CODE_IDNTFR 
-      				  	CD_NM, 
-      				  	CD_EN_NM,
-      				  	CD_EN_ABRV_NM,
-      				  	DC,
-      				  	DATA_TY,
-      				  	DATA_LNTH,
-      				  	STD_CODE_AT,
-      				  	RM,
-      				  	NWD_AT
+    insert into CODE_M (
+    		CODE_IDNTFR,
+      		CD_NM, 
+      		CD_EN_NM,
+      		CD_EN_ABRV_NM,
+      		DC,
+      		DATA_TY,
+      		DATA_LNTH,
+      		STD_CODE_AT,
+      		RM,
+      		NWD_AT
       )
     values (#{codeIdntfr,		jdbcType=INTEGER}, 
     		#{cdNm,				jdbcType=VARCHAR}, 
@@ -50,6 +51,7 @@
       
   <!--parameterType="java.lang.Integer"-->
   </insert>
+  
   <update id="update" parameterType="CodeM">
     update CODE_D
     <set>
@@ -64,9 +66,9 @@
       <if test="rm 			!= null"> 	RM				= #{rm,				jdbcType=LONGVARCHAR}, 	</if>
       <if test="nwdAt 		!= null"> 	NWD_AT			= #{nwdAt,			jdbcType=VARCHAR}, 		</if>       
     </set>
-    where CODE_ID 		= #{codeID,jdbcType=INTEGER}
-    
+    where CODE_ID 		= #{codeID,jdbcType=INTEGER}    
   </update>
+  
   <delete id="delete" parameterType="java.util.HashMap">
     delete from CODE_D
     where CODE_ID 		= #{0, codeID}

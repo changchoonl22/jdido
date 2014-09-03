@@ -9,42 +9,43 @@
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="BizCncptProcsMapResult">
     SELECT *
-    FROM biz_actor_dept_map
-    where BIZ_ACTOR_ID 		= #{0, bizActorId}
-      and BIZ_ACTOR_ID		= #{1, deptId}
+    FROM BIZ_CNCPT_PROCS_MAP
+    where 	CNCPT_ID	= #{0, cncptId}
+      AND	PROCS_ID	= #{1, procsId}
+      AND	RELATE_SE	= #{2, relateSe}
   </select>
+  
   <select id="findList" parameterType="java.util.HashMap" resultMap="BizCncptProcsMapResult">
     SELECT *
-    FROM biz_actor_dept_map
+    FROM BIZ_CNCPT_PROCS_MAP
   </select>
+  
   <insert id="insert" parameterType="BizCncptProcsMap">
-    insert into CODE_D (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into BIZ_CNCPT_PROCS_MAP (    	
+		PROCS_ID,
+		RELATE_SE
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+    	#{procsId, jdbcType=INTEGER},
+		#{relateSe, jdbcType=CHAR}
       )
-  <!--parameterType="java.lang.Integer"-->
   </insert>
+  
   <update id="update" parameterType="BizCncptProcsMap">
-    update CODE_D
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
-    where CODE_ID 		= #{codeID,		jdbcType=INTEGER}
-      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
-    
+    update BIZ_CNCPT_PROCS_MAP
+	   SET
+			PROCS_ID = #{procsId, jdbcType=INTEGER},
+			RELATE_SE = #{relateSe, jdbcType=CHAR}
+    where 	CNCPT_ID	= #{0, cncptId}
+      AND	PROCS_ID	= #{1, procsId}
+      AND	RELATE_SE	= #{2, relateSe}    
   </update>
+  
   <delete id="delete" parameterType="java.util.HashMap">
-    delete from CODE_D
-     where CODE_ID 		 = #{0, codeID}
-       and CODE_VALUE_ID = #{1, codeValueID}
+    delete from BIZ_CNCPT_PROCS_MAP
+    where 	CNCPT_ID	= #{0, cncptId}
+      AND	PROCS_ID	= #{1, procsId}
+      AND	RELATE_SE	= #{2, relateSe}
   </delete>  
   
  </mapper>
