@@ -52,5 +52,11 @@ public class ClassM implements Serializable {
 	private String classTy;
 	private String idntfcOfficTy;
 	private Integer idntfcOfficId;
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

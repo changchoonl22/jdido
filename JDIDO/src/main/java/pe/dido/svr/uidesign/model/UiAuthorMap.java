@@ -31,6 +31,12 @@ public class UiAuthorMap implements Serializable {
 	public void setAuthorApplcYn(String authorApplcYn) {
 		this.authorApplcYn = authorApplcYn;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 
 }

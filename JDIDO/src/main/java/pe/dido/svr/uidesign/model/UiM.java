@@ -59,5 +59,11 @@ public class UiM implements Serializable {
 	public void setMenuId(Integer menuId) {
 		this.menuId = menuId;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

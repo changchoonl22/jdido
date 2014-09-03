@@ -38,5 +38,11 @@ public class LnkSysNode implements Serializable {
 	public void setNtwrkChartr(String ntwrkChartr) {
 		this.ntwrkChartr = ntwrkChartr;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

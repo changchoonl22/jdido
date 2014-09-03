@@ -45,5 +45,15 @@ public class BizActor implements Serializable {
 	public void setPckageId(Integer pckageId) {
 		this.pckageId = pckageId;
 	}
+	
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
+	
+	
 
 }

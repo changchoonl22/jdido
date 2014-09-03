@@ -38,5 +38,11 @@ public class Dept implements Serializable {
 	public void setDeptDc(String deptDc) {
 		this.deptDc = deptDc;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

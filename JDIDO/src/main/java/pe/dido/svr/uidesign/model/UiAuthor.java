@@ -25,5 +25,11 @@ public class UiAuthor implements Serializable {
 	public void setAuthorNm(String authorNm) {
 		this.authorNm = authorNm;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

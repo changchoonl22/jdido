@@ -52,5 +52,11 @@ public class BizProcs implements Serializable {
 	public void setCndcyUcYn(String cndcyUcYn) {
 		this.cndcyUcYn = cndcyUcYn;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

@@ -59,5 +59,11 @@ public class DmndM implements Serializable {
 	public void setDmndPriorty(String dmndPriorty) {
 		this.dmndPriorty = dmndPriorty;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

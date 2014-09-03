@@ -51,5 +51,11 @@ public class BizPkg implements Serializable {
 	public void setPckageDc(String pckageDc) {
 		this.pckageDc = pckageDc;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

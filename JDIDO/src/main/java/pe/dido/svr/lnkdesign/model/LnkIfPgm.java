@@ -79,5 +79,11 @@ public class LnkIfPgm implements Serializable {
 	private String cycle;
 	private String scrtyGrad;
 	private String rm;
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

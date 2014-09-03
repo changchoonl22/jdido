@@ -73,5 +73,11 @@ public class CompInnerClassOp implements Serializable {
 	private String paramtrNm;
 	private String paramtrDc;
 	private String dc;
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

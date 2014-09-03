@@ -37,5 +37,11 @@ public class CompIfclass implements Serializable {
 	private Integer ifOprtinId;
 	private String ifOprtinNm;
 	private String dc;
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

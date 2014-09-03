@@ -30,5 +30,11 @@ public class BizCncptProcsMap implements Serializable {
 	private Integer cncptId;
 	private Integer procsId;
 	private String relateSe;
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

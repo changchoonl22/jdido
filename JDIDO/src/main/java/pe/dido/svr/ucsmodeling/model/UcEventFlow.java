@@ -67,5 +67,11 @@ public class UcEventFlow implements Serializable {
 	public void setRtrnLc(String rtrnLc) {
 		this.rtrnLc = rtrnLc;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

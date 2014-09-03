@@ -16,6 +16,12 @@ public class UpperDmndDmndMap {
 	public void setDmndId(Integer dmndId) {
 		this.dmndId = dmndId;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 
 }

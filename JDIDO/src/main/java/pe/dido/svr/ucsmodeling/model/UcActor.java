@@ -31,5 +31,11 @@ public class UcActor implements Serializable {
 	public void setActor_dc(String actor_dc) {
 		this.actor_dc = actor_dc;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

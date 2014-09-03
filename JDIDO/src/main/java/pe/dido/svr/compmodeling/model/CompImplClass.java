@@ -39,5 +39,11 @@ public class CompImplClass implements Serializable {
 	private String embdClassNm;
 	private String embdClassDc;
 
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

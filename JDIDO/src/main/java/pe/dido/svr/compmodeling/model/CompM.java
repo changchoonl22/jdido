@@ -30,5 +30,11 @@ public class CompM implements Serializable {
 	private Integer compnId;
 	private String compnNm;
 	private String dc;
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

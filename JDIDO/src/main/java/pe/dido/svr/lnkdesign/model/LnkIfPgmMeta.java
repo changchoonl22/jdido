@@ -53,5 +53,11 @@ public class LnkIfPgmMeta implements Serializable {
 	private String dataIem;
 	private String dataAtrb;
 	private String dc;
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

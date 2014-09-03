@@ -81,5 +81,11 @@ public class TestResult implements Serializable {
 	public void setManer(String maner) {
 		this.maner = maner;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

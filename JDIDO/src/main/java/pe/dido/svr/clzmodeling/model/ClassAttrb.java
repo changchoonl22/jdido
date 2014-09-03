@@ -71,5 +71,11 @@ public class ClassAttrb implements Serializable {
 	public void setIemAtrb(String iemAtrb) {
 		this.iemAtrb = iemAtrb;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

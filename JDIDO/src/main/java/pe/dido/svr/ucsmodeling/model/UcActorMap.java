@@ -24,5 +24,11 @@ public class UcActorMap implements Serializable {
 	public void setActorId(Integer actorId) {
 		this.actorId = actorId;
 	}
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

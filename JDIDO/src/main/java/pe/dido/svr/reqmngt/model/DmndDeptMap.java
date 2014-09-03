@@ -17,5 +17,11 @@ public class DmndDeptMap {
 		this.deptId = deptId;
 	}
 
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 }

@@ -52,6 +52,12 @@ public class BizRule implements Serializable {
 	}
 	private String bizRuleDc;
 	private String cndcyEventYn;
-
+	private String crudTy;
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
 	
 }
