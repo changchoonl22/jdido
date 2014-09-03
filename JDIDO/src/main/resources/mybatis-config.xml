@@ -10,7 +10,7 @@
     
     <typeAliases>
         <typeAlias alias="Person" type="com.mobiconsoft.dashboard.domain.Person"></typeAlias>
-<!--        
+       
         <typeAlias alias="BizActor" type="pe.dido.svr.bizmodeling.model.BizActor"></typeAlias>
         <typeAlias alias="BizActorDeptMap" type="pe.dido.svr.bizmodeling.model.BizActorDeptMap"></typeAlias>
         <typeAlias alias="BizCncpt" type="pe.dido.svr.bizmodeling.model.BizCncpt"></typeAlias>
@@ -45,11 +45,11 @@
 		<typeAlias alias= "DmndRelateBasis" type="pe.dido.svr.reqmngt.model.DmndRelateBasis"></typeAlias>
 		<typeAlias alias= "UpperDmndDmndMap" type="pe.dido.svr.reqmngt.model.UpperDmndDmndMap"></typeAlias>
 		<typeAlias alias= "UpperDmnd" type="pe.dido.svr.reqmngt.model.UpperDmnd"></typeAlias>
--->	
+	
 		<typeAlias alias= "CodeM" type="pe.dido.svr.termcodedfn.model.CodeM"></typeAlias>
 		<typeAlias alias= "CodeD" type="pe.dido.svr.termcodedfn.model.CodeD"></typeAlias>
 		<typeAlias alias= "Term" type="pe.dido.svr.termcodedfn.model.Term"></typeAlias>	
-<!-- 		
+ 		
 		<typeAlias alias= "TestPln" type="pe.dido.svr.testmngt.model.TestPln"></typeAlias>
 		<typeAlias alias= "TestResult" type="pe.dido.svr.testmngt.model.TestResult"></typeAlias>	
 		
@@ -62,14 +62,13 @@
 		<typeAlias alias= "UiAuthor" type="pe.dido.svr.uidesign.model.UiAuthor"></typeAlias>
 		<typeAlias alias= "UiMenuPkg" type="pe.dido.svr.uidesign.model.UiMenuPkg"></typeAlias>
 		<typeAlias alias= "UiM" type="pe.dido.svr.uidesign.model.UiM"></typeAlias>		
--->							    
+							    
     </typeAliases>
     
     <mappers>
         <mapper resource="com/mobiconsoft/dashboard/mybatis/mapper/Person.xml"></mapper>
         
-               
-<!--         
+       
         <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizActorMapper.xml"></mapper>
         <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizActorDeptMapMapper.xml"></mapper>
         <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizCncptMapper.xml"></mapper>
@@ -104,11 +103,11 @@
 		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/DmndRelateBasisMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/UpperDmndDmndMapMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/reqmngt/mybatis/mapper/UpperDmndMapper.xml"></mapper>			
--->
+
 		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/CodeMMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/CodeDMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/TermMapper.xml"></mapper>
-<!-- 		
+		
 		<mapper resource="pe/dido/svr/testmngt/mybatis/mapper/TestPlnMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/testmngt/mybatis/mapper/TestResultMapper.xml"></mapper>
 		
@@ -121,7 +120,7 @@
 		<mapper resource="pe/dido/svr/uidesign/mybatis/mapper/UiAuthorMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/uidesign/mybatis/mapper/UiMenuPkgMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/uidesign/mybatis/mapper/UiMMapper.xml"></mapper>					
- -->				       
+				       
     </mappers>
    
 </configuration>
