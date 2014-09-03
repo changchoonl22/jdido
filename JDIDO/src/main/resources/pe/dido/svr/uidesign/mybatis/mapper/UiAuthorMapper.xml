@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="UcM">
-	<resultMap id="UcMResult" type="UcM">
-		<id     property="ucId"   column="UC_ID"/>
-		<result     property="ucIdntfr"   column="UC_IDNTFR"/>
-		<result     property="ucNm"   column="UC_NM"/>
-		<result     property="sumry"   column="SUMRY"/>
-		<result     property="chnge"   column="CHNGE"/>
-		<result     property="adiMatter"   column="ADI_MATTER"/>
-		<result     property="senario_dc"   column="SENARIO_DC"/>
-		<result     property="refrnUcAt"   column="REFRN_UC_AT"/>
-		<result     property="cmmnUcAt"   column="CMMN_UC_AT"/>
-		<result     property="procsId"   column="PROCS_ID"/>
+<mapper namespace="UiAuthor">
+	<resultMap id="UiAuthorResult" type="UiAuthor">
+		<id     	property="authorId"   column="AUTHOR_ID"/>
+		<result     property="authorNm"   column="AUTHOR_NM"/>
 	</resultMap> 
 
-  <select id="findById" parameterType="java.util.HashMap" resultMap="UcMResult">
+  <select id="findById" parameterType="java.util.HashMap" resultMap="UiAuthorResult">
     select WORD_ID
     	   WORD_NM, 
     	   KR_NM, 
@@ -27,7 +19,7 @@
     from term
     where WORD_ID = #{wordId,jdbcType=INTEGER}
   </select>
-  <select id="findList" parameterType="java.util.HashMap" resultMap="UcMResult">
+  <select id="findList" parameterType="java.util.HashMap" resultMap="UiAuthorResult">
     select WORD_ID
     	   WORD_NM, 
     	   KR_NM, 
@@ -39,7 +31,7 @@
       	   WORD_DFN
     from term
   </select>
-  <insert id="insert" parameterType="UcM">
+  <insert id="insert" parameterType="UiAuthor">
     insert into term (WORD_NM, 
     				  KR_NM, 
       				  EN_NM, 
@@ -60,7 +52,7 @@
       )
   <!--parameterType="java.lang.Integer"--> 
   </insert>
-  <update id="update" parameterType="UcM">
+  <update id="update" parameterType="UiAuthor">
     update term
     <set>
       <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
