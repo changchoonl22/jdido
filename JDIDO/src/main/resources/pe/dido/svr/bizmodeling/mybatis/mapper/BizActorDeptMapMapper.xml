@@ -29,11 +29,10 @@
   </insert>
   <update id="update" parameterType="BizActorDeptMap">
     update biz_actor_dept_map
-    <set>
-		<if test="bizActorId !=null"> bizActorId = #{bizActorId, jdbcType=INTEGER},</if>
-		<if test="deptId !=null"> deptId = #{deptId, jdbcType=INTEGER},</if>
-    </set>
-    where BIZ_ACTOR_ID 		= #{#{bizActorId, 	jdbcType=INTEGER}
+    set
+		BIZ_ACTOR_ID = #{bizActorId, jdbcType=INTEGER},
+		DEPT_ID = #{deptId, jdbcType=INTEGER}
+    where BIZ_ACTOR_ID 		= #{bizActorId, 	jdbcType=INTEGER}
       and DEPT_ID 			= #{deptId, 		jdbcType=INTEGER}
     
   </update>

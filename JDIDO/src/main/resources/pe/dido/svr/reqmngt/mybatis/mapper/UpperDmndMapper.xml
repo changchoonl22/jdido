@@ -18,25 +18,23 @@
     FROM UPPER_DMND
   </select>
   <insert id="insert" parameterType="UpperDmnd">
-    insert into UPPER_DMND (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into UPPER_DMND (
+			UPPER_DMND_IDNTFR,
+			UPPER_DMND_NM,
+			DC
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{upperDmndIdntfr, jdbcType=VARCHAR},
+			#{upperDmndNm, jdbcType=LONGVARCHAR},
+			#{dc, jdbcType=LONGVARCHAR}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="UpperDmnd">
-    update UPPER_DMND
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update UPPER_DMND SET
+			UPPER_DMND_IDNTFR = #{upperDmndIdntfr, jdbcType=VARCHAR},
+			UPPER_DMND_NM = #{upperDmndNm, jdbcType=LOGNVARCHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR}
     where UPPER_DMND_ID 		= #{upperDmndId,		jdbcType=INTEGER}    
   </update>
   <delete id="delete" parameterType="java.util.HashMap">

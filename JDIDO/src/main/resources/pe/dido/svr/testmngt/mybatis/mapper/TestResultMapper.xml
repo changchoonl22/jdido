@@ -26,38 +26,41 @@
     from TEST_RESULT
   </select>
   <insert id="insert" parameterType="TestResult">
-    insert into TEST_RESULT (WORD_NM, 
-    				  KR_NM, 
-      				  EN_NM, 
-      				  KR_ABRV, 
-      				  EN_ABRV, 
-     				  WORD_APPLC_SCOPE, 
-     				  ETC_MATTER_DC, 
-     				  WORD_DFN
+    insert into TEST_RESULT (
+			TEST_PLN_ID,
+			TEST_TY,
+			REAL_RESULT,
+			TEST_EXC_DE,
+			TEST_EXC_MAN,
+			ERROR_CN,
+			MANAGT_CN,
+			MANAGT_DE,
+			MANER
       )
-    values (#{wordNm,			jdbcType=VARCHAR}, 
-    		#{krNm,				jdbcType=VARCHAR}, 
-      		#{enNm,				jdbcType=VARCHAR}, 
-      		#{krAbrv,			jdbcType=VARCHAR}, 
-      		#{enAbrv,			jdbcType=VARCHAR}, 
-      		#{wordApplcScope,	jdbcType=VARCHAR}, 
-      		#{etcMatterDc,		jdbcType=VARCHAR}, 
-      		#{wordDfn,			jdbcType=LONGVARCHAR}
+    values (
+			#{testPlnId, jdbcType=INTEGER},
+			#{test_ty, jdbcType=VARCHAR},
+			#{real_result, jdbcType=LONGVARCHAR},
+			#{testExcDe, jdbcType=LONGVARCHAR},
+			#{testExcMan, jdbcType=VARCHAR},
+			#{error_cn, jdbcType=LONGVARCHAR},
+			#{managt_cn, jdbcType=LONGVARCHAR},
+			#{managtDe, jdbcType=TIMESTAMP},
+			#{maner, jdbcType=VARCHAR}
       )
   <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="TestResult">
-    update TEST_RESULT
-    <set>
-      <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
-      <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
-      <if test="enNm 			!= null">EN_NM 				= #{enNm,			jdbcType=VARCHAR},		</if>
-      <if test="krAbrv 			!= null">KR_ABRV 			= #{krAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="enAbrv 			!= null">EN_ABRV 			= #{enAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="wordApplcScope  != null">WORD_APPLC_SCOPE 	= #{wordApplcScope,	jdbcType=VARCHAR},		</if>
-      <if test="etcMatterDc 	!= null">ETC_MATTER_DC 		= #{etcMatterDc,	jdbcType=VARCHAR},		</if>
-      <if test="wordDfn 		!= null">WORD_DFN 			= #{wordDfn,		jdbcType=LONGVARCHAR},	</if>
-    </set>
+    update TEST_RESULT SET
+			TEST_PLN_ID = #{testPlnId, jdbcType=INTEGER},
+			TEST_TY = #{test_ty, jdbcType=VARCHAR},
+			REAL_RESULT = #{real_result, jdbcType=LOGNVARCHAR},
+			TEST_EXC_DE = #{testExcDe, jdbcType=LOGNVARCHAR},
+			TEST_EXC_MAN = #{testExcMan, jdbcType=VARCHAR},
+			ERROR_CN = #{error_cn, jdbcType=LOGNVARCHAR},
+			MANAGT_CN = #{managt_cn, jdbcType=LOGNVARCHAR},
+			MANAGT_DE = #{managtDe, jdbcType=TIMESTAMP},
+			MANER = #{maner, jdbcType=VARCHAR}
     where TEST_RESULT_ID = #{testResultId,jdbcType=INTEGER}
       AND TEST_PLN_ID = #{testPlnId,jdbcType=INTEGER}
   </update>

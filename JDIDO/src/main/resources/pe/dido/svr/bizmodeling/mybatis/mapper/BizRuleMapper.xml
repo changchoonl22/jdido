@@ -24,6 +24,7 @@
   
   <insert id="insert" parameterType="BizRule">
     insert into BIZ_RULE (
+    			BIZ_ACTN_ID,
 				PROCS_ID,
 				BIZ_ACTN_NM,
 				BIZ_RULE_NM,
@@ -31,6 +32,7 @@
 				CNDCY_EVENT_YN
       )
     values (
+    			#{bizActnId, jdbcType=INTEGER},
 				#{procsId, jdbcType=INTEGER},
 				#{bizActnNm, jdbcType=VARCHAR},
 				#{bizRuleNm, jdbcType=VARCHAR},
@@ -42,17 +44,18 @@
   <update id="update" parameterType="BizRule">
     update BIZ_RULE
     set
-			PROCS_ID = #{procsId, jdbcType=INTEGER},
 			BIZ_ACTN_NM = #{bizActnNm, jdbcType=VARCHAR},
 			BIZ_RULE_NM = #{bizRuleNm, jdbcType=VARCHAR},
 			BIZ_RULE_DC = #{bizRuleDc, jdbcType=LOGNVARCHAR},
 			CNDCY_EVENT_YN = #{cndcyEventYn, jdbcType=CHAR}
-    where BIZ_ACTN_ID = #{bizActnId, jdbcType=INTEGER}    
+    where BIZ_ACTN_ID = #{bizActnId, jdbcType=INTEGER}
+      and PROCS_ID = #{procsId, jdbcType=INTEGER}        
   </update>
   
   <delete id="delete" parameterType="java.util.HashMap">
     delete from BIZ_RULE
-     where BIZ_ACTN_ID = #{bizActnId, jdbcType=INTEGER}   
+    where BIZ_ACTN_ID 		= #{0, bizActnId}
+      and PROCS_ID			= #{1, procsId} 
   </delete>  
   
  </mapper>

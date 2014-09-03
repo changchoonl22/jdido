@@ -24,31 +24,43 @@
     FROM LNK_IF_IEM
   </select>
   <insert id="insert" parameterType="LnkIfIem">
-    insert into LNK_IF_IEM (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
-      )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    insert into LNK_IF_IEM (
+			INTRFC_EN_NM,
+			INTRFC_KR_NM,
+			INTRFC_TCHNLGY_NM,
+			INTRFC_TCHNLGY_DC,
+			INTRFC_RSTRCT_MATTER,
+			INTRFC_DC,
+			START_SYS_ID,
+			ARVL_SYS_ID
+   )
+    values (
+			#{intrfcEnNm, jdbcType=VARCHAR},
+			#{intrfcKrNm, jdbcType=VARCHAR},
+			#{intrfcTchnlgyNm, jdbcType=VARCHAR},
+			#{intrfcTchnlgyDc, jdbcType=LONGVARCHAR},
+			#{intrfcRstrctMatter, jdbcType=LONGVARCHAR},
+			#{intrfcDc, jdbcType=LONGVARCHAR},
+			#{startSysId, jdbcType=INTEGER},
+			#{arvlSysId, jdbcType=INTEGER}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="LnkIfIem">
-    update LNK_IF_IEM
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update LNK_IF_IEM SET
+			INTRFC_EN_NM = #{intrfcEnNm, jdbcType=VARCHAR},
+			INTRFC_KR_NM = #{intrfcKrNm, jdbcType=VARCHAR},
+			INTRFC_TCHNLGY_NM = #{intrfcTchnlgyNm, jdbcType=VARCHAR},
+			INTRFC_TCHNLGY_DC = #{intrfcTchnlgyDc, jdbcType=LOGNVARCHAR},
+			INTRFC_RSTRCT_MATTER = #{intrfcRstrctMatter, jdbcType=LOGNVARCHAR},
+			INTRFC_DC = #{intrfcDc, jdbcType=LOGNVARCHAR},
+			START_SYS_ID = #{startSysId, jdbcType=INTEGER},
+			ARVL_SYS_ID = #{arvlSysId, jdbcType=INTEGER}
     where INTRFC_ID 		= #{intrfcId,		jdbcType=INTEGER}    
   </update>
   <delete id="delete" parameterType="java.util.HashMap">
     delete from LNK_IF_IEM
     where INTRFC_ID 		= #{0, intrfcId}
-
   </delete>  
   
  </mapper>

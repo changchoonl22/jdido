@@ -23,38 +23,35 @@
     from UC_EVENT_FLOW
   </select>
   <insert id="insert" parameterType="UcEventFlow">
-    insert into UC_EVENT_FLOW (WORD_NM, 
-    				  KR_NM, 
-      				  EN_NM, 
-      				  KR_ABRV, 
-      				  EN_ABRV, 
-     				  WORD_APPLC_SCOPE, 
-     				  ETC_MATTER_DC, 
-     				  WORD_DFN
+    insert into UC_EVENT_FLOW (			
+			UC_ID,
+			EVENT_NM,
+			FLOW_TY,
+			DICARY_CND,
+			FLOW_DC,
+			AFTFAT_CND,
+			RTRN_LC
       )
-    values (#{wordNm,			jdbcType=VARCHAR}, 
-    		#{krNm,				jdbcType=VARCHAR}, 
-      		#{enNm,				jdbcType=VARCHAR}, 
-      		#{krAbrv,			jdbcType=VARCHAR}, 
-      		#{enAbrv,			jdbcType=VARCHAR}, 
-      		#{wordApplcScope,	jdbcType=VARCHAR}, 
-      		#{etcMatterDc,		jdbcType=VARCHAR}, 
-      		#{wordDfn,			jdbcType=LONGVARCHAR}
+    values (
+			#{ucId, jdbcType=INTEGER},
+			#{eventNm, jdbcType=VARCHAR},
+			#{flowTy, jdbcType=CHAR},
+			#{dicaryCnd, jdbcType=LONGVARCHAR},
+			#{flowDc, jdbcType=LONGVARCHAR},
+			#{aftfatCnd, jdbcType=LONGVARCHAR},
+			#{rtrnLc, jdbcType=LONGVARCHAR}
       )
   <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="UcEventFlow">
-    update UC_EVENT_FLOW
-    <set>
-      <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
-      <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
-      <if test="enNm 			!= null">EN_NM 				= #{enNm,			jdbcType=VARCHAR},		</if>
-      <if test="krAbrv 			!= null">KR_ABRV 			= #{krAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="enAbrv 			!= null">EN_ABRV 			= #{enAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="wordApplcScope  != null">WORD_APPLC_SCOPE 	= #{wordApplcScope,	jdbcType=VARCHAR},		</if>
-      <if test="etcMatterDc 	!= null">ETC_MATTER_DC 		= #{etcMatterDc,	jdbcType=VARCHAR},		</if>
-      <if test="wordDfn 		!= null">WORD_DFN 			= #{wordDfn,		jdbcType=LONGVARCHAR},	</if>
-    </set>
+    update UC_EVENT_FLOW SET
+			UC_ID = #{ucId, jdbcType=INTEGER},
+			EVENT_NM = #{eventNm, jdbcType=VARCHAR},
+			FLOW_TY = #{flowTy, jdbcType=CHAR},
+			DICARY_CND = #{dicaryCnd, jdbcType=LOGNVARCHAR},
+			FLOW_DC = #{flowDc, jdbcType=LOGNVARCHAR},
+			AFTFAT_CND = #{aftfatCnd, jdbcType=LOGNVARCHAR},
+			RTRN_LC = #{rtrnLc, jdbcType=LOGNVARCHAR}
     where EVENT_ID = #{eventId,jdbcType=INTEGER}
       and UC_ID = #{ucId,jdbcType=INTEGER}
   </update>

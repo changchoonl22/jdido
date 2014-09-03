@@ -18,25 +18,23 @@
     FROM LNK_OTR_SYS
   </select>
   <insert id="insert" parameterType="LnkOtrSys">
-    insert into LNK_OTR_SYS (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into LNK_OTR_SYS (
+			OTR_SYS_NM,
+			DC,
+			SYS_NODE_ID
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{otrSysNm, jdbcType=VARCHAR},
+			#{dc, jdbcType=LONGVARCHAR},
+			#{sysNodeId, jdbcType=INTEGER}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="LnkOtrSys">
-    update LNK_OTR_SYS
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update LNK_OTR_SYS SET
+			OTR_SYS_NM = #{otrSysNm, jdbcType=VARCHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR},
+			SYS_NODE_ID = #{sysNodeId, jdbcType=INTEGER}
     where OTR_SYS_ID 		= #{otrSysId,		jdbcType=INTEGER}
     
   </update>

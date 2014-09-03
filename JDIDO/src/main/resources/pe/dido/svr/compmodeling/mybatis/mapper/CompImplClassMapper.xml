@@ -19,25 +19,24 @@
     FROM COMP_IMPL_CLASS
   </select>
   <insert id="insert" parameterType="CompImplClass">
-    insert into COMP_IMPL_CLASS (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into COMP_IMPL_CLASS (
+			COMPN_ID,
+			EMBD_CLASS_NM,
+			EMBD_CLASS_DC
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{compnId, jdbcType=INTEGER},
+			#{embdClassNm, jdbcType=VARCHAR},
+			#{embdClassDc, jdbcType=LONGVARCHAR}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="CompImplClass">
     update COMP_IMPL_CLASS
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    set
+			COMPN_ID = #{compnId, jdbcType=INTEGER},
+			EMBD_CLASS_NM = #{embdClassNm, jdbcType=VARCHAR},
+			EMBD_CLASS_DC = #{embdClassDc, jdbcType=LOGNVARCHAR}
     where INNER_CLASS_ID 		= #{innerClassId,		jdbcType=INTEGER}
       and COMPN_ID = #{compnId,jdbcType=INTEGER}
     

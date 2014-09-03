@@ -2,47 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="DmndDeptMap">	
 	<resultMap id="DmndDeptMapResult" type="DmndDeptMap">
-		<id     	property="sysNodeId"   		column="SYS_NODE_ID"/>
-		<result     property="sysNodeNm"   		column="SYS_NODE_NM"/>
-		<result     property="sysNodeDc"   		column="SYS_NODE_DC"/>
-		<result     property="ntwrkChartr"   	column="NTWRK_CHARTR"/>
+		<id     	property="dmndId"   		column="DMND_ID"/>
+		<id     	property="deptId"   		column="DEPT_ID"/>
 	</resultMap>
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="DmndDeptMapResult">
     SELECT *
     FROM DMND_DEPT_MAP
-    where SYS_NODE_ID 		= #{0, sysNodeId}
+    where DMND_ID 		= #{0, dmndId}
+      AND DEPT_ID 		= #{1, deptId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="DmndDeptMapResult">
     SELECT *
     FROM DMND_DEPT_MAP
   </select>
   <insert id="insert" parameterType="DmndDeptMap">
-    insert into DMND_DEPT_MAP (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into DMND_DEPT_MAP (
+			DMND_ID,
+			DEPT_ID
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{dmndId, jdbcType=INTEGER},
+			#{deptId, jdbcType=INTEGER}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="DmndDeptMap">
     update DMND_DEPT_MAP
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
-    where SYS_NODE_ID 		= #{sysNodeId,		jdbcType=INTEGER}    
+			DMND_ID = #{dmndId, jdbcType=INTEGER},
+			DEPT_ID = #{deptId, jdbcType=INTEGER}
+    where DMND_ID 		= #{dmndId,		jdbcType=INTEGER}    
+      AND DEPT_ID       = #{deptId,		jdbcType=INTEGER}    
   </update>
   
   <delete id="delete" parameterType="java.util.HashMap">
     delete from DMND_DEPT_MAP
-    where SYS_NODE_ID 		= #{0, sysNodeId}
+    where DMND_ID 		= #{0, dmndId}
+      AND DEPT_ID 		= #{1, deptId}
   </delete>  
   
  </mapper>

@@ -22,25 +22,35 @@
     FROM UDA_CLUSTER
   </select>
   <insert id="insert" parameterType="UdaCluster">
-    insert into UDA_CLUSTER (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into UDA_CLUSTER (
+    		UC_ID,
+			CLASS_EN_NM,
+			GRAD,
+			ACCES_VALUE,
+			WGHTVAL,
+			COMPN_TY,
+			COMPN_NM
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
-      )
+    values (
+			#{ucId, jdbcType=INTEGER},
+			#{classEnNm, jdbcType=INTEGER},
+			#{grad, jdbcType=CHAR},
+			#{acces_value, jdbcType=TIMESTAMP},
+			#{wghtval, jdbcType=TIMESTAMP},
+			#{compnYy, jdbcType=CHAR},
+			#{compnNm, jdbcType=VARCHAR}
+	)
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="UdaCluster">
-    update UDA_CLUSTER
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update UDA_CLUSTER SET
+		UC_ID = #{ucId, jdbcType=INTEGER},
+		CLASS_EN_NM = #{classEnNm, jdbcType=INTEGER},
+		GRAD = #{grad, jdbcType=CHAR},
+		ACCES_VALUE = #{acces_value, jdbcType=TIMESTAMP},
+		WGHTVAL = #{wghtval, jdbcType=TIMESTAMP},
+		COMPN_TY = #{compnYy, jdbcType=CHAR},
+		COMPN_NM = #{compnNm, jdbcType=VARCHAR}
     where UC_ID 		= #{ucId,		jdbcType=INTEGER}
       and CLASS_EN_NM = #{classEnNm,jdbcType=INTEGER}
     

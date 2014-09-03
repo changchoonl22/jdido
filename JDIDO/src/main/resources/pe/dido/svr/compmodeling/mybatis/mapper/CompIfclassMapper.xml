@@ -23,25 +23,24 @@
   </select>
   
   <insert id="insert" parameterType="CompIfclass">
-    insert into COMP_IFCLASS (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into COMP_IFCLASS (
+			IF_OPRTIN_ID,
+			IF_OPRTIN_NM,
+			DC
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{ifOprtinId, jdbcType=INTEGER},
+			#{ifOprtinNm, jdbcType=VARCHAR},
+			#{dc, jdbcType=LONGVARCHAR}
       )
   </insert>
   
   <update id="update" parameterType="CompIfclass">
     update COMP_IFCLASS
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    set
+		IF_OPRTIN_ID = #{ifOprtinId, jdbcType=INTEGER},
+		IF_OPRTIN_NM = #{ifOprtinNm, jdbcType=VARCHAR},
+		DC = #{dc, jdbcType=LOGNVARCHAR}
     where COMPN_ID 		= #{compnId,		jdbcType=INTEGER}
       and IF_OPRTIN_ID  = #{ifOprtinId,		jdbcType=INTEGER}    
   </update>

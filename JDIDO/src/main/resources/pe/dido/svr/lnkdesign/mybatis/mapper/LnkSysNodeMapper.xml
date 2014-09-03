@@ -18,25 +18,23 @@
     FROM LNK_SYS_NODE
   </select>
   <insert id="insert" parameterType="LnkSysNode">
-    insert into LNK_SYS_NODE (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into LNK_SYS_NODE (
+			SYS_NODE_NM,
+			SYS_NODE_DC,
+			NTWRK_CHARTR
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
-      )
+    values (
+			#{sysNodeNm, jdbcType=VARCHAR},
+			#{sysNodeDc, jdbcType=LONGVARCHAR},
+			#{ntwrkChartr, jdbcType=LONGVARCHAR}
+  )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="LnkSysNode">
-    update LNK_SYS_NODE
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update LNK_SYS_NODE SET
+			SYS_NODE_NM = #{sysNodeNm, jdbcType=VARCHAR},
+			SYS_NODE_DC = #{sysNodeDc, jdbcType=LOGNVARCHAR},
+			NTWRK_CHARTR = #{ntwrkChartr, jdbcType=LOGNVARCHAR}
     where SYS_NODE_ID 		= #{sysNodeId,		jdbcType=INTEGER}
   </update>
   <delete id="delete" parameterType="java.util.HashMap">

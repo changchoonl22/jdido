@@ -22,26 +22,31 @@
   </select>
   
   <insert id="insert" parameterType="ClassM">
-    insert into CLASS_M (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into CLASS_M (
+			CLASS_EN_NM,
+			CLASS_KR_NM,
+			CLASS_TY,
+			IDNTFC_OFFIC_TY,
+			IDNTFC_OFFIC_ID
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{classEnNm, jdbcType=VARCHAR},
+			#{classKrNm, jdbcType=VARCHAR},
+			#{classTy, jdbcType=CHAR},
+			#{idntfcOfficTy, jdbcType=CHAR},
+			#{idntfcOfficId, jdbcType=INTEGER}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   
   <update id="update" parameterType="ClassM">
     update CLASS_M
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    set
+			CLASS_EN_NM = #{classEnNm, jdbcType=VARCHAR},
+			CLASS_KR_NM = #{classKrNm, jdbcType=VARCHAR},
+			CLASS_TY = #{classTy, jdbcType=CHAR},
+			IDNTFC_OFFIC_TY = #{idntfcOfficTy, jdbcType=CHAR},
+			IDNTFC_OFFIC_ID = #{idntfcOfficId, jdbcType=INTEGER}
     where classId 		= #{CLASS_ID,		jdbcType=INTEGER}    
   </update>
   

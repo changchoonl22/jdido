@@ -17,25 +17,23 @@
     FROM UPPER_DMND_DMND_MAP
   </select>
   <insert id="insert" parameterType="UpperDmndDmndMap">
-    insert into UPPER_DMND_DMND_MAP (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
-      )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    insert into UPPER_DMND_DMND_MAP (
+			UPPER_DMND_IDNTFR,
+			UPPER_DMND_NM,
+			DC
+    )
+    values (
+			#{upperDmndIdntfr, jdbcType=VARCHAR},
+			#{upperDmndNm, jdbcType=LONGVARCHAR},
+			#{dc, jdbcType=LONGVARCHAR}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="UpperDmndDmndMap">
-    update UPPER_DMND_DMND_MAP
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update UPPER_DMND_DMND_MAP SET
+			UPPER_DMND_IDNTFR = #{upperDmndIdntfr, jdbcType=VARCHAR},
+			UPPER_DMND_NM = #{upperDmndNm, jdbcType=LOGNVARCHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR}
     where CODE_ID 		= #{codeID,		jdbcType=INTEGER}
       and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
     

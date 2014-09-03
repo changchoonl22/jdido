@@ -19,25 +19,22 @@
   </select>
   
   <insert id="insert" parameterType="CompM">
-    insert into CODE_D (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into CODE_D (
+			COMPN_NM,
+			DC
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{compnNm, jdbcType=VARCHAR},
+			#{dc, jdbcType=LONGVARCHAR}
       )
   </insert>
   
   <update id="update" parameterType="CompM">
     update COMP_M
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    set
+			COMPN_NM = #{compnNm, jdbcType=VARCHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR}
+    
     where COMPN_ID 		= #{compnId,		jdbcType=INTEGER}    
   </update>
   

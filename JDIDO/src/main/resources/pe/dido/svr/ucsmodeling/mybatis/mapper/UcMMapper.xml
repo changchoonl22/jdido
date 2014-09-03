@@ -24,38 +24,41 @@
     from UC_M
   </select>
   <insert id="insert" parameterType="UcM">
-    insert into UC_M (WORD_NM, 
-    				  KR_NM, 
-      				  EN_NM, 
-      				  KR_ABRV, 
-      				  EN_ABRV, 
-     				  WORD_APPLC_SCOPE, 
-     				  ETC_MATTER_DC, 
-     				  WORD_DFN
+    insert into UC_M (
+			UC_IDNTFR,
+			UC_NM,
+			SUMRY,
+			CHNGE,
+			ADI_MATTER,
+			SENARIO_DC,
+			REFRN_UC_AT,
+			CMMN_UC_AT,
+			PROCS_ID
       )
-    values (#{wordNm,			jdbcType=VARCHAR}, 
-    		#{krNm,				jdbcType=VARCHAR}, 
-      		#{enNm,				jdbcType=VARCHAR}, 
-      		#{krAbrv,			jdbcType=VARCHAR}, 
-      		#{enAbrv,			jdbcType=VARCHAR}, 
-      		#{wordApplcScope,	jdbcType=VARCHAR}, 
-      		#{etcMatterDc,		jdbcType=VARCHAR}, 
-      		#{wordDfn,			jdbcType=LONGVARCHAR}
+    values (
+			#{ucIdntfr, jdbcType=VARCHAR},
+			#{ucNm, jdbcType=VARCHAR},
+			#{sumry, jdbcType=LONGVARCHAR},
+			#{chnge, jdbcType=LONGVARCHAR},
+			#{adiMatter, jdbcType=LONGVARCHAR},
+			#{senario_dc, jdbcType=LONGVARCHAR},
+			#{refrnUcAt, jdbcType=CHAR},
+			#{cmmnUcAt, jdbcType=CHAR},
+			#{procsId, jdbcType=INTEGER}
       )
   <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="UcM">
-    update UC_M
-    <set>
-      <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
-      <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
-      <if test="enNm 			!= null">EN_NM 				= #{enNm,			jdbcType=VARCHAR},		</if>
-      <if test="krAbrv 			!= null">KR_ABRV 			= #{krAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="enAbrv 			!= null">EN_ABRV 			= #{enAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="wordApplcScope  != null">WORD_APPLC_SCOPE 	= #{wordApplcScope,	jdbcType=VARCHAR},		</if>
-      <if test="etcMatterDc 	!= null">ETC_MATTER_DC 		= #{etcMatterDc,	jdbcType=VARCHAR},		</if>
-      <if test="wordDfn 		!= null">WORD_DFN 			= #{wordDfn,		jdbcType=LONGVARCHAR},	</if>
-    </set>
+    update UC_M SET
+			UC_IDNTFR = #{ucIdntfr, jdbcType=VARCHAR},
+			UC_NM = #{ucNm, jdbcType=VARCHAR},
+			SUMRY = #{sumry, jdbcType=LOGNVARCHAR},
+			CHNGE = #{chnge, jdbcType=LOGNVARCHAR},
+			ADI_MATTER = #{adiMatter, jdbcType=LOGNVARCHAR},
+			SENARIO_DC = #{senario_dc, jdbcType=LOGNVARCHAR},
+			REFRN_UC_AT = #{refrnUcAt, jdbcType=CHAR},
+			CMMN_UC_AT = #{cmmnUcAt, jdbcType=CHAR},
+			PROCS_ID = #{procsId, jdbcType=INTEGER}
     where UC_ID = #{ucId,jdbcType=INTEGER}
   </update>
   <delete id="delete" parameterType="java.lang.Integer">

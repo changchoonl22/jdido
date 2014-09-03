@@ -22,38 +22,35 @@
     from TEST_PLN
   </select>
   <insert id="insert" parameterType="TestPln">
-    insert into TEST_PLN (WORD_NM, 
-    				  KR_NM, 
-      				  EN_NM, 
-      				  KR_ABRV, 
-      				  EN_ABRV, 
-     				  WORD_APPLC_SCOPE, 
-     				  ETC_MATTER_DC, 
-     				  WORD_DFN
+    insert into TEST_PLN (
+			TEST_TY,
+			TEST_IEM,
+			TESTCASE_NM,
+			INPUT_VALUE,
+			DICARY_CND_DC,
+			EXPECT_RESULT,
+			TEST_EXC_PROCSS_DC
       )
-    values (#{wordNm,			jdbcType=VARCHAR}, 
-    		#{krNm,				jdbcType=VARCHAR}, 
-      		#{enNm,				jdbcType=VARCHAR}, 
-      		#{krAbrv,			jdbcType=VARCHAR}, 
-      		#{enAbrv,			jdbcType=VARCHAR}, 
-      		#{wordApplcScope,	jdbcType=VARCHAR}, 
-      		#{etcMatterDc,		jdbcType=VARCHAR}, 
-      		#{wordDfn,			jdbcType=LONGVARCHAR}
+    values (
+			#{test_ty, jdbcType=VARCHAR},
+			#{test_iem, jdbcType=VARCHAR},
+			#{testcase_nm, jdbcType=VARCHAR},
+			#{input_value, jdbcType=LONGVARCHAR},
+			#{dicaryCndDc, jdbcType=LONGVARCHAR},
+			#{expect_result, jdbcType=LONGVARCHAR},
+			#{testExcProcss_dc, jdbcType=LONGVARCHAR}
       )
   <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="TestPln">
-    update TEST_PLN
-    <set>
-      <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
-      <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
-      <if test="enNm 			!= null">EN_NM 				= #{enNm,			jdbcType=VARCHAR},		</if>
-      <if test="krAbrv 			!= null">KR_ABRV 			= #{krAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="enAbrv 			!= null">EN_ABRV 			= #{enAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="wordApplcScope  != null">WORD_APPLC_SCOPE 	= #{wordApplcScope,	jdbcType=VARCHAR},		</if>
-      <if test="etcMatterDc 	!= null">ETC_MATTER_DC 		= #{etcMatterDc,	jdbcType=VARCHAR},		</if>
-      <if test="wordDfn 		!= null">WORD_DFN 			= #{wordDfn,		jdbcType=LONGVARCHAR},	</if>
-    </set>
+    update TEST_PLN SET
+			TEST_TY = #{test_ty, jdbcType=VARCHAR},
+			TEST_IEM = #{test_iem, jdbcType=VARCHAR},
+			TESTCASE_NM = #{testcase_nm, jdbcType=VARCHAR},
+			INPUT_VALUE = #{input_value, jdbcType=LOGNVARCHAR},
+			DICARY_CND_DC = #{dicaryCndDc, jdbcType=LOGNVARCHAR},
+			EXPECT_RESULT = #{expect_result, jdbcType=LOGNVARCHAR},
+			TEST_EXC_PROCSS_DC = #{testExcProcss_dc, jdbcType=LOGNVARCHAR}
     where TEST_PLN_ID = #{testPlnId,jdbcType=INTEGER}
   </update>
   <delete id="delete" parameterType="java.lang.Integer">

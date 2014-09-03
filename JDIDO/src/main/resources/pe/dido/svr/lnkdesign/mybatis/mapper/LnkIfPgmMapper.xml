@@ -25,25 +25,41 @@
     FROM LNK_IF_PGM
   </select>
   <insert id="insert" parameterType="LnkIfPgm">
-    insert into LNK_IF_PGM (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
-      )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
-      )
+    insert into LNK_IF_PGM (
+			PGM_ID,
+			PGM_NM,
+			DC,
+			INTRLCK_IEM_NM,
+			RSTRCT_MATTER,
+			PRPOS,
+			CYCLE,
+			SCRTY_GRAD,
+			RM
+    )
+    values (
+    		#{pgmId, jdbcType=INTEGER},	
+			#{pgmNm, jdbcType=VARCHAR},	
+			#{dc, jdbcType=LONGVARCHAR},	
+			#{intrlckIemNm, jdbcType=VARCHAR},	
+			#{rstrct_matter, jdbcType=LONGVARCHAR},	
+			#{prpos, jdbcType=LONGVARCHAR},	
+			#{cycle, jdbcType=VARCHAR},	
+			#{scrtyGrad, jdbcType=CHAR},	
+			#{rm, jdbcType=VARCHAR}	
+  )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="LnkIfPgm">
-    update LNK_IF_PGM
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update LNK_IF_PGM SET
+			PGM_ID = #{pgmId, jdbcType=INTEGER},
+			PGM_NM = #{pgmNm, jdbcType=VARCHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR},
+			INTRLCK_IEM_NM = #{intrlckIemNm, jdbcType=VARCHAR},
+			RSTRCT_MATTER = #{rstrct_matter, jdbcType=LOGNVARCHAR},
+			PRPOS = #{prpos, jdbcType=LOGNVARCHAR},
+			CYCLE = #{cycle, jdbcType=VARCHAR},
+			SCRTY_GRAD = #{scrtyGrad, jdbcType=CHAR},
+			RM = #{rm, jdbcType=VARCHAR}
     where INTRFC_ID 		= #{intrfcId,		jdbcType=INTEGER}
       and PGM_ID = #{pgmId,jdbcType=INTEGER}
     

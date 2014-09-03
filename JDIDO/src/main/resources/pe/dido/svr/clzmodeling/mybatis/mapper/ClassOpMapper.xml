@@ -24,25 +24,39 @@
     FROM CLASS_OP
   </select>
   <insert id="insert" parameterType="ClassOp">
-    insert into CLASS_OP (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into CLASS_OP (
+			CLASS_ID,
+			OP_EN_NM,
+			OP_KR_NM,
+			VISIBLTY,
+			RETURN_TY,
+			PARM_NM,
+			PARM_DC,
+			DC
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{classId, jdbcType=INTEGER},
+			#{opEnNm, jdbcType=VARCHAR},
+			#{opKrNm, jdbcType=VARCHAR},
+			#{visiblty, jdbcType=VARCHAR},
+			#{returnTy, jdbcType=VARCHAR},
+			#{parmNm, jdbcType=VARCHAR},
+			#{parmDc, jdbcType=LONGVARCHAR},
+			#{dc, jdbcType=LONGVARCHAR}
       )
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="ClassOp">
     update CLASS_OP
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    set
+			CLASS_ID = #{classId, jdbcType=INTEGER},
+			OP_EN_NM = #{opEnNm, jdbcType=VARCHAR},
+			OP_KR_NM = #{opKrNm, jdbcType=VARCHAR},
+			VISIBLTY = #{visiblty, jdbcType=VARCHAR},
+			RETURN_TY = #{returnTy, jdbcType=VARCHAR},
+			PARM_NM = #{parmNm, jdbcType=VARCHAR},
+			PARM_DC = #{parmDc, jdbcType=LOGNVARCHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR}    
     where OPRTIN_ID 		= #{oprtinId,		jdbcType=INTEGER}
       and CLASS_ID 			= #{classId,jdbcType=INTEGER}
     

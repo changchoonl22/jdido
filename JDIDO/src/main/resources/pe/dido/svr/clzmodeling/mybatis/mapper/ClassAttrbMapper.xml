@@ -26,25 +26,39 @@
   </select>
   
   <insert id="insert" parameterType="ClassAttrb">
-    insert into CLASS_ATTRB (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into CLASS_ATTRB (
+		CLASS_ID,
+		ATTRB_EN_NM,
+		ATTRB_KR_NM,
+		VISIBLTY,
+		TY,
+		BASS_VALUE,
+		DC,
+		IEM_ATRB
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+		#{classId, jdbcType=INTEGER},
+		#{attrbEnNm, jdbcType=VARCHAR},
+		#{attrbKrNm, jdbcType=VARCHAR},
+		#{visiblty, jdbcType=VARCHAR},
+		#{ty, jdbcType=CHAR},
+		#{bassValue, jdbcType=VARCHAR},
+		#{dc, jdbcType=LONGVARCHAR},
+		#{iemAtrb, jdbcType=VARCHAR}
       )
   </insert>
   
   <update id="update" parameterType="ClassAttrb">
     update CLASS_ATTRB
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    set
+			CLASS_ID = #{classId, jdbcType=INTEGER},
+			ATTRB_EN_NM = #{attrbEnNm, jdbcType=VARCHAR},
+			ATTRB_KR_NM = #{attrbKrNm, jdbcType=VARCHAR},
+			VISIBLTY = #{visiblty, jdbcType=VARCHAR},
+			TY = #{ty, jdbcType=CHAR},
+			BASS_VALUE = #{bassValue, jdbcType=VARCHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR},
+			IEM_ATRB = #{iemAtrb, jdbcType=VARCHAR}
     where ATRB_ID 		= #{atrbId,		jdbcType=INTEGER}
       and CLASS_ID 		= #{classId,jdbcType=INTEGER}    
   </update>

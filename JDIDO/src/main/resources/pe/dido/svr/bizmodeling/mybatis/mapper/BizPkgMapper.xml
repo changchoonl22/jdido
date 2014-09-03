@@ -23,7 +23,6 @@
   
   <insert id="insert" parameterType="BizPkg">
     insert into BIZ_PKG (
-		PCKAGE_ID,
 		MOTHER_PCKAGE_ID,
 		PCKAGE_NM,
 		PCKAGE_CD,
@@ -42,13 +41,12 @@
   <update id="update" parameterType="BizPkg">
     update BIZ_PKG
 	   SET
-			PCKAGE_ID = #{pckageId, jdbcType=INTEGER},
 			MOTHER_PCKAGE_ID = #{motherPckageId, jdbcType=INTEGER},
 			PCKAGE_NM = #{pckageNm, jdbcType=VARCHAR},
 			PCKAGE_CD = #{pckageCd, jdbcType=VARCHAR},
 			PCKAGE_LVL = #{pckageLvl, jdbcType=CHAR},
 			PCKAGE_DC = #{pckageDc, jdbcType=LOGNVARCHAR}	   
-    where 	PCKAGE_ID = #{0, pckageId}
+    where 	PCKAGE_ID = #{pckageId, jdbcType=INTEGER}
   </update>
   
   <delete id="delete" parameterType="java.util.HashMap">

@@ -18,38 +18,23 @@
     from UC_ACTOR_MAP
   </select>
   <insert id="insert" parameterType="UcActorMap">
-    insert into UC_ACTOR_MAP (WORD_NM, 
-    				  KR_NM, 
-      				  EN_NM, 
-      				  KR_ABRV, 
-      				  EN_ABRV, 
-     				  WORD_APPLC_SCOPE, 
-     				  ETC_MATTER_DC, 
-     				  WORD_DFN
+    insert into UC_ACTOR_MAP (
+			AUTHOR_ID,
+			SCRIN_ID,
+			AUTHOR_APPLC_YN
       )
-    values (#{wordNm,			jdbcType=VARCHAR}, 
-    		#{krNm,				jdbcType=VARCHAR}, 
-      		#{enNm,				jdbcType=VARCHAR}, 
-      		#{krAbrv,			jdbcType=VARCHAR}, 
-      		#{enAbrv,			jdbcType=VARCHAR}, 
-      		#{wordApplcScope,	jdbcType=VARCHAR}, 
-      		#{etcMatterDc,		jdbcType=VARCHAR}, 
-      		#{wordDfn,			jdbcType=LONGVARCHAR}
+    values (
+			#{authorId, jdbcType=INTEGER},
+			#{scrinId, jdbcType=INTEGER},
+			#{authorApplcYn, jdbcType=CHAR}
       )
   <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="UcActorMap">
-    update UC_ACTOR_MAP
-    <set>
-      <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
-      <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
-      <if test="enNm 			!= null">EN_NM 				= #{enNm,			jdbcType=VARCHAR},		</if>
-      <if test="krAbrv 			!= null">KR_ABRV 			= #{krAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="enAbrv 			!= null">EN_ABRV 			= #{enAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="wordApplcScope  != null">WORD_APPLC_SCOPE 	= #{wordApplcScope,	jdbcType=VARCHAR},		</if>
-      <if test="etcMatterDc 	!= null">ETC_MATTER_DC 		= #{etcMatterDc,	jdbcType=VARCHAR},		</if>
-      <if test="wordDfn 		!= null">WORD_DFN 			= #{wordDfn,		jdbcType=LONGVARCHAR},	</if>
-    </set>
+    update UC_ACTOR_MAP SET
+			AUTHOR_ID = #{authorId, jdbcType=INTEGER},
+			SCRIN_ID = #{scrinId, jdbcType=INTEGER},
+			AUTHOR_APPLC_YN = #{authorApplcYn, jdbcType=CHAR}
     where UC_ID = #{ucId,jdbcType=INTEGER}
       and ACTOR_ID = #{actorId,jdbcType=INTEGER}
   </update>

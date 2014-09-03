@@ -23,25 +23,33 @@
   </select>
   
   <insert id="insert" parameterType="DmndM">
-    insert into DMND_M (CODE_ID, 
-    					CODE_VALUE, 
-      				  	CODE_VALUE_NM, 
-      				  	DC
+    insert into DMND_M (
+			DMND_IDNTFR,
+			DMND_NM,
+			DMND_TY,
+			DC,
+			PRE_CND,
+			DMND_PRIORT
       )
-    values (#{codeID,		jdbcType=INTEGER}, 
-    		#{codeValue,	jdbcType=VARCHAR}, 
-      		#{codeValueNm,	jdbcType=VARCHAR}, 
-      		#{dc,			jdbcType=LONGVARCHAR}
+    values (
+			#{dmndIdntfr, jdbcType=VARCHAR},
+			#{dmndNm, jdbcType=VARCHAR},
+			#{dmndTy, jdbcType=CHAR},
+			#{dc, jdbcType=LONGVARCHAR},
+			#{preCnd, jdbcType=VARCHAR},
+			#{dmndPriorty, jdbcType=CHAR}
       )
   </insert>
   
   <update id="update" parameterType="DmndM">
-    update DMND_M
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update DMND_M SET
+			DMND_ID = #{dmndId, jdbcType=INTEGER},
+			DMND_IDNTFR = #{dmndIdntfr, jdbcType=VARCHAR},
+			DMND_NM = #{dmndNm, jdbcType=VARCHAR},
+			DMND_TY = #{dmndTy, jdbcType=CHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR},
+			PRE_CND = #{preCnd, jdbcType=VARCHAR},
+			DMND_PRIORT = #{dmndPriorty, jdbcType=CHAR}
     where DMND_ID 		= #{dmndId,		jdbcType=INTEGER}    
   </update>
   

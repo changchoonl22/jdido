@@ -47,8 +47,8 @@
 		PROCS_CD = #{procsCd, jdbcType=VARCHAR},
 		PROCS_DC = #{procsDc, jdbcType=LOGNVARCHAR},
 		CNDCY_UC_YN = #{cndcyUcYn, jdbcType=CHAR}
-    where PROCS_ID 		= #{0, procsId}
-      and PCKAGE_ID		= #{1, pckageId}
+    where PROCS_ID 		= #{procsId, jdbcType=INTEGER}
+      and PCKAGE_ID		= #{pckageId, jdbcType=INTEGER}
   </update>
   
   <delete id="delete" parameterType="java.util.HashMap">

@@ -12,68 +12,46 @@
 	</resultMap> 
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="UiMResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN
-    from term
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    select *
+    from UI_M
+    where SCRIN_ID = #{0, scrinId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="UiMResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN
-    from term
+    select *
+    from UI_M
   </select>
   <insert id="insert" parameterType="UiM">
-    insert into term (WORD_NM, 
-    				  KR_NM, 
-      				  EN_NM, 
-      				  KR_ABRV, 
-      				  EN_ABRV, 
-     				  WORD_APPLC_SCOPE, 
-     				  ETC_MATTER_DC, 
-     				  WORD_DFN
+    insert into UI_M (			
+			SCRIN_IDNTFR,
+			SCRIN_NM,
+			SCRIN_DC,
+			SCRTY_GRAD,
+			TY,
+			MENU_ID
       )
-    values (#{wordNm,			jdbcType=VARCHAR}, 
-    		#{krNm,				jdbcType=VARCHAR}, 
-      		#{enNm,				jdbcType=VARCHAR}, 
-      		#{krAbrv,			jdbcType=VARCHAR}, 
-      		#{enAbrv,			jdbcType=VARCHAR}, 
-      		#{wordApplcScope,	jdbcType=VARCHAR}, 
-      		#{etcMatterDc,		jdbcType=VARCHAR}, 
-      		#{wordDfn,			jdbcType=LONGVARCHAR}
+    values (
+			#{scrinIdntfr, jdbcType=VARCHAR},
+			#{scrinNm, jdbcType=VARCHAR},
+			#{scrinDc, jdbcType=LONGVARCHAR},
+			#{scrtyGrad, jdbcType=CHAR},
+			#{ty, jdbcType=CHAR},
+			#{menuId, jdbcType=INTEGER}
       )
   <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="UiM">
-    update term
-    <set>
-      <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
-      <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
-      <if test="enNm 			!= null">EN_NM 				= #{enNm,			jdbcType=VARCHAR},		</if>
-      <if test="krAbrv 			!= null">KR_ABRV 			= #{krAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="enAbrv 			!= null">EN_ABRV 			= #{enAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="wordApplcScope  != null">WORD_APPLC_SCOPE 	= #{wordApplcScope,	jdbcType=VARCHAR},		</if>
-      <if test="etcMatterDc 	!= null">ETC_MATTER_DC 		= #{etcMatterDc,	jdbcType=VARCHAR},		</if>
-      <if test="wordDfn 		!= null">WORD_DFN 			= #{wordDfn,		jdbcType=LONGVARCHAR},	</if>
-    </set>
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    update UI_M SET
+			SCRIN_IDNTFR = #{scrinIdntfr, jdbcType=VARCHAR},
+			SCRIN_NM = #{scrinNm, jdbcType=VARCHAR},
+			SCRIN_DC = #{scrinDc, jdbcType=LOGNVARCHAR},
+			SCRTY_GRAD = #{scrtyGrad, jdbcType=CHAR},
+			TY = #{ty, jdbcType=CHAR},
+			MENU_ID = #{menuId, jdbcType=INTEGER}
+    where SCRIN_ID = #{scrinId, jdbcType=INTEGER},
   </update>
-  <delete id="delete" parameterType="java.lang.Integer">
-    delete from term
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+  <delete id="delete" parameterType="java.util.HashMap">
+    delete from UI_M
+    where SCRIN_ID = #{0, scrinId}
   </delete>  
   
  </mapper>

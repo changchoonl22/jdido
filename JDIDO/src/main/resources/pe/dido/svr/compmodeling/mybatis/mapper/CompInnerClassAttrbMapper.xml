@@ -37,12 +37,15 @@
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="CompInnerClassAttrb">
-    update CODE_D
-    <set>
-      <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
-      <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
-      <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
-    </set>
+    update COMP_INNER_CLASS_ATTRB
+    set
+			INNER_CLASS_ID = #{innerClassId, jdbcType=INTEGER},
+			COMPN_ID = #{compnId, jdbcType=INTEGER},
+			ATTRB_NM = #{attrbNm, jdbcType=VARCHAR},
+			VISIBLTY = #{visiblty, jdbcType=VARCHAR},
+			TY = #{ty, jdbcType=CHAR},
+			BASS_VALUE = #{bassValue, jdbcType=VARCHAR},
+			DC = #{dc, jdbcType=LOGNVARCHAR}
     where ATRB_ID 		= #{atrbId,		jdbcType=INTEGER}
       and INNER_CLASS_ID = #{innerClassId,jdbcType=INTEGER}
       and COMPN_ID = #{compnId,jdbcType=INTEGER}
