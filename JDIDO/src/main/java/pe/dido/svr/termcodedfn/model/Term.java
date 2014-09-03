@@ -73,4 +73,18 @@ public class Term implements Serializable {
 	public void setWordNm(String wordNm) {
 		this.wordNm = wordNm;
 	}
+	
+	private String crudTy;
+
+
+	public String getCrudTy() {
+		return crudTy;
+	}
+	public void setCrudTy(String crudTy) {
+		this.crudTy = crudTy;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

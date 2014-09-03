@@ -12,16 +12,17 @@
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="LnkIfPgmMetaResult">
     SELECT *
-    FROM biz_actor_dept_map
-    where BIZ_ACTOR_ID 		= #{0, bizActorId}
-      and BIZ_ACTOR_ID		= #{1, deptId}
+    FROM LNK_IF_PGM_META
+    where DATA_ID 		= #{0, dataId}
+      and PGM_ID		= #{1, pgmId}
+      and INTRFC_ID		= #{1, intrfcId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="LnkIfPgmMetaResult">
     SELECT *
-    FROM biz_actor_dept_map
+    FROM LNK_IF_PGM_META
   </select>
   <insert id="insert" parameterType="LnkIfPgmMeta">
-    insert into CODE_D (CODE_ID, 
+    insert into LNK_IF_PGM_META (CODE_ID, 
     					CODE_VALUE, 
       				  	CODE_VALUE_NM, 
       				  	DC
@@ -40,14 +41,16 @@
       <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
       <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
     </set>
-    where CODE_ID 		= #{codeID,		jdbcType=INTEGER}
-      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
+    where DATA_ID 		= #{dataId,		jdbcType=INTEGER}
+      and PGM_ID = #{pgmId,jdbcType=INTEGER}
+      and INTRFC_ID = #{intrfcId,jdbcType=INTEGER}
     
   </update>
   <delete id="delete" parameterType="java.util.HashMap">
-    delete from CODE_D
-     where CODE_ID 		 = #{0, codeID}
-       and CODE_VALUE_ID = #{1, codeValueID}
+    delete     FROM LNK_IF_PGM_META
+    where DATA_ID 		= #{0, dataId}
+      and PGM_ID		= #{1, pgmId}
+      and INTRFC_ID		= #{1, intrfcId}
   </delete>  
   
  </mapper>

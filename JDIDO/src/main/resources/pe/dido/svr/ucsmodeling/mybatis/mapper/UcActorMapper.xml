@@ -5,36 +5,19 @@
 		<id     property="actorId"   column="ACTOR_ID"/>
 		<result     property="actor_nm"   column="ACTOR_NM"/>
 		<result     property="actor_dc"   column="ACTOR_DC"/>
-
 	</resultMap> 
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="UcActorResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN
-    from term
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    select *
+    from UC_ACTOR
+    where ACTOR_ID = #{0, actorId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="UcActorResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN
-    from term
+    select *
+    from UC_ACTOR
   </select>
   <insert id="insert" parameterType="UcActor">
-    insert into term (WORD_NM, 
+    insert into UC_ACTOR (WORD_NM, 
     				  KR_NM, 
       				  EN_NM, 
       				  KR_ABRV, 
@@ -55,7 +38,7 @@
   <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="UcActor">
-    update term
+    update UC_ACTOR
     <set>
       <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
       <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
@@ -69,8 +52,8 @@
     where WORD_ID = #{wordId,jdbcType=INTEGER}
   </update>
   <delete id="delete" parameterType="java.lang.Integer">
-    delete from term
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    delete from UC_ACTOR
+    where ACTOR_ID = #{0, actorId}
   </delete>  
   
  </mapper>

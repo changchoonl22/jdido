@@ -9,18 +9,18 @@
       	   <result property="dc" 				column="DC"/>
 	</resultMap>
 
-
-
   <select id="findById" parameterType="java.util.HashMap" resultMap="CodeDResult">
     SELECT *
     FROM CODE_D
     where CODE_ID 		= #{0, codeID}
       and CODE_VALUE_ID = #{1, codeValueID}
   </select>
+  
   <select id="findList" parameterType="java.util.HashMap" resultMap="CodeDResult">
     select *
     from CODE_D
   </select>
+  
   <insert id="insert" parameterType="CodeD">
     insert into CODE_D (CODE_ID, 
     					CODE_VALUE, 
@@ -32,8 +32,8 @@
       		#{codeValueNm,	jdbcType=VARCHAR}, 
       		#{dc,			jdbcType=LONGVARCHAR}
       )
-  <!--parameterType="java.lang.Integer"-->
   </insert>
+  
   <update id="update" parameterType="CodeD">
     update CODE_D
     <set>
@@ -42,9 +42,9 @@
       <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
     </set>
     where CODE_ID 		= #{codeID,		jdbcType=INTEGER}
-      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
-    
+      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER} 
   </update>
+  
   <delete id="delete" parameterType="java.util.HashMap">
     delete from CODE_D
      where CODE_ID 		 = #{0, codeID}

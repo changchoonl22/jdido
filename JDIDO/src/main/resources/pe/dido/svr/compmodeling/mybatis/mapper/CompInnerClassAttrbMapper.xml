@@ -14,13 +14,14 @@
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="CompInnerClassAttrbResult">
     SELECT *
-    FROM biz_actor_dept_map
-    where BIZ_ACTOR_ID 		= #{0, bizActorId}
-      and BIZ_ACTOR_ID		= #{1, deptId}
+    FROM COMP_INNER_CLASS_ATTRB
+    where ATRB_ID 		 = #{0, atrbId}
+      and INNER_CLASS_ID = #{1, innerClassId}
+      and COMPN_ID		 = #{1, compnId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="CompInnerClassAttrbResult">
     SELECT *
-    FROM biz_actor_dept_map
+    FROM COMP_INNER_CLASS_ATTRB
   </select>
   <insert id="insert" parameterType="CompInnerClassAttrb">
     insert into CODE_D (CODE_ID, 
@@ -42,14 +43,16 @@
       <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
       <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
     </set>
-    where CODE_ID 		= #{codeID,		jdbcType=INTEGER}
-      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
-    
+    where ATRB_ID 		= #{atrbId,		jdbcType=INTEGER}
+      and INNER_CLASS_ID = #{innerClassId,jdbcType=INTEGER}
+      and COMPN_ID = #{compnId,jdbcType=INTEGER}
+          
   </update>
   <delete id="delete" parameterType="java.util.HashMap">
-    delete from CODE_D
-     where CODE_ID 		 = #{0, codeID}
-       and CODE_VALUE_ID = #{1, codeValueID}
+    delete FROM COMP_INNER_CLASS_ATTRB
+    where ATRB_ID 		 = #{0, atrbId}
+      and INNER_CLASS_ID = #{1, innerClassId}
+      and COMPN_ID		 = #{1, compnId}
   </delete>  
   
  </mapper>

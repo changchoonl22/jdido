@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LnkIfIem">	
 	<resultMap id="LnkIfIemResult" type="LnkIfIem">
-		<id     property="intrfcId"   column="INTRFC_ID"/>
+		<id     	property="intrfcId"   column="INTRFC_ID"/>
 		<result     property="intrfcEnNm"   column="INTRFC_EN_NM"/>
 		<result     property="intrfcKrNm"   column="INTRFC_KR_NM"/>
 		<result     property="intrfcTchnlgyNm"   column="INTRFC_TCHNLGY_NM"/>
@@ -16,16 +16,15 @@
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="LnkIfIemResult">
     SELECT *
-    FROM biz_actor_dept_map
-    where BIZ_ACTOR_ID 		= #{0, bizActorId}
-      and BIZ_ACTOR_ID		= #{1, deptId}
+    FROM LNK_IF_IEM
+    where INTRFC_ID 		= #{0, intrfcId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="LnkIfIemResult">
     SELECT *
-    FROM biz_actor_dept_map
+    FROM LNK_IF_IEM
   </select>
   <insert id="insert" parameterType="LnkIfIem">
-    insert into CODE_D (CODE_ID, 
+    insert into LNK_IF_IEM (CODE_ID, 
     					CODE_VALUE, 
       				  	CODE_VALUE_NM, 
       				  	DC
@@ -38,20 +37,18 @@
   <!--parameterType="java.lang.Integer"-->
   </insert>
   <update id="update" parameterType="LnkIfIem">
-    update CODE_D
+    update LNK_IF_IEM
     <set>
       <if test="codeValue 	!= null">	CODE_VALUE 		= #{codeValue,	jdbcType=VARCHAR},		</if>
       <if test="codeValueNm != null">	CODE_VALUE_NM 	= #{codeValueNm,jdbcType=VARCHAR},		</if>
       <if test="dc 			!= null">	DC 				= #{dc,			jdbcType=LONGVARCHAR},  </if>
     </set>
-    where CODE_ID 		= #{codeID,		jdbcType=INTEGER}
-      and CODE_VALUE_ID = #{codeValueID,jdbcType=INTEGER}
-    
+    where INTRFC_ID 		= #{intrfcId,		jdbcType=INTEGER}    
   </update>
   <delete id="delete" parameterType="java.util.HashMap">
-    delete from CODE_D
-     where CODE_ID 		 = #{0, codeID}
-       and CODE_VALUE_ID = #{1, codeValueID}
+    delete from LNK_IF_IEM
+    where INTRFC_ID 		= #{0, intrfcId}
+
   </delete>  
   
  </mapper>

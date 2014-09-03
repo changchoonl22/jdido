@@ -13,32 +13,16 @@
 	</resultMap> 
 
   <select id="findById" parameterType="java.util.HashMap" resultMap="TestPlnResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN
-    from term
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    select *
+    from TEST_PLN
+    where TEST_PLN_ID = #{0, testPlnId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="TestPlnResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN
-    from term
+    select *
+    from TEST_PLN
   </select>
   <insert id="insert" parameterType="TestPln">
-    insert into term (WORD_NM, 
+    insert into TEST_PLN (WORD_NM, 
     				  KR_NM, 
       				  EN_NM, 
       				  KR_ABRV, 
@@ -59,7 +43,7 @@
   <!--parameterType="java.lang.Integer"--> 
   </insert>
   <update id="update" parameterType="TestPln">
-    update term
+    update TEST_PLN
     <set>
       <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
       <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
@@ -70,11 +54,11 @@
       <if test="etcMatterDc 	!= null">ETC_MATTER_DC 		= #{etcMatterDc,	jdbcType=VARCHAR},		</if>
       <if test="wordDfn 		!= null">WORD_DFN 			= #{wordDfn,		jdbcType=LONGVARCHAR},	</if>
     </set>
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    where TEST_PLN_ID = #{testPlnId,jdbcType=INTEGER}
   </update>
   <delete id="delete" parameterType="java.lang.Integer">
-    delete from term
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    delete from TEST_PLN
+    where TEST_PLN_ID = #{0, testPlnId}
   </delete>  
   
  </mapper>

@@ -24,18 +24,10 @@
       	   ETC_MATTER_DC, 
       	   WORD_DFN
     from term
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    where WORD_ID = #{0, wordId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="TermResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN
+    select *
     from term
   </select>
   <insert id="insert" parameterType="Term">
@@ -75,7 +67,7 @@
   </update>
   <delete id="delete" parameterType="java.lang.Integer">
     delete from term
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
+    where WORD_ID = #{0, wordId}
   </delete>  
   
  </mapper>
