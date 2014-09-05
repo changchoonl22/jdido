@@ -41,13 +41,50 @@ public class BizModelingServiceImpl implements BizModelingService {
 	public List<BizActor> findBizActorList(){//HashMap searchVo) {	
 		return bizActorDao.findList();//searchVo);
 	}	
+	
+	
+	 @Transactional
+    	public void saveBizActor(BizActor bizActor) {
+        	if((bizActor.getCrudTy()).equals("I")){
+                	bizActorMapper.insertBizActorById(bizActor) ;
+         	}else if((bizActor.getCrudTy()).equals("U")){
+                	bizActorMapper.updateBizActorById(bizActor) ;
+         	}else if((bizActor.getCrudTy()).equals("D")){
+                	bizActorMapper.deleteBizActorById(bizActor) ;
+         	}
+    	}
 		
 	@Override
 	@Transactional	
-	public void saveBizActorList(HashMap procParam) {	
+	public void saveBizActorList(HashMap procParam) {
+	        List<BizActor> insertList = new ArrayList<BizActor>();
+         	List<BizActor> updateList = new ArrayList<BizActor>();
+         	List<BizActor> deleteList = new ArrayList<BizActor>();	
+		
 		List<BizActor> objList =new ArrayList<BizActor>();
 		objList = (ArrayList<BizActor>)procParam.get("bizActorListDS");
-		bizActorDao.insert(objList);
+		
+		int iidx = 0, uidx=0; didx=0;
+		for(int=0; i<objList.size(); i++){
+        		BizActor tempObj = (BizActor) bizActorList.get(i);
+             		if((tempObj.getCrudTy()).equals("I")){
+                    		insertList.add(iidx, tempObj);
+                    		iidx++;
+             		}else if((tempObj.getCrudTy()).equals("U")){
+                    		updateList.add(uidx, tempObj);
+                    		uidx++;
+             		}else if((tempObj.getCrudTy()).equals("D")){
+                    		deleteList.add(didx, tempObj);
+                    		didx++;
+             		}
+         	}
+                if(insertList.size()>0){
+                	bizActorDao.insert(insertList);
+         	}else if(updateList.size()>0){
+                	bizActorDao.update(updateList);
+         	}else if(deleteList.size()>0){
+                	bizActorDao.delete(deleteList);
+         	}
 	}	
 	
 	
