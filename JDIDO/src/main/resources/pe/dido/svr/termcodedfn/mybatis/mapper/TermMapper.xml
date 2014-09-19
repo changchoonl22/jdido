@@ -22,12 +22,23 @@
       	   EN_ABRV,
       	   WORD_APPLC_SCOPE, 
       	   ETC_MATTER_DC, 
-      	   WORD_DFN
+      	   WORD_DFN,
+      	   "0" as statusYn
     from term
     where WORD_ID = #{0, wordId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="TermResult">
-    select *
+    select 
+		   WORD_ID,
+    	   WORD_NM, 
+    	   KR_NM, 
+      	   EN_NM, 
+      	   KR_ABRV, 
+      	   EN_ABRV,
+      	   WORD_APPLC_SCOPE, 
+      	   ETC_MATTER_DC, 
+      	   WORD_DFN,
+      	   "0" as statusYn
     from term
   </select>
   <insert id="insert" parameterType="Term">

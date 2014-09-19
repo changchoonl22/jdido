@@ -11,6 +11,9 @@ public interface CodeMDao {
 
 	public List<CodeM> findList();//HashMap searchVo);
 
-	public void saveList(List objList);
+	public void insert(List objList);
 
+	public void update(List objList);
+
+	public void delete(List objList);
 }

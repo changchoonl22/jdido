@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.dido.svr.compmodeling.model.UdaCluster;
 import pe.dido.svr.lnkdesign.dao.*;
 import pe.dido.svr.lnkdesign.model.*;
 
@@ -42,8 +43,35 @@ public class LnkDesignServiceImpl implements LnkDesignService  {
 	@Transactional	
 	public void saveLnkIfIemList(HashMap procParam) {	
 		List<LnkIfIem> objList =new ArrayList<LnkIfIem>();
+		
+
+        List<LnkIfIem> insertList = new ArrayList<LnkIfIem>();
+        List<LnkIfIem> updateList = new ArrayList<LnkIfIem>();
+        List<LnkIfIem> deleteList = new ArrayList<LnkIfIem>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<LnkIfIem>)procParam.get("lnkIfIemListDS");
-		lnkIfIemDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	LnkIfIem tempObj = (LnkIfIem) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	lnkIfIemDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	lnkIfIemDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	lnkIfIemDao.delete(deleteList);
+        }	
 	}	
 
 	
@@ -64,8 +92,34 @@ public class LnkDesignServiceImpl implements LnkDesignService  {
 	@Transactional	
 	public void saveLnkIfPgmList(HashMap procParam) {	
 		List<LnkIfPgm> objList =new ArrayList<LnkIfPgm>();
+	
+        List<LnkIfPgm> insertList = new ArrayList<LnkIfPgm>();
+        List<LnkIfPgm> updateList = new ArrayList<LnkIfPgm>();
+        List<LnkIfPgm> deleteList = new ArrayList<LnkIfPgm>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<LnkIfPgm>)procParam.get("lnkIfPgmListDS");
-		lnkIfPgmDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	LnkIfPgm tempObj = (LnkIfPgm) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	lnkIfPgmDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	lnkIfPgmDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	lnkIfPgmDao.delete(deleteList);
+        }
 	}	
 
 	
@@ -86,8 +140,35 @@ public class LnkDesignServiceImpl implements LnkDesignService  {
 	@Transactional	
 	public void saveLnkIfPgmMetaList(HashMap procParam) {	
 		List<LnkIfPgmMeta> objList =new ArrayList<LnkIfPgmMeta>();
+		
+		
+        List<LnkIfPgmMeta> insertList = new ArrayList<LnkIfPgmMeta>();
+        List<LnkIfPgmMeta> updateList = new ArrayList<LnkIfPgmMeta>();
+        List<LnkIfPgmMeta> deleteList = new ArrayList<LnkIfPgmMeta>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<LnkIfPgmMeta>)procParam.get("lnkIfPgmMetaListDS");
-		lnkIfPgmMetaDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	LnkIfPgmMeta tempObj = (LnkIfPgmMeta) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	lnkIfPgmMetaDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	lnkIfPgmMetaDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	lnkIfPgmMetaDao.delete(deleteList);
+        }
 	}	
 
 	
@@ -108,8 +189,34 @@ public class LnkDesignServiceImpl implements LnkDesignService  {
 	@Transactional	
 	public void saveLnkOtrSysList(HashMap procParam) {	
 		List<LnkOtrSys> objList =new ArrayList<LnkOtrSys>();
+		
+        List<LnkOtrSys> insertList = new ArrayList<LnkOtrSys>();
+        List<LnkOtrSys> updateList = new ArrayList<LnkOtrSys>();
+        List<LnkOtrSys> deleteList = new ArrayList<LnkOtrSys>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<LnkOtrSys>)procParam.get("lnkOtrSysListDS");
-		lnkOtrSysDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	LnkOtrSys tempObj = (LnkOtrSys) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	lnkOtrSysDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	lnkOtrSysDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	lnkOtrSysDao.delete(deleteList);
+        }		
 	}	
 	
 	//LnkSysNodeDao	
@@ -129,8 +236,34 @@ public class LnkDesignServiceImpl implements LnkDesignService  {
 	@Transactional	
 	public void saveLnkSysNodeList(HashMap procParam) {	
 		List<LnkSysNode> objList =new ArrayList<LnkSysNode>();
+		
+        List<LnkSysNode> insertList = new ArrayList<LnkSysNode>();
+        List<LnkSysNode> updateList = new ArrayList<LnkSysNode>();
+        List<LnkSysNode> deleteList = new ArrayList<LnkSysNode>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<LnkSysNode>)procParam.get("lnkSysNodeListDS");
-		lnkSysNodeDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	LnkSysNode tempObj = (LnkSysNode) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	lnkSysNodeDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	lnkSysNodeDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	lnkSysNodeDao.delete(deleteList);
+        }	
 	}	
 	
 }

@@ -82,12 +82,13 @@ public class CodeM implements Serializable {
 	public void setNwdAt(String nwdAt) {
 		this.nwdAt = nwdAt;
 	}
-	private String crudTy;
-	public String getCrudTy() {
-		return crudTy;
+
+	private String statusYn;
+	public String getStatusYn() {
+		return statusYn;
 	}
-	public void setCrudTy(String crudTy) {
-		this.crudTy = crudTy;
+	public void setStatusYn(String statusYn) {
+		this.statusYn = statusYn;
 	}
 
 }

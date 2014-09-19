@@ -31,9 +31,20 @@ public class CodeMDaoImpl implements CodeMDao {
 		return sqlSession.selectList("codeM.findList");//,searchVo);
 	}
 
+
 	@Override
-	public void saveList(List objList) {
+	public void insert(List objList) {	
 		sqlSession.insert("codeM.insert", objList);
+	}	
+		
+	@Override
+	public void update(List objList) {	
+		sqlSession.update("codeM.insert", objList);
+	}	
+		
+	@Override
+	public void delete(List objList) {	
+		sqlSession.delete("codeM.insert", objList);
 	}
 
 }

@@ -14,15 +14,7 @@
       AND SCRIN_ID  = #{1, scrinId}
   </select>
   <select id="findList" parameterType="java.util.HashMap" resultMap="UiAuthorMapResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN
+    select *
     from UI_AUTHOR_MAP
   </select>
   <insert id="insert" parameterType="UiAuthorMap">

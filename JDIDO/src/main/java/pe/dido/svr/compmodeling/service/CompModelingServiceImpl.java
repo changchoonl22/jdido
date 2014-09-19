@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.dido.svr.clzmodeling.model.ClassOp;
 import pe.dido.svr.compmodeling.dao.*;
 import pe.dido.svr.compmodeling.model.*;
 
@@ -43,8 +44,34 @@ public class CompModelingServiceImpl implements CompModelingService  {
 	@Transactional		
 	public void saveCompIfclassList(HashMap procParam) {		
 		List<CompIfclass> objList =new ArrayList<CompIfclass>();	
+		
+        List<CompIfclass> insertList = new ArrayList<CompIfclass>();
+        List<CompIfclass> updateList = new ArrayList<CompIfclass>();
+        List<CompIfclass> deleteList = new ArrayList<CompIfclass>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<CompIfclass>)procParam.get("compIfclassListDS");	
-		compIfclassDao.insert(objList);	
+        
+        for(int i = 0; i < objList.size(); i++){
+        	CompIfclass tempObj = (CompIfclass) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	compIfclassDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	compIfclassDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	compIfclassDao.delete(deleteList);
+        }
 	}		
 
 	//CompImplClassDao	
@@ -64,8 +91,35 @@ public class CompModelingServiceImpl implements CompModelingService  {
 	@Transactional	
 	public void saveCompImplClassList(HashMap procParam) {	
 		List<CompImplClass> objList =new ArrayList<CompImplClass>();
+		
+
+        List<CompImplClass> insertList = new ArrayList<CompImplClass>();
+        List<CompImplClass> updateList = new ArrayList<CompImplClass>();
+        List<CompImplClass> deleteList = new ArrayList<CompImplClass>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<CompImplClass>)procParam.get("compImplClassListDS");
-		compImplClassDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	CompImplClass tempObj = (CompImplClass) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	compImplClassDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	compImplClassDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	compImplClassDao.delete(deleteList);
+        }		
 	}	
 
 	//CompInnerClassAttrbDao	
@@ -85,8 +139,35 @@ public class CompModelingServiceImpl implements CompModelingService  {
 	@Transactional	
 	public void saveCompInnerClassAttrbList(HashMap procParam) {	
 		List<CompInnerClassAttrb> objList =new ArrayList<CompInnerClassAttrb>();
+		
+		
+        List<CompInnerClassAttrb> insertList = new ArrayList<CompInnerClassAttrb>();
+        List<CompInnerClassAttrb> updateList = new ArrayList<CompInnerClassAttrb>();
+        List<CompInnerClassAttrb> deleteList = new ArrayList<CompInnerClassAttrb>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<CompInnerClassAttrb>)procParam.get("compInnerClassAttrbListDS");
-		compInnerClassAttrbDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	CompInnerClassAttrb tempObj = (CompInnerClassAttrb) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	compInnerClassAttrbDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	compInnerClassAttrbDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	compInnerClassAttrbDao.delete(deleteList);
+        }	
 	}	
 
 	
@@ -107,8 +188,36 @@ public class CompModelingServiceImpl implements CompModelingService  {
 	@Transactional	
 	public void saveCompInnerClassOpList(HashMap procParam) {	
 		List<CompInnerClassOp> objList =new ArrayList<CompInnerClassOp>();
+		
+		
+        List<CompInnerClassOp> insertList = new ArrayList<CompInnerClassOp>();
+        List<CompInnerClassOp> updateList = new ArrayList<CompInnerClassOp>();
+        List<CompInnerClassOp> deleteList = new ArrayList<CompInnerClassOp>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<CompInnerClassOp>)procParam.get("compInnerClassOpListDS");
-		compInnerClassOpDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	CompInnerClassOp tempObj = (CompInnerClassOp) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	compInnerClassOpDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	compInnerClassOpDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	compInnerClassOpDao.delete(deleteList);
+        }		
+		
 	}	
 	//CompMDao	
 	@Override
@@ -127,8 +236,34 @@ public class CompModelingServiceImpl implements CompModelingService  {
 	@Transactional	
 	public void saveCompMList(HashMap procParam) {	
 		List<CompM> objList =new ArrayList<CompM>();
+		
+        List<CompM> insertList = new ArrayList<CompM>();
+        List<CompM> updateList = new ArrayList<CompM>();
+        List<CompM> deleteList = new ArrayList<CompM>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<CompM>)procParam.get("compMListDS");
-		compMDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	CompM tempObj = (CompM) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	compMDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	compMDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	compMDao.delete(deleteList);
+        }	
 	}	
 	//UdaClusterDao	
 	@Override
@@ -147,8 +282,34 @@ public class CompModelingServiceImpl implements CompModelingService  {
 	@Transactional	
 	public void saveUdaClusterList(HashMap procParam) {	
 		List<UdaCluster> objList =new ArrayList<UdaCluster>();
+		
+        List<UdaCluster> insertList = new ArrayList<UdaCluster>();
+        List<UdaCluster> updateList = new ArrayList<UdaCluster>();
+        List<UdaCluster> deleteList = new ArrayList<UdaCluster>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<UdaCluster>)procParam.get("udaClusterListDS");
-		udaClusterDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	UdaCluster tempObj = (UdaCluster) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	udaClusterDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	udaClusterDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	udaClusterDao.delete(deleteList);
+        }	
 	}	
 	
 }

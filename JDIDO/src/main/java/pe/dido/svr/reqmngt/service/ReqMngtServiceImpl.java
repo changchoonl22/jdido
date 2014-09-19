@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.dido.svr.lnkdesign.model.LnkSysNode;
 import pe.dido.svr.reqmngt.dao.*;
 import pe.dido.svr.reqmngt.model.*;
 
@@ -46,8 +47,36 @@ public class ReqMngtServiceImpl implements ReqMngtService {
 	@Transactional	
 	public void saveDeptList(HashMap procParam) {	
 		List<Dept> objList =new ArrayList<Dept>();
+		
+		
+        List<Dept> insertList = new ArrayList<Dept>();
+        List<Dept> updateList = new ArrayList<Dept>();
+        List<Dept> deleteList = new ArrayList<Dept>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<Dept>)procParam.get("deptListDS");
-		deptDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	Dept tempObj = (Dept) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	deptDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	deptDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	deptDao.delete(deleteList);
+        }		
+		
 	}	
 	//DmndDeptMapDao	
 	@Override
@@ -66,8 +95,36 @@ public class ReqMngtServiceImpl implements ReqMngtService {
 	@Transactional	
 	public void saveDmndDeptMapList(HashMap procParam) {	
 		List<DmndDeptMap> objList =new ArrayList<DmndDeptMap>();
+		
+		
+        List<DmndDeptMap> insertList = new ArrayList<DmndDeptMap>();
+        List<DmndDeptMap> updateList = new ArrayList<DmndDeptMap>();
+        List<DmndDeptMap> deleteList = new ArrayList<DmndDeptMap>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<DmndDeptMap>)procParam.get("dmndDeptMapListDS");
-		dmndDeptMapDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	DmndDeptMap tempObj = (DmndDeptMap) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	dmndDeptMapDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	dmndDeptMapDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	dmndDeptMapDao.delete(deleteList);
+        }			
+		
 	}	
 	//DmndMDao	
 	@Override
@@ -86,8 +143,38 @@ public class ReqMngtServiceImpl implements ReqMngtService {
 	@Transactional	
 	public void saveDmndMList(HashMap procParam) {	
 		List<DmndM> objList =new ArrayList<DmndM>();
+		
+		
+        List<DmndM> insertList = new ArrayList<DmndM>();
+        List<DmndM> updateList = new ArrayList<DmndM>();
+        List<DmndM> deleteList = new ArrayList<DmndM>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<DmndM>)procParam.get("dmndMListDS");
-		dmndMDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	DmndM tempObj = (DmndM) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	dmndMDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	dmndMDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	dmndMDao.delete(deleteList);
+        }			
+		
+		
+		//dmndMDao.insert(objList);
 	}	
 	//DmndRelateBasisDao	
 	@Override
@@ -106,8 +193,38 @@ public class ReqMngtServiceImpl implements ReqMngtService {
 	@Transactional	
 	public void saveDmndRelateBasisList(HashMap procParam) {	
 		List<DmndRelateBasis> objList =new ArrayList<DmndRelateBasis>();
+		
+		
+        List<DmndRelateBasis> insertList = new ArrayList<DmndRelateBasis>();
+        List<DmndRelateBasis> updateList = new ArrayList<DmndRelateBasis>();
+        List<DmndRelateBasis> deleteList = new ArrayList<DmndRelateBasis>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<DmndRelateBasis>)procParam.get("dmndRelateBasisListDS");
-		dmndRelateBasisDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	DmndRelateBasis tempObj = (DmndRelateBasis) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	dmndRelateBasisDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	dmndRelateBasisDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	dmndRelateBasisDao.delete(deleteList);
+        }		
+		
+		
+		//dmndRelateBasisDao.insert(objList);
 	}	
 	//UpperDmndDao	
 	@Override
@@ -126,8 +243,38 @@ public class ReqMngtServiceImpl implements ReqMngtService {
 	@Transactional	
 	public void saveUpperDmndList(HashMap procParam) {	
 		List<UpperDmnd> objList =new ArrayList<UpperDmnd>();
+		
+		
+        List<UpperDmnd> insertList = new ArrayList<UpperDmnd>();
+        List<UpperDmnd> updateList = new ArrayList<UpperDmnd>();
+        List<UpperDmnd> deleteList = new ArrayList<UpperDmnd>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<UpperDmnd>)procParam.get("upperDmndListDS");
-		upperDmndDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	UpperDmnd tempObj = (UpperDmnd) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	upperDmndDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	upperDmndDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	upperDmndDao.delete(deleteList);
+        }		
+		
+		
+	//	upperDmndDao.insert(objList);
 	}	
 	//UpperDmndDmndMapDao	
 	@Override
@@ -146,8 +293,38 @@ public class ReqMngtServiceImpl implements ReqMngtService {
 	@Transactional	
 	public void saveUpperDmndDmndMapList(HashMap procParam) {	
 		List<UpperDmndDmndMap> objList =new ArrayList<UpperDmndDmndMap>();
+		
+		
+        List<UpperDmndDmndMap> insertList = new ArrayList<UpperDmndDmndMap>();
+        List<UpperDmndDmndMap> updateList = new ArrayList<UpperDmndDmndMap>();
+        List<UpperDmndDmndMap> deleteList = new ArrayList<UpperDmndDmndMap>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<UpperDmndDmndMap>)procParam.get("upperDmndDmndMapListDS");
-		upperDmndDmndMapDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	UpperDmndDmndMap tempObj = (UpperDmndDmndMap) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	upperDmndDmndMapDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	upperDmndDmndMapDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	upperDmndDmndMapDao.delete(deleteList);
+        }			
+		
+		
+		//upperDmndDmndMapDao.insert(objList);
 	}	
 
 }

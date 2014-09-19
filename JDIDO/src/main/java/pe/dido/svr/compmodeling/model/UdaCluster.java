@@ -60,11 +60,11 @@ public class UdaCluster implements Serializable {
 		this.compnNm = compnNm;
 	}
 
-	private String crudTy;
-	public String getCrudTy() {
-		return crudTy;
+	private String statusYn;
+	public String getStatusYn() {
+		return statusYn;
 	}
-	public void setCrudTy(String crudTy) {
-		this.crudTy = crudTy;
+	public void setStatusYn(String statusYn) {
+		this.statusYn = statusYn;
 	}
 }

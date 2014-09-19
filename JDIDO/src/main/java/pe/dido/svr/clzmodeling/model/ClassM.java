@@ -52,11 +52,15 @@ public class ClassM implements Serializable {
 	private String classTy;
 	private String idntfcOfficTy;
 	private Integer idntfcOfficId;
-	private String crudTy;
-	public String getCrudTy() {
-		return crudTy;
+	
+	
+	private String statusYn;
+	public String getStatusYn() {
+		return statusYn;
 	}
-	public void setCrudTy(String crudTy) {
-		this.crudTy = crudTy;
+	public void setStatusYn(String statusYn) {
+		this.statusYn = statusYn;
 	}
+	
+	
 }

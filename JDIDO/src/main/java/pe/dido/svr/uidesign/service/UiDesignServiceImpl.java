@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.dido.svr.ucsmodeling.model.UcActorMap;
 import pe.dido.svr.uidesign.dao.*;
 import pe.dido.svr.uidesign.model.*;
 
@@ -39,8 +40,35 @@ public class UiDesignServiceImpl implements UiDesignService  {
 	@Transactional	
 	public void saveUiAuthorList(HashMap procParam) {	
 		List<UiAuthor> objList =new ArrayList<UiAuthor>();
+		
+		
+        List<UiAuthor> insertList = new ArrayList<UiAuthor>();
+        List<UiAuthor> updateList = new ArrayList<UiAuthor>();
+        List<UiAuthor> deleteList = new ArrayList<UiAuthor>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<UiAuthor>)procParam.get("uiAuthorListDS");
-		uiAuthorDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	UiAuthor tempObj = (UiAuthor) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	uiAuthorDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	uiAuthorDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	uiAuthorDao.delete(deleteList);
+        }		
 	}	
 	//UiAuthorMapDao.java	
 	@Override
@@ -59,8 +87,38 @@ public class UiDesignServiceImpl implements UiDesignService  {
 	@Transactional	
 	public void saveUiAuthorMapList(HashMap procParam) {	
 		List<UiAuthorMap> objList =new ArrayList<UiAuthorMap>();
+		
+		
+        List<UiAuthorMap> insertList = new ArrayList<UiAuthorMap>();
+        List<UiAuthorMap> updateList = new ArrayList<UiAuthorMap>();
+        List<UiAuthorMap> deleteList = new ArrayList<UiAuthorMap>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<UiAuthorMap>)procParam.get("uiAuthorMapListDS");
-		uiAuthorMapDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	UiAuthorMap tempObj = (UiAuthorMap) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	uiAuthorMapDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	uiAuthorMapDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	uiAuthorMapDao.delete(deleteList);
+        }		
+		
+		
+		//uiAuthorMapDao.insert(objList);
 	}	
 	//UiMDao.java	
 	@Override
@@ -79,8 +137,35 @@ public class UiDesignServiceImpl implements UiDesignService  {
 	@Transactional	
 	public void saveUiMList(HashMap procParam) {	
 		List<UiM> objList =new ArrayList<UiM>();
+		
+		
+        List<UiM> insertList = new ArrayList<UiM>();
+        List<UiM> updateList = new ArrayList<UiM>();
+        List<UiM> deleteList = new ArrayList<UiM>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<UiM>)procParam.get("uiMListDS");
-		uiMDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	UiM tempObj = (UiM) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	uiMDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	uiMDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	uiMDao.delete(deleteList);
+        }	
 	}	
 	
 	//UiMenuPkgDao.java	
@@ -100,8 +185,35 @@ public class UiDesignServiceImpl implements UiDesignService  {
 	@Transactional	
 	public void saveUiMenuPkgList(HashMap procParam) {	
 		List<UiMenuPkg> objList =new ArrayList<UiMenuPkg>();
+		
+		
+        List<UiMenuPkg> insertList = new ArrayList<UiMenuPkg>();
+        List<UiMenuPkg> updateList = new ArrayList<UiMenuPkg>();
+        List<UiMenuPkg> deleteList = new ArrayList<UiMenuPkg>();
+
+        int iidx=0, uidx=0, didx=0;
 		objList = (ArrayList<UiMenuPkg>)procParam.get("uiMenuPkgListDS");
-		uiMenuPkgDao.insert(objList);
+        
+        for(int i = 0; i < objList.size(); i++){
+        	UiMenuPkg tempObj = (UiMenuPkg) objList.get(i);
+            if((tempObj.getStatusYn()).equals("I")){
+                   insertList.add(iidx, tempObj);
+                   iidx++;
+            }else if((tempObj.getStatusYn()).equals("U")){
+                   updateList.add(uidx, tempObj);
+                   uidx++;
+            }else if((tempObj.getStatusYn()).equals("D")){
+                   deleteList.add(didx, tempObj);
+                   didx++;
+            }
+        }
+        if(insertList.size()>0){
+        	uiMenuPkgDao.insert(insertList);
+        }else if(updateList.size()>0){
+        	uiMenuPkgDao.update(updateList);
+        }else if(deleteList.size()>0){
+        	uiMenuPkgDao.delete(deleteList);
+        }	
 	}	
 	
 

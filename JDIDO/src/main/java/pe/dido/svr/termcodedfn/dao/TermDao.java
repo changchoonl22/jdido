@@ -11,6 +11,9 @@ public interface TermDao {
 
 	public List<Term> findList();//HashMap searchVo
 
-	public void saveList(List objList) ;
+	public void insert(List objList);
 
+	public void update(List objList);
+
+	public void delete(List objList);
 }

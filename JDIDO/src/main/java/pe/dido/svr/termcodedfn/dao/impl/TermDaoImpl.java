@@ -32,8 +32,18 @@ public class TermDaoImpl implements TermDao {
 	}
 
 	@Override
-	public void saveList(List objList) {
+	public void insert(List objList) {	
 		sqlSession.insert("Term.insert", objList);
+	}	
+		
+	@Override
+	public void update(List objList) {	
+		sqlSession.update("Term.insert", objList);
+	}	
+		
+	@Override
+	public void delete(List objList) {	
+		sqlSession.delete("Term.insert", objList);
 	}
 
 }

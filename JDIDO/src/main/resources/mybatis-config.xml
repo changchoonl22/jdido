@@ -10,7 +10,7 @@
     
     <typeAliases>
         <typeAlias alias="Person" type="com.mobiconsoft.dashboard.domain.Person"></typeAlias>
-       
+        
         <typeAlias alias="BizActor" type="pe.dido.svr.bizmodeling.model.BizActor"></typeAlias>
         <typeAlias alias="BizActorDeptMap" type="pe.dido.svr.bizmodeling.model.BizActorDeptMap"></typeAlias>
         <typeAlias alias="BizCncpt" type="pe.dido.svr.bizmodeling.model.BizCncpt"></typeAlias>
@@ -68,7 +68,8 @@
     <mappers>
         <mapper resource="com/mobiconsoft/dashboard/mybatis/mapper/Person.xml"></mapper>
         
-       
+               
+         
         <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizActorMapper.xml"></mapper>
         <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizActorDeptMapMapper.xml"></mapper>
         <mapper resource="pe/dido/svr/bizmodeling/mybatis/mapper/BizCncptMapper.xml"></mapper>
@@ -107,7 +108,7 @@
 		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/CodeMMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/CodeDMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/termcodedfn/mybatis/mapper/TermMapper.xml"></mapper>
-		
+ 		
 		<mapper resource="pe/dido/svr/testmngt/mybatis/mapper/TestPlnMapper.xml"></mapper>
 		<mapper resource="pe/dido/svr/testmngt/mybatis/mapper/TestResultMapper.xml"></mapper>
 		

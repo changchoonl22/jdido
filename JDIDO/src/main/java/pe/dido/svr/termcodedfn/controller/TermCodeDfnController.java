@@ -27,7 +27,7 @@ public class TermCodeDfnController {
 	public @ResponseBody HashMap<String, Object> getTerm(@RequestBody HashMap<String, Object> searchParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
 		resultObj.put("termDS", termCodeService.findTermById(searchParam));
-		resultObj.put("message", "OK");
+//		resultObj.put("message", "OK");
 		return resultObj;
 	}
 	
@@ -35,7 +35,7 @@ public class TermCodeDfnController {
 	public @ResponseBody HashMap<String, Object> getTermList(){//@RequestBody HashMap<String, Object> searchParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
 		resultObj.put("termListDS", termCodeService.findTermList());//searchParam));
-		resultObj.put("message", 1);
+//		resultObj.put("message", 1);
 		return resultObj;
 	}
 

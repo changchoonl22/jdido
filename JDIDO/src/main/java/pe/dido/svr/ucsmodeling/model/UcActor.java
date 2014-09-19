@@ -11,31 +11,33 @@ public class UcActor implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer actorId;
-	private String actor_nm;
-	private String actor_dc;
+	private String actorNm;
+	private String actorDc;
 	public Integer getActorId() {
 		return actorId;
 	}
 	public void setActorId(Integer actorId) {
 		this.actorId = actorId;
 	}
-	public String getActor_nm() {
-		return actor_nm;
+	public String getActorNm() {
+		return actorNm;
 	}
-	public void setActor_nm(String actor_nm) {
-		this.actor_nm = actor_nm;
+	public void setActorNm(String actorNm) {
+		this.actorNm = actorNm;
 	}
-	public String getActor_dc() {
-		return actor_dc;
+	public String getActorDc() {
+		return actorDc;
 	}
-	public void setActor_dc(String actor_dc) {
-		this.actor_dc = actor_dc;
+	public void setActorDc(String actorDc) {
+		this.actorDc = actorDc;
 	}
-	private String crudTy;
-	public String getCrudTy() {
-		return crudTy;
+	
+	private String statusYn;
+	public String getStatusYn() {
+		return statusYn;
 	}
-	public void setCrudTy(String crudTy) {
-		this.crudTy = crudTy;
+	public void setStatusYn(String statusYn) {
+		this.statusYn = statusYn;
 	}
+
 }

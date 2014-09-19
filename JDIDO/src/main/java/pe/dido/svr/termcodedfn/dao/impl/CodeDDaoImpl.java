@@ -29,9 +29,21 @@ public class CodeDDaoImpl implements CodeDDao {
 		return sqlSession.selectList("codeD.findList");//,searchVo);
 	}
 
+
+
 	@Override
-	public void saveList(List objList) {
+	public void insert(List objList) {	
 		sqlSession.insert("codeD.insert", objList);
+	}	
+		
+	@Override
+	public void update(List objList) {	
+		sqlSession.update("codeD.insert", objList);
+	}	
+		
+	@Override
+	public void delete(List objList) {	
+		sqlSession.delete("codeD.insert", objList);
 	}
 
 }

@@ -40,11 +40,13 @@ public class UiMenuPkg implements Serializable {
 	public void setMenuCode(String menuCode) {
 		this.menuCode = menuCode;
 	}
-	private String crudTy;
-	public String getCrudTy() {
-		return crudTy;
+
+	
+	private String statusYn;
+	public String getStatusYn() {
+		return statusYn;
 	}
-	public void setCrudTy(String crudTy) {
-		this.crudTy = crudTy;
-	}
+	public void setStatusYn(String statusYn) {
+		this.statusYn = statusYn;
+	}		
 }
