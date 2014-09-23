@@ -1,9 +1,13 @@
 package pe.dido.svr.termcodedfn.service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 import pe.dido.svr.termcodedfn.model.CodeD;
 import pe.dido.svr.termcodedfn.model.CodeM;
@@ -30,6 +34,9 @@ public interface TermCodeService {
 
 	public List<Term> findTermList();//HashMap searchVo);
 
-	public void saveTermList(HashMap procParam);
+	public void saveTermList(HashMap procParam) throws JsonParseException, JsonMappingException, IOException;
+	
+
+	
 
 }

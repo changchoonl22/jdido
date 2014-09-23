@@ -1,6 +1,12 @@
 package pe.dido.svr.termcodedfn.model;
 
 import java.io.Serializable;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+
 
 public class Term implements Serializable {
 	/**
@@ -8,16 +14,26 @@ public class Term implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;	
 	
+	@JsonProperty("wordId")
 	private Integer wordId;
+	@JsonProperty("wordNm")
 	private String wordNm;
+	@JsonProperty("wordDfn")
 	private String wordDfn;
+	@JsonProperty("krNm")
 	private String krNm;	
+	@JsonProperty("enNm")
 	private String enNm;	
+	@JsonProperty("krAbrv")
 	private String krAbrv;
+	@JsonProperty("enAbrv")
 	private String enAbrv;
+	@JsonProperty("wordApplcScope")
 	private String wordApplcScope;
+	@JsonProperty("etcMatterDc")
 	private String etcMatterDc;
-
+	@JsonProperty("statusYn")
+	private String statusYn;
 	
 	public String getEnAbrv() {
 		return enAbrv;
@@ -74,7 +90,7 @@ public class Term implements Serializable {
 		this.wordNm = wordNm;
 	}
 	
-	private String statusYn;
+
 	public String getStatusYn() {
 		return statusYn;
 	}
