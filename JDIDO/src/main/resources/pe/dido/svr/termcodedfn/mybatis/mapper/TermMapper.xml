@@ -2,83 +2,87 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Term">
 	<resultMap id="TermResult" type="Term">
-		   <id     property="wordId" 			column="WORD_ID"/>
-		   <result property="wordNm" 			column="WORD_NM"/> 
-    	   <result property="krNm" 				column="KR_NM"/>
-      	   <result property="enNm" 				column="EN_NM"/>
-      	   <result property="krAbrv" 			column="KR_ABRV"/>
-      	   <result property="enAbrv" 			column="EN_ABRV"/>
-      	   <result property="wordApplcScope" 	column="WORD_APPLC_SCOPE"/> 
-      	   <result property="etcMatterDc" 		column="ETC_MATTER_DC"/>
-      	   <result property="wordDfn" 			column="WORD_DFN"/>
-	</resultMap> 
+		<id property="wordId" column="WORD_ID" />
+		<result property="wordNm" column="WORD_NM" />
+		<result property="krNm" column="KR_NM" />
+		<result property="enNm" column="EN_NM" />
+		<result property="krAbrv" column="KR_ABRV" />
+		<result property="enAbrv" column="EN_ABRV" />
+		<result property="wordApplcScope" column="WORD_APPLC_SCOPE" />
+		<result property="etcMatterDc" column="ETC_MATTER_DC" />
+		<result property="wordDfn" column="WORD_DFN" />
+	</resultMap>
 
-  <select id="findById" parameterType="java.util.HashMap" resultMap="TermResult">
-    select WORD_ID
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN,
-      	   "0" as statusYn
-    from term
-    where WORD_ID = #{0, wordId}
-  </select>
-  <select id="findList" parameterType="java.util.HashMap" resultMap="TermResult">
-    select 
-		   WORD_ID,
-    	   WORD_NM, 
-    	   KR_NM, 
-      	   EN_NM, 
-      	   KR_ABRV, 
-      	   EN_ABRV,
-      	   WORD_APPLC_SCOPE, 
-      	   ETC_MATTER_DC, 
-      	   WORD_DFN,
-      	   "0" as statusYn
-    from term
-  </select>
-  <insert id="insert" parameterType="Term">
-    insert into term (WORD_NM, 
-    				  KR_NM, 
-      				  EN_NM, 
-      				  KR_ABRV, 
-      				  EN_ABRV, 
-     				  WORD_APPLC_SCOPE, 
-     				  ETC_MATTER_DC, 
-     				  WORD_DFN
-      )
-    values (#{wordNm,			jdbcType=VARCHAR}, 
-    		#{krNm,				jdbcType=VARCHAR}, 
-      		#{enNm,				jdbcType=VARCHAR}, 
-      		#{krAbrv,			jdbcType=VARCHAR}, 
-      		#{enAbrv,			jdbcType=VARCHAR}, 
-      		#{wordApplcScope,	jdbcType=VARCHAR}, 
-      		#{etcMatterDc,		jdbcType=VARCHAR}, 
-      		#{wordDfn,			jdbcType=LONGVARCHAR}
-      )
-  <!--parameterType="java.lang.Integer"--> 
-  </insert>
-  <update id="update" parameterType="Term">
-    update term
-    <set>
-      <if test="wordNm 			!= null">WORD_NM 			= #{wordNm,			jdbcType=VARCHAR},		</if>
-      <if test="krNm 			!= null">KR_NM 				= #{krNm,			jdbcType=VARCHAR},		</if>
-      <if test="enNm 			!= null">EN_NM 				= #{enNm,			jdbcType=VARCHAR},		</if>
-      <if test="krAbrv 			!= null">KR_ABRV 			= #{krAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="enAbrv 			!= null">EN_ABRV 			= #{enAbrv,			jdbcType=VARCHAR},		</if>
-      <if test="wordApplcScope  != null">WORD_APPLC_SCOPE 	= #{wordApplcScope,	jdbcType=VARCHAR},		</if>
-      <if test="etcMatterDc 	!= null">ETC_MATTER_DC 		= #{etcMatterDc,	jdbcType=VARCHAR},		</if>
-      <if test="wordDfn 		!= null">WORD_DFN 			= #{wordDfn,		jdbcType=LONGVARCHAR},	</if>
-    </set>
-    where WORD_ID = #{wordId,jdbcType=INTEGER}
-  </update>
-  <delete id="delete" parameterType="java.lang.Integer">
-    delete from term
-    where WORD_ID = #{0, wordId}
-  </delete>  
-  
- </mapper>
+	<select id="findById" parameterType="java.util.HashMap"
+		resultMap="TermResult">
+		select WORD_ID
+		WORD_NM,
+		KR_NM,
+		EN_NM,
+		KR_ABRV,
+		EN_ABRV,
+		WORD_APPLC_SCOPE,
+		ETC_MATTER_DC,
+		WORD_DFN,
+		"0" as statusYn
+		from term
+		where WORD_ID = #{0, wordId}
+	</select>
+	<select id="findList" parameterType="java.util.HashMap"
+		resultMap="TermResult">
+		select
+		WORD_ID,
+		WORD_NM,
+		KR_NM,
+		EN_NM,
+		KR_ABRV,
+		EN_ABRV,
+		WORD_APPLC_SCOPE,
+		ETC_MATTER_DC,
+		WORD_DFN,
+		"0" as statusYn
+		from term
+	</select>
+	<insert id="insert" parameterType="Term">
+		insert into term (WORD_NM,
+		KR_NM,
+		EN_NM,
+		KR_ABRV,
+		EN_ABRV,
+		WORD_APPLC_SCOPE,
+		ETC_MATTER_DC,
+		WORD_DFN
+		)
+		values (#{wordNm, jdbcType=VARCHAR},
+		#{krNm, jdbcType=VARCHAR},
+		#{enNm, jdbcType=VARCHAR},
+		#{krAbrv, jdbcType=VARCHAR},
+		#{enAbrv, jdbcType=VARCHAR},
+		#{wordApplcScope, jdbcType=VARCHAR},
+		#{etcMatterDc, jdbcType=VARCHAR},
+		#{wordDfn, jdbcType=LONGVARCHAR}
+		)
+		<!--parameterType="java.lang.Integer" -->
+	</insert>
+	<update id="update" parameterType="java.util.List">
+		<foreach collection="list" item="term" separator=";">
+			update term SET
+			<set>
+				<if test="term.wordNm 			!= null">WORD_NM = #{term.wordNm, jdbcType=VARCHAR},		</if>
+				<!--if test="term.krNm 			!= null">KR_NM = #{term.krNm, jdbcType=VARCHAR},		</if>
+				<if test="term.enNm 			!= null">EN_NM = #{term.enNm, jdbcType=VARCHAR},		</if>
+				<if test="term.krAbrv 			!= null">KR_ABRV = #{term.krAbrv, jdbcType=VARCHAR},		</if>
+				<if test="term.enAbrv 			!= null">EN_ABRV = #{term.enAbrv, jdbcType=VARCHAR},		</if>
+				<if test="term.wordApplcScope  != null">WORD_APPLC_SCOPE = #{term.wordApplcScope, jdbcType=VARCHAR},</if>
+				<if test="term.etcMatterDc 	!= null">ETC_MATTER_DC = #{term.etcMatterDc, jdbcType=VARCHAR},		</if>
+				<if test="term.wordDfn 		!= null">WORD_DFN = #{term.wordDfn, jdbcType=LONGVARCHAR},	</if-->
+			</set>
+			where WORD_ID = #{term.wordId,jdbcType=INTEGER}
+		</foreach>
+	</update>
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from term
+		where WORD_ID = #{0, wordId}
+	</delete>
+
+</mapper>

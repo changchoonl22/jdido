@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,11 +15,15 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pe.dido.svr.reqmngt.model.UpperDmndDmndMap;
+import pe.dido.svr.termcodedfn.controller.TermCodeDfnController;
 import pe.dido.svr.termcodedfn.dao.*;
 import pe.dido.svr.termcodedfn.model.*;
 
 @Service("termCodeService")
 public class TermCodeServiceImpl implements TermCodeService {
+	
+	private static org.apache.log4j.Logger log = Logger.getLogger(TermCodeServiceImpl.class);
+
 	@Autowired
 	private CodeMDao codeMDao;
 	@Autowired
@@ -135,46 +140,40 @@ public class TermCodeServiceImpl implements TermCodeService {
 
 	@Override
 	@Transactional
-	public void saveTermList(HashMap procParam) throws JsonParseException, JsonMappingException, IOException {
-		List<Term> objList = new ArrayList<Term>();
-
+	public void saveTermList(List<Term> objList) {
+		log.debug("service objList.size ==> "+objList.size());		
 		List<Term> insertList = new ArrayList<Term>();
 		List<Term> updateList = new ArrayList<Term>();
 		List<Term> deleteList = new ArrayList<Term>();
 
-		int iidx = 0, uidx = 0, didx = 0;
-		
-		ObjectMapper mapper = new ObjectMapper();
-
-		objList = (List<Term>) mapper.readValue(procParam.toString(), Term.class);
-		System.out.print("objList ==> "+objList.size()+"\n\n");
-		
+		int iidx = 0, uidx = 0, didx = 0;		
 		for (int i = 0; i < objList.size(); i++) {
-			System.out.print("objList ==> "+objList.get(i).getWordId()+"\n\n");
-
-			System.out.print(insertList.get(iidx).getWordNm());
-
 			Term tempObj = (Term) objList.get(i);
-			if ((tempObj.getStatusYn()).equals("I")) {
-				//insertList.add(iidx, tempObj);
-				System.out.print(insertList.get(iidx).getWordNm());
+			if ((tempObj.getStatusYn().toUpperCase()).equals("I")) {
+				insertList.add(iidx, tempObj);
+				log.debug("service insert getWordNm==> "+insertList.get(iidx).getWordNm());
 				iidx++;
-			} else if ((tempObj.getStatusYn()).equals("U")) {
-				//updateList.add(uidx, tempObj);
-				System.out.print(updateList.get(uidx).getWordNm());
+			} else if ((tempObj.getStatusYn().toUpperCase()).equals("U")) {
+				updateList.add(uidx, tempObj);
+				log.debug("service update getWordNm==> "+updateList.get(uidx).getWordNm());
 				uidx++;
-			} else if ((tempObj.getStatusYn()).equals("D")) {
-				//deleteList.add(didx, tempObj);
-				System.out.print(deleteList.get(didx).getWordNm());
+			} else if ((tempObj.getStatusYn().toUpperCase()).equals("D")) {
+				deleteList.add(didx, tempObj);
+				log.debug("service delete getWordNm==> "+deleteList.get(didx).getWordNm());
 
 				didx++;
 			}
 		}
 		if (insertList.size() > 0) {
+			log.debug("insertList size ==> "+insertList.size());
 			termDao.insert(insertList);
-		} else if (updateList.size() > 0) {
+		} 
+		if (updateList.size() > 0) {
+			log.debug("updateList size ==> "+updateList.size());
 			termDao.update(updateList);
-		} else if (deleteList.size() > 0) {
+		} 
+		if (deleteList.size() > 0) {
+			log.debug("deleteList size ==> "+deleteList.size());
 			termDao.delete(deleteList);
 		}
 	}

@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 
 import pe.dido.svr.termcodedfn.dao.TermDao;
 import pe.dido.svr.termcodedfn.model.Term;
+import pe.dido.svr.termcodedfn.service.TermCodeServiceImpl;
 
 @Repository("termDao")
 public class TermDaoImpl implements TermDao {
-	private static final Logger logger = LoggerFactory.getLogger(TermDaoImpl.class);
-	
+
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -38,12 +38,12 @@ public class TermDaoImpl implements TermDao {
 		
 	@Override
 	public void update(List objList) {	
-		sqlSession.update("Term.insert", objList);
+		sqlSession.update("Term.update", objList);
 	}	
 		
 	@Override
 	public void delete(List objList) {	
-		sqlSession.delete("Term.insert", objList);
+		sqlSession.delete("Term.delete", List<Term> objList);
 	}
 
 }

@@ -34,7 +34,7 @@ public interface TermCodeService {
 
 	public List<Term> findTermList();//HashMap searchVo);
 
-	public void saveTermList(HashMap procParam) throws JsonParseException, JsonMappingException, IOException;
+	public void saveTermList(List<Term> objList);
 	
 
 	

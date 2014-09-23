@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import pe.dido.svr.termcodedfn.model.Term;
 import pe.dido.svr.termcodedfn.model.TermWrapper;
@@ -48,25 +51,18 @@ public class TermCodeDfnController {
 		return resultObj;
 	}
 
-	@RequestMapping(value = TermCodeDfnRestURIConstants.TERM_SAVELIST, method=RequestMethod.POST,consumes="application/json",produces="application/json")
-	public @ResponseBody HashMap<String, Object> saveTermList(@RequestBody HashMap<String, Object> procParam) {
-		HashMap<String, Object> resultObj = new HashMap<String, Object>();
 
+	
+	@RequestMapping(value = TermCodeDfnRestURIConstants.TERM_SAVELIST, method=RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> saveTermList(@RequestBody TermWrapper requestWrapper){//Map<String, Object> requestParam) {
+		HashMap<String, Object> resultObj = new HashMap<String, Object>();	
+
+		for (Term term: requestWrapper.getTerms()){
+			log.debug("controller ==> "+term.getWordNm().toString());
+	    }
+		             
+		termCodeService.saveTermList(requestWrapper.getTerms());
 		
-		System.out.print("controller procParam ==> "+procParam.toString()+"\n\n");
-
-		try {
-			termCodeService.saveTermList(procParam);
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		resultObj.put("message", 1);
 		return resultObj;
 
