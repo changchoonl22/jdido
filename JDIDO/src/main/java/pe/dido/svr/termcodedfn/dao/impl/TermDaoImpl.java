@@ -15,6 +15,8 @@ import pe.dido.svr.termcodedfn.service.TermCodeServiceImpl;
 
 @Repository("termDao")
 public class TermDaoImpl implements TermDao {
+	
+	//private static org.apache.log4j.Logger log = Logger.getLogger(TermDaoImpl.class);
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -43,7 +45,7 @@ public class TermDaoImpl implements TermDao {
 		
 	@Override
 	public void delete(List objList) {	
-		sqlSession.delete("Term.delete", List<Term> objList);
+		sqlSession.delete("Term.delete", objList);
 	}
 
 }

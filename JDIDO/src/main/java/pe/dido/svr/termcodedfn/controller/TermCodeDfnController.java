@@ -8,9 +8,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 //import org.slf4j.Logger;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -36,9 +39,14 @@ public class TermCodeDfnController {
 
 	//term
 	@RequestMapping(value = TermCodeDfnRestURIConstants.TERM_GET, method = RequestMethod.GET)
-	public @ResponseBody HashMap<String, Object> getTerm(@RequestBody HashMap<String, Object> searchParam) {
+	public @ResponseBody HashMap<String, Object> getTerm(@PathVariable("id") int id){//@RequestBody HashMap<String, Object> searchParam) {
 		HashMap<String, Object> resultObj = new HashMap<String, Object>();
-		resultObj.put("termDS", termCodeService.findTermById(searchParam));
+		HashMap<Object, Object> searchObj = new HashMap<Object, Object>();
+		searchObj.put("wordId", id);
+		
+		log.debug(searchObj);
+		
+		resultObj.put("termDS", termCodeService.findTermById(searchObj));
 //		resultObj.put("message", "OK");
 		return resultObj;
 	}
